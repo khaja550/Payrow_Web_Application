@@ -1,0 +1,1454 @@
+<div class="content-wrapper main-section-container">
+    <section class="content"> 
+        
+
+
+        <!-- <div class="card card-box">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-3 sidemenu-form">
+                        <div class="input-group">
+                            <div style="float: left;" class="pr-2">USER ID :</div>
+                            <input type="text" class="form-control" placeholder="Sponser ID" aria-describedby="basic-addon2"
+                                value="232111">
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="basic-addon2"><i
+                                        class="fas fa-arrow-right fa-fw"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body myCard">
+                <div class="row">
+                    <div class="col-md-3 col-sm">
+                        Name : Aravind Kishore
+                    </div>
+                    
+                    <div class="col-md-3 col-sm month_class">
+                        <div class="p-2 flex-grow-1 cus_month">
+                            <div class="mytexttitle">
+                                <select class="form-select current-status-dropdown" aria-label="Default select example" [(ngModel)]="selected"
+                                (change)='onSelectMonth($event)'>
+                                    <option *ngFor="let j of jsonData" [value]="j.month">{{j.month}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm month_class">
+                        <div class="p-2 bd-highlight">
+                            <div class="report" data-tooltip="top" role="tooltip" aria-label="report Download" (click)="reportDownload()">
+                                Download : <img class="btn_dwn" src="assets/images/download.png">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm">
+                        <input class="form-control search-hero" type="text" name="search" [(ngModel)]="searchText"
+                            autocomplete="off" placeholder="Search...">
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+   
+
+
+        <div class="container-fluid p-0 pb-24x"> 
+            <div class="row"> 
+                <div class="col-md-12">
+                    <div class="section-header"> 
+                        <div class="pull-left d-flex gap-16x"> 
+                            <div class="search-holder"> 
+                                <form action="">
+                                    <div class="input-group">
+                                        <input type="search" autocomplete="off" [(ngModel)]="searchText" placeholder="What're you searching for?" aria-describedby="button-addon5" class="form-control" [ngModelOptions]="{standalone: true}">
+                                        <div class="input-group-append">
+                                            <button id="button-addon5" type="submit" class="btn"><i class="fa fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>                       
+
+                        <div class="pull-right d-flex gap-16x"> 
+                            <button class="btn btn-default-primary" ><i class="fas fa-download"></i> Download</button> 
+                            <div class="select min-w-200x">
+                                <select rows="1" class="form-control" placeholder="" [(ngModel)]="selected" (change)='onSelectMonth($event)'>
+                                    <option value="" selected>Select Month</option>
+                                    <option *ngFor="let j of jsonData" [value]="j.month">{{j.month}}</option>
+                                </select>
+                            </div> 
+                        </div>
+                    </div>                        
+                </div>
+            </div>
+        </div> 
+
+        <div class="card table-headers">
+            <div class="card-body">
+                <div class="row"> 
+                    <div class="col">
+                        <div class="content">
+                            <span class="title">Merchant ID</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="content">
+                            <span class="title">Merchant Name</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="content text-center">
+                            <span class="title">Address</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="content text-right">
+                            <span class="title">Expenses</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="content text-right">
+                            <span class="title">Sequence No</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="content text-right">
+                            <span class="title">Average</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="content text-right">
+                            <span class="title">Total Credit</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="content">
+                            <span class="title">&nbsp;</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion ardn-customize" id="accordionExample"> 
+            <div class="card accordian-data" *ngFor="let data of ids | filter:searchText">
+              <div class="card-header" id="heading"> 
+                <a class="accordion-buttonz collapsed" role="button" data-toggle="collapse" href="#{{data.merchantName}}" (click)="onMerchent(data.merchantName)" aria-expanded="true" aria-controls="collapse"> 
+                    <div class="row"> 
+                        <div class="col">
+                            <div class="content">
+                                <span class="value">{{data._id.merchantId}}</span>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="content">
+                                <span class="value">{{data.merchantName}}</span>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="content text-center"> 
+                                <span data-tooltip="right" role="tooltip" attr.aria-label="{{data.address}}"><i class="bi bi-card-list"></i></span>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="content text-right">
+                                <span class="value">{{data.expenses | number}}</span>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="content text-right">
+                                <span class="value">{{data.count}}</span>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="content text-right">
+                                <span class="value">{{data.average | number}}</span>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="content text-right">
+                                <span class="value">{{data.totalValue | number}}</span>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="content">
+                                <span class="value">&nbsp;</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+              </div>
+
+              <div id="collapse" class="accordion-collapsez collapse" [attr.id]=data.merchantName aria-labelledby="heading" data-parent="#accordionExample">
+                <div class="card-body">
+                    <!-- Stepper -->
+                    <form id="msform" class="d-flex align-item-center justify-content-start flex-wrap gap-24x">
+                        <div class="stepper-card" *ngIf="data.step == 1">
+                            <div class="stepper-body">
+                                <ul class="progress-cust">    
+                                    <li class="progress-item" [ngClass]="data.step>=1 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Customer Notification</p>
+                                    </li>
+                                    <li class="progress-item" [ngClass]="data.step>=2 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Appreciation letter</p>
+                                    </li>
+                                    <li class="progress-item" [ngClass]="data.step>=3 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Negotiate Remarks</p>
+                                    </li>
+                                    <li class="progress-item" [ngClass]="data.step>=4 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Apply the Rate</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="stepper-footer">
+                            </div>
+                        </div>
+
+                        <div class="stepper-card stepper-card-congrats" *ngIf="data.step == 1"> 
+                            <div class="stepper-body">
+                                <div class="text-center">
+                                    <div class="img-box">
+                                        <img src="assets/images/Congratulations_img.jpg" alt="">
+                                    </div>
+                                    <h4 class="text-uppercase">CONGRATULATIONS</h4>
+                                    <p>You are a Top 20 customer in {{curYear}}</p>                                
+                                </div>  
+                            </div>
+                            <div class="stepper-footer">
+                                <span><img src="assets/images/Sucess_tickmark.svg" alt=""></span>
+								<button (click)="next()" name="next"
+                                                class="btn btn-out btn-square continue next action-button next_step">Send
+                                                & Continue</button>
+                            </div>
+                        </div>
+
+                        <div class="stepper-card stepper-card-congrats" *ngIf="data.step == 1">
+                            <div class="stepper-body">
+                                <div class="text-center">
+                                    <div class="img-box">
+                                        <img src="assets/images/Application-letter.png" alt="appriciation letter">
+                                    </div>
+                                    <h4 class="text-uppercase">Appreciation Letter</h4>
+                                    <p>trolly@gmail.com</p>                                
+                                </div>  
+                            </div>
+                            <div class="stepper-footer d-flex align-item-center justify-content-center">
+                                <button (click)="next()" name="send" class="btn cta-nextstep h-30">Send <i class="fas fa-arrow-right"></i></button>
+                            </div> 
+                        </div> 
+
+                        <div class="stepper-card stepper-card-congrats stepper-card-form" *ngIf="data.step == 1">
+                            <div class="stepper-body p-24x">
+                                <div class="text-left"> 
+                                    <h4 class="text-uppercase">Negotiate Remarks</h4>
+                                    <div class="nd-box d-flex align-items-center justify-content-between">
+                                        <div class="name">Sathya</div>
+                                        <div class="date">01/11/2021, 12:00 PM</div>
+                                    </div>
+                                    <p>Test which is a new approach all solutions</p>                                    
+                                    <div class="nd-box pb-0">
+                                        <textarea class="form-control" id="exampleFormControlTextarea5" rows="3" placeholder="Enter Remarks here.."></textarea>
+                                    </div>
+                                </div>  
+                            </div>
+                            <div class="stepper-footer d-flex align-item-center justify-content-end">
+                                <button (click)="next()" name="next" class="btn cta-nextstep h-30" disabled>Next <i class="fas fa-arrow-right"></i></button>
+                            </div> 
+                        </div>
+
+
+                        <div class="stepper-card" *ngIf="data.step == 1">
+                            <div class="stepper-body">
+                                <ul class="progress-cust">    
+                                    <li class="progress-item" [ngClass]="data.step>=1 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Customer Notification</p>
+                                    </li>
+                                    <li class="progress-item" [ngClass]="data.step>=2 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Appreciation letter</p>
+                                    </li>
+                                    <li class="progress-item" [ngClass]="data.step>=3 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Negotiate Remarks</p>
+                                    </li>
+                                    <li class="progress-item" [ngClass]="data.step>=4 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Apply the Rate</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="stepper-footer">
+                            </div>
+                        </div>
+
+                        <div class="stepper-card stepper-card-congrats stepper-card-form stepper-card-form2" *ngIf="data.step == 1">
+                            <div class="stepper-body p-24x">
+                                <div class="text-left"> 
+                                    <h4 class="text-uppercase m-0">Apply the Rate</h4>
+                                    <div class="nd-box d-flex align-items-center justify-content-between">
+                                        <div class="name">Sathya</div>
+                                        <div class="date">01/11/2021, 12:00 PM</div>
+                                    </div>
+                                    <p>Test which is a new approach all solutions</p>                                    
+                                    <div class="nd-box pb-0">
+                                        <textarea class="form-control" id="exampleFormControlTextarea5" rows="3" placeholder="Enter Remarks here.."></textarea>
+                                    </div>
+                                </div>  
+                            </div>
+                            <div class="stepper-footer d-flex align-item-center justify-content-end">
+                                <button (click)="next()" name="next" class="btn cta-nextstep h-30" disabled>Submit <i class="fas fa-arrow-right"></i></button>
+                            </div> 
+                        </div>
+
+                        <div class="stepper-card" *ngIf="data.step == 1">
+                            <div class="stepper-body">
+                                <ul class="progress-cust">    
+                                    <li class="progress-item" [ngClass]="data.step>=1 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Customer Notification</p>
+                                    </li>
+                                    <li class="progress-item" [ngClass]="data.step>=2 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Appreciation letter</p>
+                                    </li>
+                                    <li class="progress-item" [ngClass]="data.step>=3 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Negotiate Remarks</p>
+                                    </li>
+                                    <li class="progress-item" [ngClass]="data.step>=4 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Apply the Rate</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="stepper-footer">
+                            </div>
+                        </div>
+
+                        <div class="stepper-card stepper-card-congrats stepper-card-form stepper-card-form2" *ngIf="data.step == 1">
+                            <div class="stepper-body p-24x no-bg d-flex align-items-center justify-content-center">
+                                <div class="cta-btn-done"><i class="fas fa-check"></i> Done</div>
+                            </div> 
+                        </div>
+
+
+                        <!-- <div class="stepper-card" *ngIf="data.step == 1">
+                            <div class="stepper-body">
+                                <ul class="progressbar">    
+                                    <li class="progress-item" [ngClass]="data.step>=1 ? 'active ' : 'inactive'">
+										<hr class="line" *ngIf="data.step>=2" />
+                                        <p>Customer Notification</p>
+                                    </li>
+                                    <li class="progress-item" [ngClass]="data.step>=2 ? 'active ' : 'inactive'">
+										<hr class="line" *ngIf="data.step>=3" />
+                                        <p>Appreciation letter</p>
+                                    </li>
+                                    <li class="progress-item" [ngClass]="data.step>=3 ? 'active ' : 'inactive'">
+										<hr class="line" *ngIf="data.step>=4" />
+                                        <p>Negotiate Remarks</p>
+                                    </li>
+                                    <li class="progress-item" [ngClass]="data.step>=4 ? 'active ' : 'inactive'">
+                                        <p>Apply the Rate</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="stepper-footer">
+                            </div>
+                        </div>
+
+                        <div class="stepper-card stepper-card-congrats" *ngIf="data.step == 1"> 
+                            <div class="stepper-body">
+                                <div class="text-center">
+                                    <div class="img-box img-box-svg">
+                                        <img src="assets/images/Stand.svg" alt="">
+                                    </div>
+                                    <h4 class="text-uppercase">Low Performance</h4>
+                                    <p>Tagline for this place goes here</p>                                
+                                </div>  
+                            </div>
+                            <div class="stepper-footer">
+                                <span><img src="assets/images/Sucess_tickmark.svg" alt=""></span>
+                            </div>
+                        </div>
+
+                        <div class="stepper-card stepper-card stepper-card-congrats stepper-card-form-rd-buttons d-flex align-items-lg-stretch flex-column justify-content-center" *ngIf="data.step == 1">
+                            <div class="stepper-body p-24x">
+                                <div class="text-left"> 
+                                    <h4 class="text-uppercase m-0">Select Problem</h4> 
+                                    <p>Tagline for this place goes here</p>
+                                    <div class="nd-box pb-0">                                        
+                                        <div class="checkbox-group d-flex align-items-center justify-content-start" data-toggle="buttons">
+                                            <label class="btn btn-primary active">
+                                                <div class="radio icheck-primary">
+                                                    <input type="radio" id="Location" name="primary">
+                                                    <label for="Location">Location</label>
+                                                </div>
+                                            </label>
+                                        
+                                            <label class="btn btn-primary">
+                                                <div class="radio icheck-primary">
+                                                    <input type="radio" id="Pricing" name="primary">
+                                                    <label for="Pricing">Pricing</label>
+                                                </div>
+                                            </label>
+                                        
+                                            <label class="btn btn-primary">
+                                                <div class="radio icheck-primary">
+                                                    <input type="radio" id="Techenhancement" name="primary">
+                                                    <label for="Techenhancement">Tech Enhancement</label>
+                                                </div>
+                                            </label>
+                                        
+                                            <label class="btn btn-primary">
+                                                <div class="radio icheck-primary">
+                                                    <input type="radio" id="Customerservices" name="primary">
+                                                    <label for="Customerservices">Customer Services</label>
+                                                </div>
+                                            </label>
+                                        </div>
+
+
+                                        <div class="checkbox-group d-flex align-items-center justify-content-start btn-groupz d-none" data-toggle="buttons">                                    
+                                            <label class="btn btn-primary active">
+                                                <div class="checkbox icheck-primary">
+                                                    <input type="checkbox" id="Location1" />
+                                                    <label for="Location1">Location</label>                                        
+                                                </div>
+                                            </label>
+                                            
+                                            <label class="btn btn-primary">
+                                                <div class="checkbox icheck-primary">
+                                                    <input type="checkbox" id="Pricing1" />
+                                                    <label for="Pricing1">Pricing</label>
+                                                </div>
+                                            </label> 
+                                        
+                                            <label class="btn btn-primary">
+                                                <div class="checkbox icheck-primary">
+                                                    <input type="checkbox" id="Techenhancement1" />
+                                                    <label for="Techenhancement1">Tech Enhancement</label>
+                                                </div>
+                                            </label>
+                                            
+                                            <label class="btn btn-primary">
+                                                <div class="checkbox icheck-primary">
+                                                    <input type="checkbox" id="Customerservices1" />
+                                                    <label for="Customerservices1">Customer Services</label>
+                                                </div>  
+                                            </label> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stepper-footer d-flex align-item-center justify-content-end">
+                                <button (click)="next()" name="next" class="btn cta-nextstep h-30" disabled>Submit <i class="fas fa-arrow-right"></i></button>
+                            </div> 
+                        </div>
+
+
+                        <div class="stepper-card" *ngIf="data.step == 1">
+                            <div class="stepper-body">
+                                <ul class="progress-cust">    
+                                    <li class="progress-item" [ngClass]="data.step>=1 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Customer Notification</p>
+                                    </li>
+                                    <li class="progress-item" [ngClass]="data.step>=2 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Appreciation letter</p>
+                                    </li>
+                                    <li class="progress-item" [ngClass]="data.step>=3 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Negotiate Remarks</p>
+                                    </li>
+                                    <li class="progress-item" [ngClass]="data.step>=4 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Apply the Rate</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="stepper-footer">
+                            </div>
+                        </div>
+                        
+
+                        <div class="stepper-card stepper-card-congrats stepper-card-form stepper-card-form2" *ngIf="data.step == 1">
+                            <div class="stepper-body no-bg p-0">
+                                <div class="text-left"> 
+                                    <div class="d-flex align-item-center  justify-content-between">
+                                        <h4 class="text-uppercase">Select Video Session</h4>                                     
+                                        <button class="btn btn-default-primary" ><i class="fas fa-upload"></i> Upload video</button> 
+                                    </div>
+                                    <div class="nd-box">
+                                        <div class="row d-flex align-items-center justify-content-between">                                        
+                                            <div class="col-3">
+                                                <div class="checkbox-vcard">
+                                                    <input type="checkbox" id="dessert-1" />
+                                                    <a name="" href="" target="_blank" class="btn cta-play"><i class="fas fa-play"></i></a>
+                                                    <label for="dessert-1">
+                                                        <div class="vcard-img-container">
+                                                            <img src="" />
+                                                        </div>
+                                                        <div class="vcard-caption">Location</div>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="col-3">
+                                                <div class="checkbox-vcard">
+                                                    <input type="checkbox" id="dessert-1" />
+                                                    <a name="" href="" target="_blank" class="btn cta-play"><i class="fas fa-play"></i></a>
+                                                    <label for="dessert-1">
+                                                        <div class="vcard-img-container">
+                                                            <img src="" />
+                                                        </div>
+                                                        <div class="vcard-caption">Pricing</div>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="col-3">
+                                                <div class="checkbox-vcard">
+                                                    <input type="checkbox" id="dessert-1" />
+                                                    <a name="" href="" target="_blank" class="btn cta-play"><i class="fas fa-play"></i></a>
+                                                    <label for="dessert-1">
+                                                        <div class="vcard-img-container">
+                                                            <img src="" />
+                                                        </div>
+                                                        <div class="vcard-caption">Tech Enhancement</div>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="col-3">
+                                                <div class="checkbox-vcard">
+                                                    <input type="checkbox" id="dessert-1" />
+                                                    <a name="" href="" target="_blank" class="btn cta-play"><i class="fas fa-play"></i></a>
+                                                    <label for="dessert-1">
+                                                        <div class="vcard-img-container">
+                                                            <img src="" />
+                                                        </div>
+                                                        <div class="vcard-caption">Customer Services</div>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </div>  
+                            </div>
+                            <div class="stepper-footer d-flex align-item-center justify-content-end">
+                                <button (click)="next()" name="next" class="btn cta-nextstep h-30">Next <i class="fas fa-arrow-right"></i></button>
+                            </div> 
+                        </div>
+
+
+
+                        <div class="stepper-card" *ngIf="data.step == 1">
+                            <div class="stepper-body">
+                                <ul class="progress-cust">    
+                                    <li class="progress-item" [ngClass]="data.step>=1 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Customer Notification</p>
+                                    </li>
+                                    <li class="progress-item" [ngClass]="data.step>=2 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Appreciation letter</p>
+                                    </li>
+                                    <li class="progress-item" [ngClass]="data.step>=3 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Negotiate Remarks</p>
+                                    </li>
+                                    <li class="progress-item" [ngClass]="data.step>=4 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Apply the Rate</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="stepper-footer">
+                            </div>
+                        </div>
+                        
+
+                        <div class="stepper-card stepper-card-congrats stepper-card-form stepper-card-form2" *ngIf="data.step == 1">
+                            <div class="stepper-body p-24x">                                
+                                <div class="text-left"> 
+                                    <h4 class="text-uppercase">Negotiate Remarks</h4>
+                                    <form >
+                                        <div class="row g-3">
+                                            <div class="col-4">
+                                                <input type="text" class="form-control" id="" placeholder="One Time Charge">
+                                            </div>
+                                            <div class="col-4">
+                                                <input type="text" class="form-control" id="" placeholder="MDR Type">
+                                            </div>
+                                            <div class="col-4">
+                                                <input type="text" class="form-control" id="" placeholder="Monthly Charges">
+                                            </div>  
+                                            <div class="col-4">
+                                                <input type="date" class="form-control" id="" placeholder="Monthly Charges Start Date">
+                                            </div>
+                                            <div class="col-4">
+                                                <input type="date" class="form-control" id="" placeholder="Monthly Charges End Date">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="stepper-footer d-flex align-item-center justify-content-end">
+                                <button (click)="next()" name="next" class="btn cta-nextstep h-30">Next <i class="fas fa-arrow-right"></i></button>
+                            </div> 
+                        </div>
+
+                        
+
+
+                        <div class="stepper-card" *ngIf="data.step == 1">
+                            <div class="stepper-body">
+                                <ul class="progress-cust">    
+                                    <li class="progress-item" [ngClass]="data.step>=1 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Customer Notification</p>
+                                    </li>
+                                    <li class="progress-item" [ngClass]="data.step>=2 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Appreciation letter</p>
+                                    </li>
+                                    <li class="progress-item" [ngClass]="data.step>=3 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Negotiate Remarks</p>
+                                    </li>
+                                    <li class="progress-item" [ngClass]="data.step>=4 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Apply the Rate</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="stepper-footer">
+                            </div>
+                        </div>
+
+                        <div class="stepper-card stepper-card-congrats stepper-card-form stepper-card-form2" *ngIf="data.step == 1">
+                            <div class="stepper-body p-24x no-bg d-flex align-items-center justify-content-center">
+                                <div class="cta-btn-done"><i><img src="../../../assets/images/Sucess_tickmark.svg" alt=""></i> Done</div>
+                            </div> 
+                        </div>
+
+ 
+
+
+                        <div class="stepper-card" *ngIf="data.step == 1">
+                            <div class="stepper-body">
+                                <ul class="progress-cust">    
+                                    <li class="progress-item" [ngClass]="data.step>=1 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Customer Notification</p>
+                                    </li>
+                                    <li class="progress-item" [ngClass]="data.step>=2 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Warning Letter</p>
+                                    </li>
+                                    <li class="progress-item" [ngClass]="data.step>=3 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Remarks</p>
+                                    </li>
+                                    <li class="progress-item" [ngClass]="data.step>=2 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Attachment</p>
+                                    </li>
+                                    <li class="progress-item" [ngClass]="data.step>=4 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Dissconnect</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="stepper-footer">
+                            </div>
+                        </div>
+
+                        <div class="stepper-card stepper-card-congrats" *ngIf="data.step == 1"> 
+                            <div class="stepper-body">
+                                <div class="text-center">
+                                    <div class="img-box img-box-svg">
+                                        <img src="assets/images/Stand-high.svg" alt="">
+                                    </div>
+                                    <h4 class="text-uppercase">High Consumption</h4>
+                                    <p>Tagline for this place goes here</p>                                
+                                </div>  
+                            </div>
+                            <div class="stepper-footer">
+                                <span><img src="assets/images/Sucess_tickmark.svg" alt=""></span>
+                            </div>
+                        </div>
+                        
+
+                        <div class="stepper-card stepper-card-congrats" *ngIf="data.step == 1">
+                            <div class="stepper-body">
+                                <div class="text-center">
+                                    <div class="img-box">
+                                        <img src="assets/images/Application-letter.png" alt="appriciation letter"> 
+                                        <i class="triangle-exclamation">
+                                            <img src="../../../assets/images/triangle-exclamationi.svg" alt="">
+                                        </i>
+                                    </div>
+                                    <h4 class="text-uppercase">Warning Letter</h4>
+                                    <p>trolly@gmail.com</p>                                
+                                </div>  
+                            </div>
+                            <div class="stepper-footer d-flex align-item-center justify-content-center">
+                                <button (click)="next()" name="send" class="btn cta-nextstep h-30">Send <i class="fas fa-arrow-right"></i></button>
+                            </div> 
+                        </div> 
+                        
+
+                        <div class="stepper-card stepper-card-congrats stepper-card-form" *ngIf="data.step == 1">
+                            <div class="stepper-body p-24x">
+                                <div class="text-left"> 
+                                    <h4 class="text-uppercase">Negotiate Remarks</h4>
+                                    <div class="nd-box d-flex align-items-center justify-content-between">
+                                        <div class="name">Sathya</div>
+                                        <div class="date">01/11/2021, 12:00 PM</div>
+                                    </div>
+                                    <p>Test which is a new approach all solutions</p>                                    
+                                    <div class="nd-box pb-0">
+                                        <textarea class="form-control" id="exampleFormControlTextarea5" rows="3" placeholder="Enter Remarks here.."></textarea>
+                                    </div>
+                                </div>  
+                            </div>
+                            <div class="stepper-footer d-flex align-item-center justify-content-end">
+                                <button (click)="next()" name="next" class="btn cta-nextstep h-30" disabled>Next <i class="fas fa-arrow-right"></i></button>
+                            </div> 
+                        </div>
+
+                        
+
+                        <div class="stepper-card" *ngIf="data.step == 1">
+                            <div class="stepper-body">
+                                <ul class="progress-cust">    
+                                    <li class="progress-item" [ngClass]="data.step>=1 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Customer Notification</p>
+                                    </li>
+                                    <li class="progress-item" [ngClass]="data.step>=2 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Warning Letter</p>
+                                    </li>
+                                    <li class="progress-item" [ngClass]="data.step>=3 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Remarks</p>
+                                    </li>
+                                    <li class="progress-item" [ngClass]="data.step>=2 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Attachment</p>
+                                    </li>
+                                    <li class="progress-item" [ngClass]="data.step>=4 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Dissconnect</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="stepper-footer">
+                            </div>
+                        </div>
+ 
+
+                        <div class="stepper-card stepper-card-congrats stepper-card-form stepper-card-form-column2" *ngIf="data.step == 1">
+                            <div class="stepper-body p-24x">
+                                <div class="text-left"> 
+                                    <h4 class="text-uppercase">Attachment</h4>
+                                    <div class="nd-box d-flex align-items-center justify-content-between">                                        
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="file" class="sr-only">File</label>
+                                                <div class="input-group">
+                                                    <input type="text" name="filename" class="form-control" placeholder="No file selected" readonly>
+                                                    <span class="input-group-btn d-flex icon-upload-btn">
+                                                        <div class="btn btn-default custom-file-uploader">
+                                                            <input type="file" name="file" onchange="this.form.filename.value = this.files.length ? this.files[0].name : ''" /> 
+                                                        </div>
+                                                    </span>
+                                                </div>
+                                            </div>                                            
+                                        </form> 
+                                    </div>
+                                    <p class="mt-4 mt-sm-3">Image size should be 400x300 only</p>   
+                                </div>  
+                            </div>
+                            <div class="stepper-footer d-flex align-item-center justify-content-end">                                
+                            </div> 
+                        </div>
+ 
+
+                        <div class="stepper-card stepper-card-congrats stepper-card-form stepper-card-form-column2" *ngIf="data.step == 1">
+                            <div class="stepper-body p-24x">
+                                <div class="text-left"> 
+                                    <h4 class="text-uppercase">Disconnect</h4>
+                                    <div class="nd-box d-flex align-items-center justify-content-between">
+                                        <div class="select min-w-200x">
+                                            <select rows="1" class="form-control" placeholder="">
+                                                <option value="" selected>Select Month</option> 
+                                            </select>
+                                        </div> 
+                                    </div>
+                                    <p class="mt-4">The status of the user is active</p>   
+                                </div>  
+                            </div>
+                            <div class="stepper-footer d-flex align-item-center justify-content-end">
+                                <button (click)="next()" name="next" class="btn cta-nextstep h-30" disabled>Next <i class="fas fa-arrow-right"></i></button>
+                            </div> 
+                        </div>
+
+
+                        
+
+
+                        <div class="stepper-card" *ngIf="data.step == 1">
+                            <div class="stepper-body">
+                                <ul class="progress-cust">
+                                    <li class="progress-item" [ngClass]="data.step>=1 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Customer Notification</p>
+                                    </li>
+                                    <li class="progress-item" [ngClass]="data.step>=2 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Warning Letter</p>
+                                    </li>
+                                    <li class="progress-item" [ngClass]="data.step>=3 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Remarks</p>
+                                    </li>
+                                    <li class="progress-item" [ngClass]="data.step>=2 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Attachment</p>
+                                    </li>
+                                    <li class="progress-item" [ngClass]="data.step>=4 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Dissconnect</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="stepper-footer">
+                            </div>
+                        </div>
+
+                        <div class="stepper-card stepper-card-congrats stepper-card-form stepper-card-form2" *ngIf="data.step == 1">
+                            <div class="stepper-body p-24x no-bg d-flex align-items-center justify-content-center">
+                                <div class="cta-btn-done"><i><img src="../../../assets/images/Sucess_tickmark.svg" alt=""></i> Done</div>
+                            </div> 
+                        </div> -->
+ 
+
+                        <!-- <div class="stepper-card d-flex align-items-center justify-content-start flex-column">
+                            <ul id="progressbar">
+                                <li [ngClass]="data.step>=1 ? 'active ' : 'inactive'">
+                                    <hr class="line" *ngIf="data.step>=2" />
+                                    <p>Customer Notification</p>
+                                </li>
+                                <li [ngClass]="data.step>=2 ? 'active' : 'inactive'">
+                                    <hr class="line" *ngIf="data.step>=3" />Appreciation letter
+                                </li>
+                                <li [ngClass]="data.step>=3 ? 'active' : 'inactive'">
+                                    <hr class="line" *ngIf="data.step>=4" />Negotiate Remarks
+                                </li>
+                                <li [ngClass]="data.step>=4 ? 'active' : 'inactive'">Apply the rate</li>
+                            </ul>
+                        </div> -->
+
+
+
+                        <div class="card mx-auto shadow-none d-none" *ngIf="data.step == 1">
+                            <div class="card-body">
+                                <div class="container">
+                                    <div class="card">
+                                        <div class="card-body text-center"><img
+                                                src="https://img.icons8.com/bubbles/200/000000/trophy.png">
+                                            <h4>CONGRATULATIONS!</h4>
+                                            <p>You are a Top 20 customer in our 2021 annual customer survey!</p>
+                                            <button (click)="next()" name="next"
+                                                class="btn btn-out btn-square continue next action-button next_step">Send & Continue</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="row">
+                                    <div class="col">
+                                        <input (click)="next()" type="button" name="next" class="next action-button next_step" value="Next" />
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+
+                        <div class="card mx-auto shadow-none d-none" *ngIf="data.step == 2">                            
+                            <div class="row imgRow">
+                                <div class="col-md-12">
+                                    <!-- <img src="{{data.app_letter}}"> -->
+
+                                    <div class="card mb-3 imageContainer">
+                                        <div class="row">
+                                        <div class="col-md-4">
+                                            <img src="assets/images/appriciation.png" class="card-img" alt="appriciation letter">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                            <h5 class="card-title">{{data.merchant_name}}</h5>
+                                            <span class="badge badge-pill badge-primary">Top No.{{data.no}}</span>
+                                            <p class="card-text cus_content">Thank you for being our valued customer. We are so grateful for the pleasure of serving you and hope we met your expectations.</p>
+                                            <p class="card-text"><small class="text-muted">{{data.cus_email}}</small></p>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col">
+                                    <!-- <input (click)="previous()" type="button" name="previous"
+                                        class="previous action-button-previous prev_step" value="Previous" /> -->
+                                    <input (click)="next()" type="button" name="next"
+                                        class="next action-button next_step" value="Send & Continue" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- STEP 3 -->
+
+                        <div class="card mx-auto shadow-none d-none" *ngIf="data.step == 3">
+
+                            <div class="neg_remark">
+                                <div class="form-group green-border-focus">
+                                    <!-- <label for="exampleFormControlTextarea5">Remarks</label> -->
+                                    <div class="reviews">
+                                    <div class="media-body ml-3 topcusRemark">
+                                        <div class="bg-light rounded py-2 px-3 mb-2">
+                                            <p>Sathya</p>
+                                            <p class="text-small mb-0 text-muted">"Test which is a new
+                                                approach all solutions"</p>
+                                        </div>
+                                        <p class="small text-muted revDate">01/11/2021, 12:00 PM</p>
+                                    </div>
+                                </div>
+                                    <textarea class="form-control" id="exampleFormControlTextarea5" rows="3" placeholder="Enter Remarks here.."></textarea>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <input (click)="previous()" type="button" name="previous"
+                                        class="previous action-button-previous prev_step" value="Previous" />
+                                        <input (click)="next()" type="button" name="next"
+                                        class="next action-button next_step" value="Update & Continue" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card mx-auto shadow-none d-none" *ngIf="data.step == 4">
+                            <div class="card-body">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-12 mt-3">
+                                            <div class="tAndC">
+                                                <!-- TRANSACTION RATE START-->
+                                                <div class="card">
+                                                    <div id="collapseTrans2" class="">
+                                                        <div class="">
+                                                            <div class="container" style="padding: 20px;">
+                                                                <form>
+                                                                    <div>
+                                                                        <div class="row form-group">
+                                                                            <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12 step4_div">
+                                                                                <label class="step4_label"
+                                                                                    for="marchentId">MarchantID</label>
+                                                                                <input type="text"
+                                                                                    class="form-control rateTab"
+                                                                                    id="marchentId"
+                                                                                    formControlName="marchentId"
+                                                                                    [(ngModel)]="row.marchentId"
+                                                                                    readonly>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12 step4_div">
+                                                                                <label class="step4_label"
+                                                                                    for="marchentName">MarchantName</label>
+                                                                                <input type="text"
+                                                                                    class="form-control rateTab"
+                                                                                    id="marchentName"
+                                                                                    formControlName="marchentName"
+                                                                                    [(ngModel)]="row.marchantName"
+                                                                                    readonly>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12 step4_div">
+                                                                                <label class="step4_label"
+                                                                                    for="otc">OneTimeCharge</label>
+                                                                                <input type="text" class="form-control"
+                                                                                    id="otc" formControlName="otc"
+                                                                                    [(ngModel)]="row.otc">
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12 step4_div">
+                                                                                <label class="step4_label"
+                                                                                    for="mdrType">MDR Type</label>
+                                                                                <select class="form-control"
+                                                                                    id="mdrType"
+                                                                                    formControlName="mdrType"
+                                                                                    [(ngModel)]="row.mdrType">
+                                                                                    <option>Fixed</option>
+                                                                                    <option>Fixed2</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row form-group">
+                                                                            <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12 step4_div">
+                                                                                <label class="step4_label"
+                                                                                    for="monthCharges">Monthly
+                                                                                    Charges</label>
+                                                                                <input type="text" class="form-control"
+                                                                                    id="monthCharges"
+                                                                                    formControlName="monthCharges"
+                                                                                    [(ngModel)]="row.mntCharges">
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12 step4_div">
+                                                                                <label class="step4_label"
+                                                                                    for="chStartDate">Monthly Charges
+                                                                                    Start Date</label>
+                                                                                <input type="date" class="form-control"
+                                                                                    formControlName="chStartDate"
+                                                                                    [(ngModel)]="row.mntchargesStartDate">
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12 step4_div">
+                                                                                <label class="step4_label"
+                                                                                    for="chEndDate">Monthly Charges End
+                                                                                    Date</label>
+                                                                                <input type="date" class="form-control"
+                                                                                    formControlName="chEndDate"
+                                                                                    [(ngModel)]="row.mntchargesEndDate">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- *ngFor="let cards of row.cards let i=index" -->
+                                                                    <div class="row form-group">
+                                                                        <div class="col-12">
+                                                                            <div class="card">
+                                                                                <div class="card-header text-center">
+                                                                                    Visa Credit</div>
+                                                                                <div class="card-body">
+                                                                                    <div class="table-responsive">
+                                                                                        <table
+                                                                                            class="table">
+                                                                                            <thead>
+                                                                                                <tr>
+                                                                                                    <th>Card Type</th>
+                                                                                                    <th>To Amount</th>
+                                                                                                    <th>Charge Type</th>
+                                                                                                    <th>RAK Rate</th>
+                                                                                                    <th>Now New Rate
+                                                                                                    </th>
+                                                                                                    <th>VAT Charges</th>
+                                                                                                    <th>Other Charges
+                                                                                                    </th>
+                                                                                                    <th
+                                                                                                        (click)="addTableRow('VC')">
+                                                                                                        <a type="button"
+                                                                                                            class="btn-floating light-green"><i
+                                                                                                                class="fa fa-plus"
+                                                                                                                aria-hidden="true"></i></a>
+                                                                                                    </th>
+                                                                                                </tr>
+                                                                                            </thead>
+                                                                                            <tbody
+                                                                                                formArrayName="cardsVc"
+                                                                                                *ngFor="let item of mdrForm.get('cardsVc')['controls'];let i=index;">
+                                                                                                <tr [formGroupName]="i">
+                                                                                                    <td>
+                                                                                                        <input
+                                                                                                            class="form-control"
+                                                                                                            formControlName="cardtype"
+                                                                                                            value="VC"
+                                                                                                            readonly />
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <input
+                                                                                                            class="form-control"
+                                                                                                            formControlName="toamt" />
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <select
+                                                                                                            class="form-control"
+                                                                                                            id="mdrType"
+                                                                                                            formControlName="chrgtype">
+                                                                                                            <option>
+                                                                                                                Select
+                                                                                                            </option>
+                                                                                                            <option>
+                                                                                                                Fixed2
+                                                                                                            </option>
+                                                                                                        </select>
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <input
+                                                                                                            class="form-control"
+                                                                                                            type="text"
+                                                                                                            formControlName="rakrate" />
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <input
+                                                                                                            class="form-control"
+                                                                                                            type="text"
+                                                                                                            formControlName="newrate" />
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <input
+                                                                                                            class="form-control"
+                                                                                                            type="text"
+                                                                                                            formControlName="gst" />
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <input
+                                                                                                            class="form-control"
+                                                                                                            type="text"
+                                                                                                            formControlName="other" />
+                                                                                                    </td>
+                                                                                                    <td *ngIf="item"
+                                                                                                        (click)="delTableRow('VC',i)">
+                                                                                                        <a type="button"
+                                                                                                            class="btn-floating light-green"><i
+                                                                                                                class="fa fa-trash"
+                                                                                                                aria-hidden="true"></i></a>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    <div class="row form-group">
+                                                                        <div class="col-12">
+                                                                            <div class="card">
+                                                                                <div class="card-header text-center">
+                                                                                    Visa Debit</div>
+                                                                                <div class="card-body">
+                                                                                    <div class="table-responsive">
+                                                                                        <table
+                                                                                            class="table">
+                                                                                            <thead>
+                                                                                                <tr>
+                                                                                                    <th>Card Type</th>
+                                                                                                    <th>To Amount</th>
+                                                                                                    <th>Charge Type</th>
+                                                                                                    <th>RAK Rate</th>
+                                                                                                    <th>Now New Rate
+                                                                                                    </th>
+                                                                                                    <th>VAT Charges</th>
+                                                                                                    <th>Other Charges
+                                                                                                    </th>
+                                                                                                    <th
+                                                                                                        (click)="addTableRow('VD')">
+                                                                                                        <a type="button"
+                                                                                                            class="btn-floating light-green"><i
+                                                                                                                class="fa fa-plus"
+                                                                                                                aria-hidden="true"></i></a>
+                                                                                                    </th>
+                                                                                                </tr>
+                                                                                            </thead>
+                                                                                            <tbody
+                                                                                                formArrayName="cardsVd"
+                                                                                                *ngFor="let item of mdrForm.get('cardsVd')['controls'];let i=index;">
+                                                                                                <tr [formGroupName]="i">
+                                                                                                    <td>
+                                                                                                        <input
+                                                                                                            class="form-control"
+                                                                                                            formControlName="cardtype"
+                                                                                                            value="VD"
+                                                                                                            readonly />
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <input
+                                                                                                            class="form-control"
+                                                                                                            formControlName="toamt" />
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <select
+                                                                                                            class="form-control"
+                                                                                                            id="mdrType"
+                                                                                                            formControlName="chrgtype">
+                                                                                                            <option>
+                                                                                                                Select
+                                                                                                            </option>
+                                                                                                            <option>
+                                                                                                                Fixed2
+                                                                                                            </option>
+                                                                                                        </select>
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <input
+                                                                                                            class="form-control"
+                                                                                                            type="text"
+                                                                                                            formControlName="rakrate" />
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <input
+                                                                                                            class="form-control"
+                                                                                                            type="text"
+                                                                                                            formControlName="newrate" />
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <input
+                                                                                                            class="form-control"
+                                                                                                            type="text"
+                                                                                                            formControlName="gst" />
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <input
+                                                                                                            class="form-control"
+                                                                                                            type="text"
+                                                                                                            formControlName="other" />
+                                                                                                    </td>
+                                                                                                    <td
+                                                                                                        (click)="delTableRow('VD',i)">
+                                                                                                        <a type="button"
+                                                                                                            class="btn-floating light-green"><i
+                                                                                                                class="fa fa-trash"
+                                                                                                                aria-hidden="true"></i></a>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row form-group">
+                                                                        <div class="col-12">
+                                                                            <div class="card">
+                                                                                <div class="card-header text-center">
+                                                                                    Master Credit</div>
+                                                                                <div class="card-body">
+                                                                                    <div class="table-responsive">
+                                                                                        <table
+                                                                                            class="table">
+                                                                                            <thead>
+                                                                                                <tr>
+                                                                                                    <th>Card Type</th>
+                                                                                                    <th>To Amount</th>
+                                                                                                    <th>Charge Type</th>
+                                                                                                    <th>RAK Rate</th>
+                                                                                                    <th>Now New Rate
+                                                                                                    </th>
+                                                                                                    <th>VAT Charges</th>
+                                                                                                    <th>Other Charges
+                                                                                                    </th>
+                                                                                                    <th
+                                                                                                        (click)="addTableRow('MC')">
+                                                                                                        <a type="button"
+                                                                                                            class="btn-floating light-green"><i
+                                                                                                                class="fa fa-plus"
+                                                                                                                aria-hidden="true"></i></a>
+                                                                                                    </th>
+                                                                                                </tr>
+                                                                                            </thead>
+                                                                                            <tbody
+                                                                                                formArrayName="cardsMc"
+                                                                                                *ngFor="let item of mdrForm.get('cardsMc')['controls'];let i=index;">
+                                                                                                <tr [formGroupName]="i">
+                                                                                                    <td>
+                                                                                                        <input
+                                                                                                            class="form-control"
+                                                                                                            formControlName="cardtype"
+                                                                                                            value="MD"
+                                                                                                            readonly />
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <input
+                                                                                                            class="form-control"
+                                                                                                            formControlName="toamt" />
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <select
+                                                                                                            class="form-control"
+                                                                                                            id="mdrType"
+                                                                                                            formControlName="chrgtype">
+                                                                                                            <option>
+                                                                                                                Select
+                                                                                                            </option>
+                                                                                                            <option>
+                                                                                                                Fixed2
+                                                                                                            </option>
+                                                                                                        </select>
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <input
+                                                                                                            class="form-control"
+                                                                                                            type="text"
+                                                                                                            formControlName="rakrate" />
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <input
+                                                                                                            class="form-control"
+                                                                                                            type="text"
+                                                                                                            formControlName="newrate" />
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <input
+                                                                                                            class="form-control"
+                                                                                                            type="text"
+                                                                                                            formControlName="gst" />
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <input
+                                                                                                            class="form-control"
+                                                                                                            type="text"
+                                                                                                            formControlName="other" />
+                                                                                                    </td>
+                                                                                                    <td
+                                                                                                        (click)="delTableRow('MC',i)">
+                                                                                                        <a type="button"
+                                                                                                            class="btn-floating light-green"><i
+                                                                                                                class="fa fa-trash"
+                                                                                                                aria-hidden="true"></i></a>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row form-group">
+                                                                        <div class="col-12">
+                                                                            <div class="card">
+                                                                                <div class="card-header text-center">
+                                                                                    Master Debit</div>
+                                                                                <div class="card-body">
+                                                                                    <div class="table-responsive">
+                                                                                        <table
+                                                                                            class="table">
+                                                                                            <thead>
+                                                                                                <tr>
+                                                                                                    <th>Card Type</th>
+                                                                                                    <th>To Amount</th>
+                                                                                                    <th>Charge Type</th>
+                                                                                                    <th>RAK Rate</th>
+                                                                                                    <th>Now New Rate
+                                                                                                    </th>
+                                                                                                    <th>VAT Charges</th>
+                                                                                                    <th>Other Charges
+                                                                                                    </th>
+                                                                                                    <th
+                                                                                                        (click)="addTableRow('MD')">
+                                                                                                        <a type="button"
+                                                                                                            class="btn-floating light-green"><i
+                                                                                                                class="fa fa-plus"
+                                                                                                                aria-hidden="true"></i></a>
+                                                                                                    </th>
+                                                                                                </tr>
+                                                                                            </thead>
+                                                                                            <tbody
+                                                                                                formArrayName="cardsMd"
+                                                                                                *ngFor="let item of mdrForm.get('cardsMd')['controls'];let i=index;">
+                                                                                                <tr [formGroupName]="i">
+                                                                                                    <td>
+                                                                                                        <input
+                                                                                                            class="form-control"
+                                                                                                            formControlName="cardtype"
+                                                                                                            value='sudhak'
+                                                                                                            readonly />
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <input
+                                                                                                            class="form-control"
+                                                                                                            formControlName="toamt" />
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <select
+                                                                                                            class="form-control"
+                                                                                                            id="mdrType"
+                                                                                                            formControlName="chrgtype">
+                                                                                                            <option>
+                                                                                                                Select
+                                                                                                            </option>
+                                                                                                            <option>
+                                                                                                                Fixed2
+                                                                                                            </option>
+                                                                                                        </select>
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <input
+                                                                                                            class="form-control"
+                                                                                                            type="text"
+                                                                                                            formControlName="rakrate" />
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <input
+                                                                                                            class="form-control"
+                                                                                                            type="text"
+                                                                                                            formControlName="newrate" />
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <input
+                                                                                                            class="form-control"
+                                                                                                            type="text"
+                                                                                                            formControlName="gst" />
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <input
+                                                                                                            class="form-control"
+                                                                                                            type="text"
+                                                                                                            formControlName="other" />
+                                                                                                    </td>
+                                                                                                    <td
+                                                                                                        (click)="delTableRow('MD',i)">
+                                                                                                        <a type="button"
+                                                                                                            class="btn-floating light-green"><i
+                                                                                                                class="fa fa-trash"
+                                                                                                                aria-hidden="true"></i></a>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- TRANSACTION RATE END -->
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <input (click)="previous()" type="button" name="previous"
+                                                class="previous action-button-previous prev_step" value="Previous" />
+                                            <input (click)="onSubmit()" type="button" id="submit"
+                                                class="submit action-button next_step" value="Submit" disabled />
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </form> 
+                </div>
+              </div>
+            </div>
+        </div> 
+    </section>
+</div>
+
+
+<!-- 
+    <form [formGroup]="basicsForm" id="msform" class="d-flex align-item-center justify-content-start gap-24x">
+                                <div class="stepper-card">
+                                    <div class="stepper-body">
+                                        <ul id="progressbar" class="progress-cust">
+                                            <li class="progress-item progress-item-active" [ngClass]="data.step>=1 ? 'progress-item-active ' : 'progress-item-completed'">
+                                                <p>Basic</p>
+                                            </li>
+                                            <li class="progress-item" [ngClass]="data.step>=2 ? 'progress-item-active ' : 'progress-item-completed'">
+                                                <p>Personal</p>
+                                            </li>
+                                            <li class="progress-item" [ngClass]="data.step>=3 ? 'progress-item-active ' : 'progress-item-completed'">
+                                                <p>Settlement Account</p>
+                                            </li>
+                                            <li class="progress-item" [ngClass]="data.step>=4 ? 'progress-item-active ' : 'progress-item-completed'">
+                                                <p>Store Address</p>
+                                            </li> 
+                                            <li class="progress-item" [ngClass]="data.step>=5 ? 'progress-item-active ' : 'progress-item-completed'">
+                                                <p>Licence</p>
+                                            </li>
+                                            <li class="progress-item" [ngClass]="data.step>=6 ? 'progress-item-active ' : 'progress-item-completed'">
+                                                <p>Business</p>
+                                            </li>
+                                            <li class="progress-item" [ngClass]="data.step>=7 ? 'progress-item-active ' : 'progress-item-completed'">
+                                                <p>Staff</p>
+                                            </li>
+                                            <li class="progress-item" [ngClass]="data.step>=8 ? 'progress-item-active ' : 'progress-item-completed'">
+                                                <p>Business Type</p>
+                                            </li>
+                                            <li class="progress-item" [ngClass]="data.step>=8 ? 'progress-item-active ' : 'progress-item-completed'">
+                                                <p>Terms & Conditions</p>
+                                            </li>
+                                            <li class="progress-item" [ngClass]="data.step>=10 ? 'progress-item-active ' : 'progress-item-completed'">
+                                                <p>Select Bank</p>
+                                            </li>
+                                        </ul>
+                                    </div> 
+                                </div>
+ -->

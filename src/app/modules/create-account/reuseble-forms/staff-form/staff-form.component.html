@@ -1,0 +1,199 @@
+<ng-container>
+    <div class="container" [formGroup]="staffForm">
+        <!-- <h5 style="color: #72AC47; font-family: Roboto;">STAFF DETAILS</h5> -->
+        <!-- <div class="container"> -->
+        <div class="row">
+            <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+                <div class="form-group">
+                    <!-- <label>Title</label> -->
+                    <select rows="1" class="form-control" formControlName="title" placeholder="" style="margin: 0px;">
+                        <option value="" disabled>Select Title</option>
+                        <option>Mr.</option>
+                        <option>Mrs.</option>
+                    </select>
+                    <div *ngIf="staffForm.controls['title'].invalid && (staffForm.controls['title'].dirty || staffForm.controls['title'].touched)"
+                        class="alert">
+                        <div *ngIf="staffForm.controls['title'].errors.required">
+                            <p class="error-msg">
+                                Please Select Title
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+                <div class="form-group">
+                    <!-- <label>Gender</label> -->
+                    <select rows="1" class="form-control" formControlName="gender" placeholder="" style="margin: 0px;">
+                        <option value="" disabled>Select Gender</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+                    <div *ngIf="staffForm.controls['gender'].invalid && (staffForm.controls['gender'].dirty || staffForm.controls['gender'].touched)"
+                        class="alert">
+                        <div *ngIf="staffForm.controls['gender'].errors.required">
+                            <p class="error-msg">
+                                Please Select Gender
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+                <div class="form-group">
+                    <!-- <label>First Name</label> -->
+                    <input type="text" formControlName="firstName" class="form-control" placeholder="Staff Name" />
+                    <div *ngIf="staffForm.controls['firstName'].invalid && (staffForm.controls['firstName'].dirty || staffForm.controls['firstName'].touched)"
+                        class="alert">
+                        <div *ngIf="staffForm.controls['firstName'].errors.required">
+                            <p class="error-msg">
+                                Please Enter First Name
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+                <div class="form-group">
+                    <!-- <label>Last Name</label> -->
+                    <input type="text" formControlName="lastName" class="form-control" placeholder="Staff Name" />
+                    <div *ngIf="staffForm.controls['lastName'].invalid && (staffForm.controls['lastName'].dirty || staffForm.controls['lastName'].touched)"
+                        class="alert">
+                        <div *ngIf="staffForm.controls['lastName'].errors.required">
+                            <p class="error-msg">
+                                Please Enter Last Name
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="row">
+                
+            </div> -->
+
+        <div class="row">
+            <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+                <div class="form-group">
+                    <!-- <label>Mobile Number</label> -->
+                    <input type="text" formControlName="mobileNumber" class="form-control"
+                        placeholder="Mobile Number" />
+                    <div *ngIf="staffForm.controls['mobileNumber'].invalid && (staffForm.controls['mobileNumber'].dirty || staffForm.controls['mobileNumber'].touched)"
+                        class="alert">
+                        <div *ngIf="staffForm.controls['mobileNumber'].errors.required">
+                            <p class="error-msg">
+                                Please Enter Mobile Number
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+                <div class="form-group">
+                    <!-- <label>Emirates ID</label> -->
+                    <input type="text" formControlName="emiratesId" class="form-control" placeholder="Emirates ID" />
+                    <div *ngIf="staffForm.controls['emiratesId'].invalid && (staffForm.controls['emiratesId'].dirty || staffForm.controls['emiratesId'].touched)"
+                        class="alert">
+                        <div *ngIf="staffForm.controls['emiratesId'].errors.required">
+                            <p class="error-msg">
+                                Please Enter Emirates Id
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12" formGroupName="bankDetails">
+                <div class="form-group">
+                    <!-- <label>Account Number</label> -->
+                    <input type="text" formControlName="accountNumber" class="form-control"
+                        placeholder="Account Number" />
+                    <div *ngIf="!staffForm?.get('bankDetails.accountNumber').valid && (staffForm?.get('bankDetails.accountNumber').dirty || staffForm?.get('bankDetails.accountNumber').touched)"
+                        class="alert">
+                        <div *ngIf="staffForm?.get('bankDetails.accountNumber').errors.required">
+                            <p class="error-msg">
+                                Please Enter Account Number
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12" formGroupName="bankDetails">
+                <div class="form-group">
+                    <!-- <label>Bank Name</label> -->
+                    <input type="text" formControlName="bankName" class="form-control" placeholder="Bank Name" />
+                    <div *ngIf="!staffForm?.get('bankDetails.bankName').valid && (staffForm?.get('bankDetails.bankName').dirty || staffForm?.get('bankDetails.bankName').touched)"
+                        class="alert">
+                        <div *ngIf="staffForm?.get('bankDetails.bankName').errors.required">
+                            <p class="error-msg">
+                                Please Enter Bank Name
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div > -->
+        <div class="row" formGroupName="salaryDetails">
+            <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+                <div class="form-group">
+                    <!-- <label>Basic Salary</label> -->
+                    <input type="text" formControlName="basicSalary" class="form-control" placeholder="Basic Salary" />
+                    <div *ngIf="!staffForm?.get('salaryDetails.basicSalary').valid && (staffForm?.get('salaryDetails.basicSalary').dirty || staffForm?.get('salaryDetails.basicSalary').touched)"
+                        class="alert">
+                        <div *ngIf="staffForm?.get('salaryDetails.basicSalary').errors.required">
+                            <p class="error-msg">
+                                Please Enter Basic Salary
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+                <div class="form-group">
+                    <!-- <label>House Allowance</label> -->
+                    <input type="text" formControlName="houseAllowance" class="form-control"
+                        placeholder="House Allowance" />
+                    <div *ngIf="!staffForm?.get('salaryDetails.houseAllowance').valid && (staffForm?.get('salaryDetails.houseAllowance').dirty || staffForm?.get('salaryDetails.houseAllowance').touched)"
+                        class="alert">
+                        <div *ngIf="staffForm?.get('salaryDetails.houseAllowance').errors.required">
+                            <p class="error-msg">
+                                Please Enter House Allowance
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+                <div class="form-group">
+                    <!-- <label>Transport Allowance</label> -->
+                    <input type="text" formControlName="transportAllowance" class="form-control"
+                        placeholder="Transport Allowance" />
+                    <div *ngIf="!staffForm?.get('salaryDetails.transportAllowance').valid && (staffForm?.get('salaryDetails.transportAllowance').dirty || staffForm?.get('salaryDetails.transportAllowance').touched)"
+                        class="alert">
+                        <div *ngIf="staffForm?.get('salaryDetails.transportAllowance').errors.required">
+                            <p class="error-msg">
+                                Please Enter Transport Allowance
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+                <div class="form-group">
+                    <!-- <label>Bonus</label> -->
+                    <input type="text" formControlName="bonus" class="form-control" placeholder="Bonus" />
+                    <div *ngIf="!staffForm?.get('salaryDetails.bonus').valid && (staffForm?.get('salaryDetails.bonus').dirty || staffForm?.get('salaryDetails.bonus').touched)"
+                        class="alert">
+                        <div *ngIf="staffForm?.get('salaryDetails.bonus').errors.required">
+                            <p class="error-msg">
+                                Please Enter Bonus
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>

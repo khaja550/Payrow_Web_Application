@@ -1,0 +1,209 @@
+//////////////////
+// About us //
+//////////////////
+
+/* // New Landing page by Sathya */
+
+
+.abtUs {
+  color: #71aa46;
+  margin-left: 40px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.abtusHr {
+  margin: 0;
+  width: 66px;
+  height: 2px;
+  color: #72ac47;
+  left: 110px;
+  bottom: 8px;
+  position: relative;
+}
+
+.aboutusContent {
+  margin: auto;
+  width: 648px;
+  display: block;
+  position: relative;
+  bottom: 61%;
+  font-size: 16px;
+  line-height: 2;
+}
+
+.mainImg {
+  margin: auto;
+  width: 800px;
+  display: block;
+}
+
+.aboutusContent2 {
+  display: block;
+  margin: auto;
+  font-size: 17px;
+  max-width: 735px;
+  position: relative;
+  bottom: 250px;
+  line-height: 2;
+}
+
+.team-content {
+  position: relative;
+  top: 20px;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.teams {
+  text-align: center;
+  color: #72ac47;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.title1 {
+  color: #71aa46;
+  margin-left: 40px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.title2 {
+  margin-left: 40px;
+  // font-size: 14px;
+  position: relative;
+  bottom: 10px;
+  font-weight: 700;
+  color: #626160;
+}
+
+
+/////////////
+
+.section-padding {
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    // margin-bottom: 60px;
+}
+
+.section-borders span {
+    height: 5px;
+    background: #6aaf08;
+    width: 40px;
+    display: inline-block;
+    border-radius: 2px;
+}
+
+.section-borders span.black-border {
+    background: #333;
+    width: 30px;
+    margin: 0 6px;
+
+}
+
+.client-testimonial-carousel .owl-dots button {
+    height: 5px;
+    background: #6aaf08 !important;
+    width: 20px;
+    display: inline-block;
+    margin: 5px;
+    transition: .2s;
+    border-radius: 2px;
+}
+
+.client-testimonial-carousel button.owl-dot.active {
+    background: #000 !important;
+    width: 30px;
+}
+
+.client-testimonial-carousel .owl-dots {
+    text-align: center;
+    margin-top: 25px
+}
+
+.single-testimonial-item {
+    position: relative;
+    box-shadow: 0 0 2px #dadfd3;
+    margin: 2px;
+    padding: 20px;
+    font-style: italic;
+    padding-left: 85px;
+}
+
+.single-testimonial-item:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f10e";
+    font-weight: 900;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    font-size: 20px;
+    color: #6aaf08;
+    line-height: 30px;
+    margin-top: -15px;
+}
+
+.single-testimonial-item:after {
+    background: #ddd;
+    content: "";
+    height: 70%;
+    left: 60px;
+    position: absolute;
+    top: 10%;
+    width: 1px;
+}
+
+.single-testimonial-item h3 {
+    font-size: 20px;
+    font-style: normal;
+    margin-bottom: 0;
+}
+
+.single-testimonial-item h3 span {
+    display: block;
+    font-size: 12px;
+    font-weight: normal;
+    margin-top: 5px;
+}
+
+@media (min-width: 768px){
+    .col-md-3 {
+        flex: 0 0 auto;
+        width: 23%;
+    }
+}
+
+
+.people_name{
+  margin-top: 15px;
+    text-align: center;
+}
+
+.ceo_span{
+  font-size: 10px;
+    opacity: 0.5;
+}
+
+.ceo_name{
+  margin-bottom: 5px;
+}
+
+.members_desc{
+  max-width: 900px;
+    line-height: 2;
+    margin-left: 25px;
+    margin-top: 35px;
+}
+
+

@@ -1,0 +1,95 @@
+.item-filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0;
+
+}
+.item-filter select{
+  margin-right: 12%;
+}
+.section-title label {
+  margin: 12px;
+  margin-right: 0.5rem;
+  width: 34%;
+}
+
+form label{
+  width: 54%;
+}
+.userNum {
+  width: 200px;
+  margin-left: 20px;
+}
+select{
+  -webkit-appearance: menulist
+}
+
+.report {
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-tabs {
+  box-shadow: none;
+}
+
+.tab-bar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sidemenu-form {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.addItem {
+  background-color: #72ac47;
+  color: white;
+  float: right;
+  padding: 6px 1.5rem;
+  margin-left: 8px;
+  // margin-top: -6px;
+}
+// .download{
+//   border: 1px solid #72ac47;
+//   margin: 4px 36px;
+// }
+hr{
+  margin: 16px;
+}
+thead,
+tbody,
+tfoot,
+tr,
+td,
+th {
+  font-size: 13px !important;
+  line-height: 2;
+}
+
+.table > :not(:last-child) > :last-child > * {
+  border-bottom: none;
+}
+
+.data-container thead {
+  background-color: #f7f7f7 !important;
+}
+
+.container-fluid {
+  // width: 100%;
+  padding: 0px 12px;
+}
+.modal-dialog{
+  max-width: 45%;
+}
+.modal-body{
+  padding: 2rem;
+}

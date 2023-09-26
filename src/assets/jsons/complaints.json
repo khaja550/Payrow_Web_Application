@@ -1,0 +1,59 @@
+ [
+  { "userId": 201, 
+    "cust_name": "Arvind", 
+    "contact": "9897856863", 
+    "email": "a@gmail.com", 
+    "remarks": [{"in":[{"date": "1/11/21", "data": "Hi there"}] ,"out":[] }], 
+    "remarksOut":[],
+    "date": "12-20-2021", 
+    "complaint_Num": 732984, 
+    "delay": 7, 
+    "status": "Open" 
+  },
+  { 
+    "userId": 202, 
+    "cust_name": "Sudhakar", 
+    "contact": "7725328298", 
+    "email": "b@gmail.com", 
+    "remarks": [{"in":[{"date": "1/11/21", "data": "Hi there jello"}] ,"out":[] }], 
+    "remarksOut":[],
+    "date": "12-17-2021",
+     "complaint_Num": 987124, 
+     "delay": 12,
+      "status": "Open" 
+    },
+  { 
+    "userId": 203,
+     "cust_name": "Chandra", 
+     "contact": "8745096543", 
+     "email": "c@gmail.com", 
+     "remarks": [{"in":[{"date": "1/11/21", "data": "Hi there"}] ,"out":[] }], 
+     "remarksOut":[],
+     "date": "12-18-2021", 
+     "complaint_Num": 912739, 
+     "delay": 5, 
+     "status": "Dispute" 
+  },
+  { 
+    "userId": 204, 
+    "cust_name": "Sadhana", 
+    "contact": "6532987654", 
+    "email": "d@gmail.com", 
+    "remarks": [{"in":[{"date": "1/11/21", "data": "Hi there"}] ,"out":[] }], 
+    "remarksOut":[],
+    "date": "12-5-2021", 
+    "complaint_Num": 561433, 
+    "delay": 10, 
+    "status": "Open" 
+  },
+  { 
+    "userId": 205, "cust_name": "Vikram", "contact": "9875983785", "email": "e@gmail.com",  "remarksOut":[
+      {"date": "1/11/21", "data": "Hi"}
+    ], "remarks": [{"in":[{"date": "1/11/21", "data": "Hi there"}] ,"out":[] }], "date": "12-14-2021", "complaint_Num": 614276, "delay": 3, "status": "Close" },
+  { "userId": 206, "cust_name": "Arun Kumar", "contact": "8157320946", "email": "f@gmail.com",  "remarksOut":[], "remarks": [{"in":[{"date": "1/11/21", "data": "Hi there"}] ,"out":[] }], "date": "12-14-2021", "complaint_Num": 187251, "delay": 9, "status": "Dispute" },
+  { "userId": 207, "cust_name": "Ram", "contact": "6723954679", "email": "g@gmail.com",  "remarksOut":[], "remarks": [{"in":[{"date": "1/11/21", "data": "Hi there"}] ,"out":[] }], "date": "12-08-2021", "complaint_Num": 986753, "delay": 5, "status": "Open" },
+  { "userId": 208, "cust_name": "Krishna", "contact": "9536896637", "email": "h@gmail.com",  "remarksOut":[], "remarks": [{"in":[{"date": "1/11/21", "data": "Hi there"}] ,"out":[] }], "date": "12-7-2021", "complaint_Num": 564365, "delay": 10, "status": "Close" },
+  { "userId": 209, "cust_name": "Prasd", "contact": "7572338758", "email": "i@gmail.com",  "remarksOut":[], "remarks": [{"in":[{"date": "1/11/21", "data": "Hi there"}] ,"out":[] }], "date": "12-01-2021", "complaint_Num": 635272, "delay": 4, "status": "Dispute" },
+  { "userId": 210, "cust_name": "RadheSyam", "contact": "9587682623", "email": "j@gmail.com",   "remarksOut":[],"remarks": [{"in":[{"date": "1/11/21", "data": "Hi there"}] ,"out":[] }], "date": "12-07-2021", "complaint_Num": 847982, "delay": 11, "status": "Open" },
+  { "userId": 211, "cust_name": "Kiran", "contact": "9765635263", "email": "k@gmail.com",   "remarksOut":[],"remarks": [{"in":[{"date": "1/11/21", "data": "Hi there"}] ,"out":[] }], "date": "12-14-2021", "complaint_Num": 416798, "delay": 7, "status": "Close" }
+]

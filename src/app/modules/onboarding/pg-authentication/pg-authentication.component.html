@@ -1,0 +1,409 @@
+<div class="content-wrapper main-section-container">
+    <app-allocation-menus></app-allocation-menus>
+
+    <section class="content">
+        <div class="container-fluid p-0">
+            <div class="row">
+                <div class="col-12" *ngIf="!(isTrack || isForm)">
+                    <div class="pull-left d-flex gap-16x mb-4">
+                        <div class="search-holder">
+                            <!-- <form action=""> -->
+                                <div class="input-group">
+                                    <input type="search" autocomplete="off" [(ngModel)]="searchText"
+                                        placeholder="search" aria-describedby="button-addon5" class="form-control">
+                                    <div class="input-group-append">
+                                        <button id="button-addon5" type="submit" class="btn"><i
+                                                class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+                            <!-- </form> -->
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table_cust table_cust-with-buttons text-center">
+                            <thead>
+                                <tr>
+                                    <th>PAYROW ID</th>
+                                    <th class="cur_Header">MID</th>
+                                    <th>NAME</th>
+                                    <th>EMAIL</th>
+                                    <th>ADDRESS</th>
+                                    <th class="cur_Header">JOINING DATE</th>
+                                    <th class="cur_Header">SALES PERSON NAME</th>
+                                    <th>MID ALLOCATION</th>
+                                    <th>MERCHANT CONFIG</th>
+                                    <!-- <th>TRANSACTION RATE</th> -->
+                                </tr>
+                            </thead>
+                            <tbody class="align-baseline">
+                                <tr *ngFor="let merData of merchantList | filter:searchText">
+                                    <td>{{merData.payRowId}}</td>
+                                    <td>{{merData.bankMID}}</td>
+                                    <td>{{merData.firstName}}</td>
+                                    <td data-tooltip="top" role="tooltip" attr.aria-label="{{merData.emailId}}">
+                                        <i class="bi-envelope-open"></i>
+                                    </td>
+                                    <td class="remarks_one" data-tooltip="top" role="tooltip"
+                                        attr.aria-label="{{merData.addressDetails}} {{merData.city}}"><i
+                                            class="bi-card-list"></i></td>
+                                    <td>{{merData.updatedAt | date}}</td>
+                                    <td data-tooltip="top" role="tooltip" attr.aria-label="{{merData.addressDetails}}">
+                                        {{merData.firstName}}</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-sm-cust btn-outline-dark"
+                                            (click)="userDetailsFunc(merData._id)">Process</button>
+                                    </td>
+                                    <td *ngIf="merData.config===false">
+                                        <button class="btn btn-sm btn-sm-cust btn-outline-dark"
+                                            (click)="configForm(merData.payRowId,merData.config)">Config</button>
+                                    </td>
+                                    <td *ngIf="merData.config===true">
+                                    <button class="btn btn-sm btn-sm-cust btn-outline-dark user-list-ibtn"(click)="configForm(merData.payRowId,merData.config)"><span><img src="../../../../assets/images/user_list-icon.svg" alt=""><img src="../../../../assets/images/user_list-icon-hover.svg" alt=""></span></button>
+                                        <!-- <button class="btn btn-sm btn-sm-cust btn-outline-dark"
+                                            (click)="configForm(merData.payRowId,merData.config)">Details</button> -->
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+                <!-- TRACKER -->
+                <div class="col-12" *ngIf="isTrack">
+                    <div *ngFor="let data of midPerData;let i =index;">
+                        <div class="card card_cnt">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-2 col-sm">
+                                        <button class="btn btn-sm back_btn" (click)="backToList()"><i
+                                                class="fas fa-arrow-circle-left"></i>&nbsp;Back</button>
+                                    </div>
+                                    <div class="col-sm col-md-3">
+                                        Name : {{data.firstName}}
+                                    </div>
+                                    <div class="col-sm col-md-3">MID : Pending</div>
+                                    <div class="col-sm col-md-4">Email : {{data.emailId}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- </div> -->
+
+
+                        <div class="card row" style="box-shadow: 0px 1px 7px -5px grey; border: none;">
+                            <div class="p-4 text-lg rounded-top"><span class="text-uppercase trackerTitle">MID
+                                    Activation
+                                    Process</span>
+                                <div class="trackerTitle" style="float: right;position: relative;top: 4px;"><span
+                                        class="text-medium">Status:</span> Request for MID</div>
+                            </div>
+
+
+                            <div class="card-body">
+                                <div
+                                    class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
+                                    <div class="step completed">
+                                        <div class="step-icon-wrap">
+                                            <div class="step-icon"><i class="pe-7s-user stepIcn"></i></div>
+                                        </div>
+                                        <h4 class="step-title">Customer request number</h4>
+                                    </div>
+                                    <div class="step completed">
+                                        <div class="step-icon-wrap">
+                                            <div class="step-icon"><i class="pe-7s-download stepIcn"></i></div>
+                                        </div>
+                                        <h4 class="step-title">Document Downloaded</h4>
+                                    </div>
+
+                                    <div class="step completed">
+                                        <div class="step-icon-wrap">
+                                            <div class="step-icon"><i class="pe-7s-cloud-upload stepIcn"></i></div>
+                                        </div>
+                                        <h4 class="step-title">Document submitted</h4>
+                                    </div>
+                                    <div class="step completed">
+                                        <div class="step-icon-wrap">
+                                            <div class="step-icon"><i class="pe-7s-copy-file stepIcn"></i></div>
+                                        </div>
+                                        <h4 class="step-title">Request for MID </h4>
+                                    </div>
+                                    <div class="step">
+                                        <div class="step-icon-wrap">
+                                            <div class="step-icon"><i class="pe-7s-check stepIcn"></i></div>
+                                        </div>
+                                        <h4 class="step-title">MID Allocation</h4>
+                                    </div>
+
+                                    <div class="step">
+                                        <div class="step-icon-wrap">
+                                            <div class="step-icon"><i class="pe-7s-phone stepIcn"></i></div>
+                                        </div>
+                                        <h4 class="step-title">Confirm Domain</h4>
+                                    </div>
+                                    <div class="step">
+                                        <div class="step-icon-wrap">
+                                            <div class="step-icon"><i class="pe-7s-play stepIcn"></i></div>
+                                        </div>
+                                        <h4 class="step-title">Awareness Video</h4>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="form-check" style="margin-top: 25px;">
+                                    <div>
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
+                                            checked>
+                                        <label class="form-check-label pendingStatus" for="flexCheckChecked">
+                                            Click here to Confirm MID
+                                        </label>
+                                        <input type="text" placeholder="Enter MID" [(ngModel)]="getID" [ngModelOptions]="{standalone: true}"
+                                            style="margin-left: 13px">
+                                    </div>
+                                    <div>
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
+                                            checked>
+                                        <label class="form-check-label pendingStatus" for="flexCheckChecked">
+                                            Click here to send Awareness Video
+                                        </label>
+                                    </div>
+                                    <button class="btn btn-sm back_btn float-right"
+                                        (click)="AllocateMID()">Submit</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FORM TABS START -->
+                <div class="col-12" *ngIf="isForm">
+                    <div class="row">
+                        <button class="btn btn-sm btn-success edit_btn" (click)="back()"
+                            style="margin-bottom: 8px;">Back</button>
+                        <button class="btn btn-sm btn-success edit_btn" (click)="edit()" style="margin-bottom: 8px;"
+                            *ngIf="isUpdate===false && isCreate===false">Edit</button>
+                    </div>
+                    <div class="table-container">
+                        <form [formGroup]="pgConfigForm">
+                            <div class="row">
+                                <div class="col-md-4 col-sm">
+                                    <div class="form-group">
+                                        <label for="mainMerchantId">Main MerchantId ID</label>
+                                        <input type="text" class="form-control" formControlName="mainMerchantId"
+                                            placeholder="Enter Main MerchantID" id="mainMerchantId">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm">
+                                    <div class="form-group">
+                                        <label for="bankUsername">Bank Username</label>
+                                        <input type="text" class="form-control" formControlName="bankUsername"
+                                            id="bankUsername" placeholder="Enter Bank Username">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm">
+                                    <div class="form-group">
+                                        <label for="bankPassword">Bank Password</label>
+                                        <input type="password" class="form-control" formControlName="bankPassword"
+                                            placeholder="Enter Bank Password" id="bankPassword">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-sm">
+                                    <div class="form-group">
+                                        <label for="payrowMerchantId">Payrow MerchantId</label>
+                                        <input type="text" class="form-control" formControlName="payrowMerchantId"
+                                            placeholder="Enter Payrow MerchantID" id="payrowMerchantId">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm">
+                                    <div class="form-group">
+                                        <label for="payrowServiceId">Payrow ServiceId</label>
+                                        <input type="text" class="form-control" formControlName="payrowServiceId"
+                                            placeholder="Enter Payrow Service ID" id="payrowServiceId">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm">
+                                    <div class="form-group">
+                                        <label for="payrowServiceTaxCode">Payrow Service TaxCode</label>
+                                        <!-- <input type="text" class="form-control" formControlName="payrowServiceTaxCode" placeholder=""
+                                            id="payrowServiceTaxCode"> -->
+                                        <select class="form-select" formControlName="payrowServiceTaxCode"
+                                            id="payrowServiceTaxCode" (change)="taxCodes($event)">
+                                            <option value="" disabled>Select TaxCode</option>
+                                            <option *ngFor="let tax of taxes" value="{{tax.taxCode}}">
+                                                {{tax.taxCode}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-sm">
+                                    <div class="form-group">
+                                        <label for="payrowTRN">Payrow TRN</label>
+                                        <input type="text" class="form-control" formControlName="payrowTRN"
+                                            id="payrowTRN" placeholder="Enter Payrow TRN">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm">
+                                    <div class="form-group">
+                                        <label for="payrowChargesType">Payrow Charges Type</label>
+
+                                        <select class="form-select" formControlName="payrowChargesType"
+                                            id="payrowChargesType">
+                                            <option value="" disabled>Select Charges Type</option>
+                                            <option>PERCENTAGE</option>
+                                            <option>FIXED</option>
+                                            <option>PERCENTAGE+FIXED</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm">
+                                    <div class="form-group">
+                                        <label for="payrowChargesValue">Payrow Charges Value</label>
+                                        <input type="text" class="form-control" formControlName="payrowChargesValue"
+                                            placeholder="Enter value Ex:0.2+1" id="payrowChargesValue">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-sm">
+                                    <div class="form-group">
+                                        <label for="bankMerchantId">Bank MerchantId</label>
+                                        <input type="text" class="form-control" formControlName="bankMerchantId"
+                                            placeholder="Enter Bank MerchantID" id="bankMerchantId">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm">
+                                    <div class="form-group">
+                                        <label for="bankServiceId">Bank ServiceId</label>
+                                        <input type="text" class="form-control" formControlName="bankServiceId"
+                                            id="bankServiceId" placeholder="Enter Bank Service ID">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm">
+                                    <div class="form-group">
+                                        <label for="bankServiceTaxCode">Bank Service TaxCode</label>
+
+                                        <select class="form-select" formControlName="bankServiceTaxCode"
+                                            id="bankServiceTaxCode" (change)="taxCodes($event)">
+                                            <option value="" disabled>Select TaxCode</option>
+                                            <option *ngFor="let tax of taxes" value="{{tax.taxCode}}">
+                                                {{tax.taxCode}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4 col-sm">
+                                    <div class="form-group">
+                                        <label for="bankTRN">Bank TRN</label>
+                                        <input type="text" class="form-control" formControlName="bankTRN" id="bankTRN"
+                                            placeholder="Enter bank TRN">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm">
+                                    <div class="form-group">
+                                        <label for="bankChargesType">Bank Charges Type</label>
+                                        <select class="form-select" formControlName="bankChargesType"
+                                            id="bankChargesType">
+                                            <option value="" disabled>Select Charges Type</option>
+                                            <option>PERCENTAGE</option>
+                                            <option>FIXED</option>
+                                            <option>PERCENTAGE+FIXED</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm">
+                                    <div class="form-group">
+                                        <label for="bankChargesValue">Bank Charges Value</label>
+                                        <input type="text" class="form-control" formControlName="bankChargesValue"
+                                            placeholder="Enter value Ex:0.2+1" id="bankChargesValue">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-sm">
+                                    <div class="form-group">
+                                        <label for="otherChargesBankMerchantId">Other Charges Bank MerchantId</label>
+                                        <input type="text" class="form-control"
+                                            formControlName="otherChargesBankMerchantId"
+                                            placeholder="Enter Other charges Bank MerchantID"
+                                            id="otherChargesBankMerchantId">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm">
+                                    <div class="form-group">
+                                        <label for="otherChargesBankServiceId">Other Charges Bank ServiceId</label>
+                                        <input type="text" class="form-control"
+                                            formControlName="otherChargesBankServiceId"
+                                            placeholder="Enter Other Charges Bank ServiceId"
+                                            id="otherChargesBankServiceId">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm">
+                                    <div class="form-group">
+                                        <label for="otherChargesTaxCode">Other Charges TaxCode</label>
+                                        <select class="form-select" formControlName="otherChargesTaxCode"
+                                            id="otherChargesTaxCode" (change)="taxCodes($event)">
+                                            <option value="" disabled>Select TaxCode</option>
+                                            <option *ngFor="let tax of taxes" value="{{tax.taxCode}}">
+                                                {{tax.taxCode}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4 col-sm">
+                                    <div class="form-group">
+                                        <label for="otherChargesTRN">Other Charges TRN</label>
+                                        <input type="text" class="form-control" formControlName="otherChargesTRN"
+                                            placeholder="Enter Other Charges TRN" id="otherChargesTRN">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm">
+                                    <div class="form-group">
+                                        <label for="otherChargesType">Other Charges Type</label>
+                                        <select class="form-select" formControlName="otherChargesType"
+                                            id="otherChargesType">
+                                            <option value="" disabled>Select Charges Type</option>
+                                            <option>PERCENTAGE</option>
+                                            <option>FIXED</option>
+                                            <option>PERCENTAGE+FIXED</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm">
+                                    <div class="form-group">
+                                        <label for="otherChargesValue">Other Charges Value</label>
+                                        <input type="text" class="form-control" formControlName="otherChargesValue"
+                                            placeholder="Enter value Ex:0.2+1" id="otherChargesValue">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-md-4 col-sm">
+                                    <div class="form-group">
+                                        <label for="fullUrl">Full URL</label>
+                                        <input type="text" class="form-control" formControlName="fullUrl" id="fullUrl"
+                                            placeholder="Enter Full URL">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="float: right; margin-top: -30px;">
+                                <button class="btn btn-sm btn-success edit_btn" (click)="addMerchantConfig()"
+                                    style="float: right;" *ngIf="isUpdate===false && isCreate===true">Save</button>
+                                <button class="btn btn-sm btn-success edit_btn" (click)="update()" style="float: right;"
+                                    *ngIf="isUpdate===true && isCreate===false">Update</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

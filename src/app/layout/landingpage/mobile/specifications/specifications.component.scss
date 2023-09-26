@@ -1,0 +1,405 @@
+// .feature_section {
+//   margin: 50px;
+//   position: relative;
+//   /* top: -500px; */
+// }
+
+// .featureImg {
+//   width: 70%;
+//   background-image: url("../../../../../assets/images/landingpage/circle.svg");
+// }
+
+// .card {
+//   margin: 10px auto;
+//   box-shadow: 0px 2px 4px 0 rgb(0 0 0 / 20%);
+//   border-radius: 6px;
+//   height: 92%;
+//   transition: 0.3s;
+//   padding: 20px;
+//   width: 100%;
+//   border: none;
+// }
+// .card:hover {
+//   box-shadow: 1px 10px 16px 0 rgba(0, 0, 0, 0.3);
+// }
+// .card-title {
+//   text-align: center;
+//   color: #666666;
+//   font-weight: bold;
+// }
+// .card-text {
+//   font-weight: 500;
+//   color: #66686b;
+// }
+// .card-image {
+//   text-align: center;
+//   margin: 5vh 0;
+// }
+// .card-text {
+//   text-align: center;
+// }
+
+// .title-heading {
+//   font-size: 3em;
+//   text-align: center;
+//   margin: 4%;
+//   font-weight: bold;
+// }
+
+// .cardIcn {
+//   float: right;
+// }
+
+// .printer_spec {
+//   float: right;
+//   width: 25px;
+//   position: relative;
+//   bottom: 10px;
+// }
+
+// .futureTitle {
+//   color: #5c5b59;
+//   font-weight: 700;
+//   margin: 5% 5% 5% 0%;
+// }
+
+// .fut_cont {
+//   color: #18191f;
+//   margin-bottom: 15px;
+// }
+
+// .fut_span {
+//   color: #5c5b59;
+//   font-weight: 600;
+//   margin-bottom: 15px;
+// }
+
+// .printer_nav {
+//   color: #fff !important;
+//   text-decoration: none !important;
+// }
+
+// .sup_icons {
+//   width: 25%;
+//   /* margin: 50px; */
+// }
+
+// .os {
+//   text-align: center;
+// }
+
+// .supporting_os{
+//   position: relative;
+//     /* top: -200px; */
+// }
+
+// .mycontent
+// {
+//    max-width: 768px; /* Whatever you are comfotable with */
+// }
+
+// .mycontent img
+// {
+//    max-width: 300px; /* Same again */
+//    max-height: 300px;
+// }
+
+// .sup_span{
+//   font-weight: 700;
+// }
+
+
+
+
+// SECOND
+
+.feature_section {
+  margin: 50px;
+  position: relative;
+}
+
+.futureTitle {
+  color: #5c5b59;
+  font-weight: 700;
+  margin: 5% 5% 5% 0%;
+}
+
+h5 {
+  align-self: center;
+  margin: auto;
+  color: #fff;
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+.card {
+  display: flex;
+  width: 16rem;
+  height: 12rem;
+  position: relative;
+  background-color: #5b5a5a;
+  // box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+  box-shadow: 5px 8px 15px rgba(0, 0, 0, 25%);
+  border-radius: 10px;
+  align-self: center;
+  overflow: hidden;
+  margin: auto;
+  border: none;
+  margin-bottom: 30px;
+}
+
+.card1::after {
+  padding: 35px;
+  content: "RAM: 4GB ROM: 64GB RAM: 6GB ROM: 128GB(optional)";
+  font-size: 20px;
+  writing-mode: horizontal-rl;
+  text-align: center;
+  color: white;
+  width: 100%;
+  height: 100%;
+  transform: translateX(90%);
+  transition: ease 0.7s;
+  position: absolute;
+  border-radius: 0px 0px 10px;
+  background-color: #71aa46;
+}
+.card1:hover::after {
+  transform: translateX(0%);
+  border-radius: 10px;
+}
+
+.card2::after {
+  padding: 35px;
+  content: "4 inch 480*800 pixel";
+  font-size: 20px;
+  writing-mode: horizontal-rl;
+  text-align: center;
+  color: white;
+  width: 100%;
+  height: 100%;
+  transform: translateX(90%);
+  transition: ease 0.7s;
+  position: absolute;
+  border-radius: 0px 0px 10px;
+  background-color: #71aa46;
+}
+.card2:hover::after {
+  transform: translateX(0%);
+  border-radius: 10px;
+}
+
+.card3::after {
+  padding: 35px;
+  content: "Bluetooth 4.2 +2.1";
+  font-size: 20px;
+  writing-mode: horizontal-rl;
+  text-align: center;
+  color: white;
+  width: 100%;
+  height: 100%;
+  transform: translateX(90%);
+  transition: ease 0.7s;
+  position: absolute;
+  border-radius: 0px 0px 10px;
+  background-color: #71aa46;
+}
+.card3:hover::after {
+  transform: translateX(0%);
+  border-radius: 10px;
+}
+
+.card4::after {
+  padding: 35px;
+  content: "1D/2D barcode reader";
+  font-size: 20px;
+  writing-mode: horizontal-rl;
+  text-align: center;
+  color: white;
+  width: 100%;
+  height: 100%;
+  transform: translateX(90%);
+  transition: ease 0.7s;
+  position: absolute;
+  border-radius: 0px 0px 10px;
+  background-color: #71aa46;
+}
+.card4:hover::after {
+  transform: translateX(0%);
+  border-radius: 10px;
+}
+
+.card5::after {
+  padding: 35px;
+  content: "265g";
+  font-size: 20px;
+  writing-mode: horizontal-rl;
+  text-align: center;
+  color: white;
+  width: 100%;
+  height: 100%;
+  transform: translateX(90%);
+  transition: ease 0.7s;
+  position: absolute;
+  border-radius: 0px 0px 10px;
+  background-color: #71aa46;
+}
+.card5:hover::after {
+  transform: translateX(0%);
+  border-radius: 10px;
+}
+
+.card6::after {
+  padding: 35px;
+  content: "Front 5MP, Rear 16MP with flash";
+  font-size: 20px;
+  writing-mode: horizontal-rl;
+  text-align: center;
+  color: white;
+  width: 100%;
+  height: 100%;
+  transform: translateX(90%);
+  transition: ease 0.7s;
+  position: absolute;
+  border-radius: 0px 0px 10px;
+  background-color: #71aa46;
+}
+.card6:hover::after {
+  transform: translateX(0%);
+  border-radius: 10px;
+}
+
+.card7::after {
+  padding: 35px;
+  content: "4300mAh removable battery, QC Fast Charging 8-12h";
+  font-size: 20px;
+  writing-mode: horizontal-rl;
+  text-align: center;
+  color: white;
+  width: 100%;
+  height: 100%;
+  transform: translateX(90%);
+  transition: ease 0.7s;
+  position: absolute;
+  border-radius: 0px 0px 10px;
+  background-color: #71aa46;
+}
+.card7:hover::after {
+  transform: translateX(0%);
+  border-radius: 10px;
+}
+
+.card8::after {
+  padding: 35px;
+  content: "IP67, 1.5m drop resistance";
+  font-size: 20px;
+  writing-mode: horizontal-rl;
+  text-align: center;
+  color: white;
+  width: 100%;
+  height: 100%;
+  transform: translateX(90%);
+  transition: ease 0.7s;
+  position: absolute;
+  border-radius: 0px 0px 10px;
+  background-color: #71aa46;
+}
+.card8:hover::after {
+  transform: translateX(0%);
+  border-radius: 10px;
+}
+
+.arowMark {
+  font-size: 50px;
+  color: #fff;
+  align-self: center;
+  margin: auto;
+  margin-top: 0px;
+  position: relative;
+  bottom: 10px;
+}
+
+.rightArrow {
+  font-size: 25px;
+  color: #fff;
+  align-self: center;
+  margin: auto;
+  margin-top: 0px;
+  position: relative;
+  bottom: 5px;
+  border: 1px solid #71aa46;
+  border-radius: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  margin: auto;
+  margin-top: 0;
+  margin-bottom: 0px;
+}
+
+.colored {
+  background-color: #fff; /* defines the background color of the image */
+  mask: url(../../../../../assets/images/landingpage/specifications/memory.svg)
+    no-repeat center / contain;
+  -webkit-mask: url(../../../../../assets/images/landingpage/specifications/memory.svg)
+    no-repeat center / contain;
+}
+
+.dimension {
+  background-color: #fff; /* defines the background color of the image */
+  mask: url(../../../../../assets/images/landingpage/specifications/dimension.svg)
+    no-repeat center / contain;
+  -webkit-mask: url(../../../../../assets/images/landingpage/specifications/dimension.svg)
+    no-repeat center / contain;
+}
+
+.bluetooth {
+  background-color: #fff; /* defines the background color of the image */
+  mask: url(../../../../../assets/images/landingpage/specifications/bluetooth.svg)
+    no-repeat center / contain;
+  -webkit-mask: url(../../../../../assets/images/landingpage/specifications/bluetooth.svg)
+    no-repeat center / contain;
+}
+
+.printer {
+  background-color: #fff; 
+  mask: url(../../../../../assets/images/landingpage/specifications/scan.svg)
+    no-repeat center / contain;
+  -webkit-mask: url(../../../../../assets/images/landingpage/specifications/scan.svg)
+    no-repeat center / contain;
+}
+
+.weight {
+  background-color: #fff; /* defines the background color of the image */
+  mask: url(../../../../../assets/images/landingpage/specifications/weight.svg)
+    no-repeat center / contain;
+  -webkit-mask: url(../../../../../assets/images/landingpage/specifications/weight.svg)
+    no-repeat center / contain;
+}
+
+.roll {
+  background-color: #fff; /* defines the background color of the image */
+  mask: url(../../../../../assets/images/landingpage/specifications/camera.svg)
+    no-repeat center / contain;
+  -webkit-mask: url(../../../../../assets/images/landingpage/specifications/camera.svg)
+    no-repeat center / contain;
+}
+
+.power {
+  background-color: #fff; /* defines the background color of the image */
+  mask: url(../../../../../assets/images/landingpage/specifications/power.svg)
+    no-repeat center / contain;
+  -webkit-mask: url(../../../../../assets/images/landingpage/specifications/power.svg)
+    no-repeat center / contain;
+}
+
+.temperature {
+  background-color: #fff; /* defines the background color of the image */
+  mask: url(../../../../../assets/images/landingpage/specifications/sealing.svg)
+    no-repeat center / contain;
+  -webkit-mask: url(../../../../../assets/images/landingpage/specifications/sealing.svg)
+    no-repeat center / contain;
+}

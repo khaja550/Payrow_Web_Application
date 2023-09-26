@@ -1,0 +1,435 @@
+<div class="content-wrapper main-section-container">
+    <!-- new code -->
+    <section class="content">
+        <div class="container-fluid p-0 mb-4">
+            <div class="row">
+                <!-- Merchant List -->
+                <div class="section-header" *ngIf="!isShow">
+                    <!-- <h4>Create</h4> -->
+                    <div class="pull-left d-flex gap-16x">
+                        <div class="search-holder">
+                            <form action="">
+                                <div class="input-group">
+                                    <input type="text" autocomplete="off" name="search" [(ngModel)]="searchText"
+                                        placeholder="What're you searching for?" aria-describedby="button-addon5"
+                                        class="form-control">
+                                    <div class="input-group-append">
+                                        <button id="button-addon5" type="submit" class="btn"><i
+                                                class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="pull-right d-flex gap-16x">
+                        <button class="btn btn-primary-lg" (click)="addsalesPersons()" style="margin-top: -12px;">
+                            Add Sales Person<i class="fas fa-plus cta-plus-btn border-0"></i></button>
+                        <!-- <button class="btn btn-default-normal">Cancel <i class="fas fa-plus rotate-45"></i></button> -->
+                        <!-- <button class="btn btn-default-primary" *ngIf="isShow" id="submit" (click)="submit()" [disabled]="!salesForm.valid">Save <i class="fas fa-download"></i></button>  -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- </section> -->
+
+        <!-- NEW CODE EMPLOYEE CARDS -->
+        <!-- <section class="content"> -->
+        <div class="container-fluid" *ngIf="isShow">
+            <div class="row">
+                <div class="col-12" style="margin: -20px 0px 20px;">
+                    <div class="section-header mr-4">
+                        <h4>Add Sales Person</h4>
+                        <div class="pull-right d-flex gap-16x">
+                            <button class="btn btn-default-sm-primary" (click)="addsalesPersons()">Cancel <i
+                                    class="fas fa-minus"></i></button>
+                            <!-- <button class="btn btn-default-md-fill" (click)="submit()">Save</button> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <form [formGroup]="salesForm" id="msform" (ngSubmit)="submit()">
+                            <div class="row">
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label for="firstName" class="float-left">First Name</label>
+                                        <input type="text" formControlName="firstName" id="firstName" name="firstName"
+                                            class="form-control" autocomplete="off">
+                                        <div *ngIf="salesForm.controls['firstName'].invalid && (salesForm.controls['firstName'].dirty || salesForm.controls['firstName'].touched)"
+                                            class="alert">
+                                            <div *ngIf="salesForm.controls['firstName'].errors.required">
+                                                <p class="error-msg">
+                                                    First Name is required
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label for="lastName" class="float-left">Last Name</label>
+                                        <input type="text" formControlName="lastName" id="lastName" name="lastName"
+                                            class="form-control" autocomplete="off">
+                                        <div *ngIf="salesForm.controls['lastName'].invalid && (salesForm.controls['lastName'].dirty || salesForm.controls['lastName'].touched)"
+                                            class="alert">
+                                            <div *ngIf="salesForm.controls['lastName'].errors.required">
+                                                <p class="error-msg">
+                                                    Last Name is required
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label for="title" class="float-left">Title</label>
+                                        <select rows="1" class="form-control" formControlName="title" placeholder=""
+                                            style="margin: 0px;">
+                                            <option value="" disabled>Select Title</option>
+                                            <option value="Mr.">Mr.</option>
+                                            <option value="Mrs.">Mrs.</option>
+                                        </select>
+                                        <div *ngIf="salesForm.controls['title'].invalid && (salesForm.controls['title'].dirty || salesForm.controls['title'].touched)"
+                                            class="alert">
+                                            <div *ngIf="salesForm.controls['title'].errors.required">
+                                                <p class="error-msg">
+                                                    Title is required
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label for="gender" class="float-left">Gender</label>
+                                        <select rows="1" class="form-control" formControlName="gender" placeholder=""
+                                            style="margin: 0px;">
+                                            <option value="" disabled>Select Gender</option>
+                                            <option value="male">Male</option>
+                                            <option value="feMale">Female</option>
+                                        </select>
+                                        <div *ngIf="salesForm.controls['gender'].invalid && (salesForm.controls['gender'].dirty || salesForm.controls['gender'].touched)"
+                                            class="alert">
+                                            <div *ngIf="salesForm.controls['gender'].errors.required">
+                                                <p class="error-msg">
+                                                    Gender is required
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label for="mobileNumber" class="float-left">Mobile Number</label>
+                                        <input type="text" formControlName="mobileNumber" id="mobileNumber"
+                                            name="mobileNumber" class="form-control" autocomplete="off">
+                                        <div *ngIf="salesForm.controls['mobileNumber'].invalid && (salesForm.controls['mobileNumber'].dirty || salesForm.controls['mobileNumber'].touched)"
+                                            class="alert">
+                                            <div *ngIf="salesForm.controls['mobileNumber'].errors.required">
+                                                <p class="error-msg">
+                                                    Mobile Number is required
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label for="emiratesId" class="float-left">Emirates ID</label>
+                                        <input type="text" formControlName="emiratesId" id="emiratesId"
+                                            name="emiratesId" class="form-control" autocomplete="off">
+                                        <div *ngIf="salesForm.controls['emiratesId'].invalid && (salesForm.controls['emiratesId'].dirty || salesForm.controls['emiratesId'].touched)"
+                                            class="alert">
+                                            <div *ngIf="salesForm.controls['emiratesId'].errors.required">
+                                                <p class="error-msg">
+                                                    Emirates ID is required
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label for="basicSalary" class="float-left">Basic Salary</label>
+                                        <input type="text" formControlName="basicSalary" id="basicSalary"
+                                            name="basicSalary" class="form-control" autocomplete="off">
+                                        <div *ngIf="salesForm.controls['basicSalary'].invalid && (salesForm.controls['basicSalary'].dirty || salesForm.controls['basicSalary'].touched)"
+                                            class="alert">
+                                            <div *ngIf="salesForm.controls['basicSalary'].errors.required">
+                                                <p class="error-msg">
+                                                    Basic Salary is required
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label for="bonus" class="float-left">Bonus</label>
+                                        <input type="text" formControlName="bonus" id="bonus" name="job_title"
+                                            class="form-control" autocomplete="off">
+                                        <div *ngIf="salesForm.controls['bonus'].invalid && (salesForm.controls['bonus'].dirty || salesForm.controls['bonus'].touched)"
+                                            class="alert">
+                                            <div *ngIf="salesForm.controls['bonus'].errors.required">
+                                                <p class="error-msg">
+                                                    Bonus is required
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label for="transportAllowance" class="float-left">Transport Allowance</label>
+                                        <input type="text" formControlName="transportAllowance" id="transportAllowance"
+                                            name="transportAllowance" class="form-control" autocomplete="off">
+                                        <div *ngIf="salesForm.controls['transportAllowance'].invalid && (salesForm.controls['transportAllowance'].dirty || salesForm.controls['transportAllowance'].touched)"
+                                            class="alert">
+                                            <div *ngIf="salesForm.controls['transportAllowance'].errors.required">
+                                                <p class="error-msg">
+                                                    Transport Allowance is required
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label for="houseAllowance" class="float-left">House Allowance</label>
+                                        <input type="text" formControlName="houseAllowance" id="houseAllowance"
+                                            name="houseAllowance" class="form-control" autocomplete="off">
+                                        <div *ngIf="salesForm.controls['houseAllowance'].invalid && (salesForm.controls['houseAllowance'].dirty || salesForm.controls['houseAllowance'].touched)"
+                                            class="alert">
+                                            <div *ngIf="salesForm.controls['houseAllowance'].errors.required">
+                                                <p class="error-msg">
+                                                    House Allowance is required
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label for="bankName" class="float-left">Bank Name</label>
+                                        <input type="text" formControlName="bankName" id="bankName" name="bankName"
+                                            class="form-control" autocomplete="off">
+                                        <div *ngIf="salesForm.controls['bankName'].invalid && (salesForm.controls['bankName'].dirty || salesForm.controls['bankName'].touched)"
+                                            class="alert">
+                                            <div *ngIf="salesForm.controls['bankName'].errors.required">
+                                                <p class="error-msg">
+                                                    Bank Name is required
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label for="accountNumber" class="float-left">Account Number</label>
+                                        <input type="text" formControlName="accountNumber" id="accountNumber"
+                                            name="job_title" class="form-control" autocomplete="off">
+                                        <div *ngIf="salesForm.controls['accountNumber'].invalid && (salesForm.controls['accountNumber'].dirty || salesForm.controls['accountNumber'].touched)"
+                                            class="alert">
+                                            <div *ngIf="salesForm.controls['accountNumber'].errors.required">
+                                                <p class="error-msg">
+                                                    Account Number is required
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex gap-16x justify-content-end" *ngIf="isShow">
+                                <button class="btn btn-default-md-fill" (click)="submit()">Save<i
+                                        class="fas fa-download"></i></button>
+                            </div>
+                        </form>
+                        <hr />
+
+                    </div>
+                </div>
+                <!-- <div class="row">
+            <div class="pull-right d-flex gap-16x">
+            </div>
+            </div> -->
+            </div>
+        </div>
+        <!-- </section> -->
+
+        <!-- NEW CODE EMPLOYEE CARDS -->
+        <!-- <section class="content"> -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row cust-emp-card">
+                        <div class="col-3" *ngFor="let sperson of salesPersons | filter:searchText">
+                            <div class=" card card-employee">
+                                <div class="card-body p-0">
+                                    <!-- <div class="avatar-container"> -->
+                                    <!-- </div> -->
+                                    <!-- <div class="editProf" data-toggle="modal" data-target="#myModal2"
+                                    (click)="getDetails(emp)">
+                                    <i class="bi bi-three-dots" style="position:relative; top: 1px;"></i>
+                                </div> -->
+                                    <!-- <div class="card-icon">
+                                    <img src="{{emp.path}}" alt="">
+                                </div> -->
+                                    <div
+                                        class="contact-container d-flex align-items-center justify-content-center flex-column text-center">
+                                        <div class="contact-details">
+                                            <div class="label-name">Name</div>
+                                            <div class="person-name">{{sperson.firstName}}</div>
+                                        </div>
+                                        <div class="contact-details">
+                                            <div class="label-name">Sales Person ID</div>
+                                            <div class="person-name">{{sperson.salesPersonId}}</div>
+                                        </div>
+                                        <div class="contact-details">
+                                            <div class="label-name">Emirates ID</div>
+                                            <div class="person-name">{{sperson.emiratesId}}</div>
+                                        </div>
+                                        <div class="contact-details">
+                                            <div class="label-name">Mobile Number</div>
+                                            <div class="person-name">{{sperson.mobileNumber}}</div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="card-footer d-flex align-items-center justify-content-between">
+                                    <button type="button" class="btn btn-wps" data-toggle="modal"
+                                        data-target="#salary" (click)="getDetails(emp)">Wps</button>
+                                    <button type="button" class="btn btn-apply" data-toggle="modal"
+                                        data-target="#applyleave" (click)="getDetails(emp)">Apply Leave</button>
+                                </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- End -->
+
+    <!-- MODAL POPUP -->
+
+    <!-- Employee details Modal -->
+    <div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel2">SalesPerson Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="container">
+
+                        <form id="edit_employee_form">
+
+
+                            <!-- ROW 1 -->
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="inputEmployeeName">Employee Name</label>
+                                        <input type="text" id="inputEmployeeName" name="employee_name"
+                                            class="form-control" autocomplete="off" value="Ahmed">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="inputJobTitle">Job Title</label>
+                                        <input type="text" id="inputJobTitle" name="job_title" class="form-control"
+                                            autocomplete="off" value="Sales Associate">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ROW 2 -->
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="inputSalary">Salary</label>
+                                        <input type="text" id="inputSalary" name="salary" class="form-control"
+                                            autocomplete="off" value="2,500">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="inputEmployeeName">Employee ID</label>
+                                        <input type="text" id="inputEmployeeName" name="employee_name"
+                                            class="form-control" autocomplete="off" value="3456">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ROW 3 -->
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="inputJobTitle">Employee Grad</label>
+                                        <input type="text" id="inputJobTitle" name="job_title" class="form-control"
+                                            autocomplete="off" value="25123">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="inputSalary">Leave Balance</label>
+                                        <input type="text" id="inputSalary" name="salary" class="form-control"
+                                            autocomplete="off" value="30 days">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ROW - 4 -->
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="inputEmployeeName">Job Description</label>
+                                        <input type="text" id="inputEmployeeName" name="employee_name"
+                                            class="form-control" autocomplete="off" value="Sales Assiciate">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="inputJobTitle">Personal Information</label>
+                                        <input type="text" id="inputJobTitle" name="job_title" class="form-control"
+                                            autocomplete="off" value="Lorem Ipsu">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="inputSalary">End of Service</label>
+                                        <input type="text" id="inputSalary" name="salary" class="form-control"
+                                            autocomplete="off" value="03 / 24 / 2024">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-center">
+                                        <button type="button" class="btn btn-submit btn-secondary btn-update"
+                                            id="btn_submit">Update</button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

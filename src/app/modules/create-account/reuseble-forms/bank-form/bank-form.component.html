@@ -1,0 +1,80 @@
+<ng-container [formGroup]="bankForm">
+    <div class="container">
+        <!-- <h5 style="color: #72AC47; font-family: Roboto;">BANK DETAILS</h5> -->
+        <div class="row">
+            <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+                <div class="form-group">
+                    <!-- <label>Bank Name</label> -->
+                    <input type="text" formControlName="bankName" class="form-control" placeholder="Bank Name" />
+                    <div *ngIf="bankForm.controls['bankName'].invalid && (bankForm.controls['bankName'].dirty || bankForm.controls['bankName'].touched)"
+                        class="alert">
+                        <div *ngIf="bankForm.controls['bankName'].errors.required">
+                            <p class="error-msg">
+                                Please Enter Bank Name
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+                <div class="form-group">
+                    <!-- <label>Branch</label> -->
+                    <input type="text" formControlName="branchName" class="form-control" placeholder="Branch Name" />
+                    <div *ngIf="bankForm.controls['branchName'].invalid && (bankForm.controls['branchName'].dirty || bankForm.controls['branchName'].touched)"
+                        class="alert">
+                        <div *ngIf="bankForm.controls['branchName'].errors.required">
+                            <p class="error-msg">
+                                Please Enter your Branch
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+                <div class="form-group">
+                    <!-- <label>Bank Ac Number</label> -->
+                    <input type="text" formControlName="accountNumber" class="form-control"
+                        placeholder="Bank Ac Number" />
+                    <div *ngIf="bankForm.controls['accountNumber'].invalid && (bankForm.controls['accountNumber'].dirty || bankForm.controls['accountNumber'].touched)"
+                        class="alert">
+                        <div *ngIf="bankForm.controls['accountNumber'].errors.required">
+                            <p class="error-msg">
+                                Please Enter your Account Number
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+                <div class="form-group">
+                    <!-- <label>IBAN Number</label> -->
+                    <input type="text" formControlName="ibanNumber" class="form-control" placeholder="IBAN Number" />
+                    <div *ngIf="bankForm.controls['ibanNumber'].invalid && (bankForm.controls['ibanNumber'].dirty || bankForm.controls['ibanNumber'].touched)"
+                        class="alert">
+                        <div *ngIf="bankForm.controls['ibanNumber'].errors.required">
+                            <p class="error-msg">
+                                Please Enter your IBAN Number
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+                <div class="form-group">
+                    <!-- <label>Vat Number</label> -->
+                    <input type="text" formControlName="vatNumber" class="form-control" placeholder="Vat Number" />
+                    <div *ngIf="bankForm.controls['vatNumber'].invalid && (bankForm.controls['vatNumber'].dirty || bankForm.controls['vatNumber'].touched)"
+                        class="alert">
+                        <div *ngIf="bankForm.controls['vatNumber'].errors.required">
+                            <p class="error-msg">
+                                Please Enter your VAT Number
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>

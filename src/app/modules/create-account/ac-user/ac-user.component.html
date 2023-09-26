@@ -1,0 +1,1123 @@
+<div class="content-wrapper main-section-container">
+    <app-create-ac-menus></app-create-ac-menus>
+
+    <section class="content">
+        <div class="container-fluid p-0 m-0">
+            <!-- <div *ngIf="!isUser"> -->
+            <div class="row" *ngIf="(!isOwner && !isStaff && !isDevice)">
+                <!-- Merchant List -->
+                <div class="table-containerz">
+                    <div class="section-header">
+                        <h4>Creat New MID</h4>
+                        <div class="pull-right d-flex gap-16x">
+                            <!-- <h4>Store Owner List</h4> -->
+                            <button class="btn btn-primary-lg" (click)="owner()">Create New MID <i
+                                    class="fas fa-plus cta-plus-btn border-0"></i></button>
+                            <!-- <button class="btn btn-default-normal" (click)="owner()">Cancel <i
+                                    class="fas fa-plus rotate-45"></i></button>
+                            <button class="btn btn-default-primary" (click)="owner()">Save <i
+                                    class="fas fa-download"></i></button>
+                            <button class="btn btn-default-primary" (click)="owner()"> <i
+                                    class="fas fa-long-arrow-alt-left"></i> Previous</button>
+                            <button class="btn btn-default-fill" (click)="owner()">Next <i
+                                    class="fas fa-long-arrow-alt-right"></i></button> -->
+                        </div>
+                    </div>
+
+
+                    <div class="table_data">
+                        <div class="table-responsive">
+                            <table class="table table_cust table_cust-with-buttons">
+                                <thead>
+                                    <tr>
+                                        <th>NAME</th>
+                                        <th>ADDRESS</th>
+                                        <th>EMAIL</th>
+                                        <th>SCORE</th>
+                                        <th>RISK STATUS</th>
+                                        <th>PayrowID</th>
+                                        <th>MID</th>
+                                        <th>ACTIVATION DATE</th>
+                                        <th>TID Account</th>
+                                        <th>STAFF LIST</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="align-baseline">
+                                    <tr *ngFor="let distributor of merchantList">
+                                        <td>{{distributor.firstName}}</td>
+                                        <td><span data-tooltip="top" role="tooltip"
+                                                attr.aria-label="{{distributor.city}},{{distributor.addressDetails}}"><i
+                                                    class="bi-card-list"></i></span>
+                                        </td>
+                                        <td data-tooltip="top" role="tooltip" attr.aria-label="{{distributor.emailId}}">
+                                            <i class="bi-envelope-open"></i>
+                                        </td>
+                                        <td>5</td>
+                                        <td><button class="btn btn-sm btn-sm-cust"
+                                                [ngClass]="(distributor.score > 5) ? 'btn-outline-success' : ' btn-outline-danger'"
+                                                (click)="posDetailsFunc(distributor.payRowId)">Review</button></td>
+                                        <td>{{distributor.payRowId}}</td>
+                                        <td>{{distributor.bankMID}}</td>
+                                        <td>{{distributor.updatedAt | date}}</td>
+                                        <td><button class="btn btn-sm btn-sm-cust btn-outline-dark"
+                                                (click)="getTidList(distributor.payRowId)">Details</button></td>
+                                        <td><button class="btn btn-sm btn-sm-cust btn-outline-dark user-list-ibtn"
+                                                (click)="details(distributor.payRowId)"><span><img
+                                                        src="../../../../assets/images/user_list-icon.svg" alt=""><img
+                                                        src="../../../../assets/images/user_list-icon-hover.svg"
+                                                        alt=""></span></button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="isOwner && !userExist">
+                <div class="col-md-2 pull-right d-flex gap-16x">
+                    <button class="btn btn-default-normal" (click)="BacktoList()">Cancel <i
+                            class="fas fa-plus rotate-45"></i></button>
+                    <!-- <button class="btn btn-sm btn-success edit_btn" (click)="BacktoList()"
+                        style="float: left;">Back</button> -->
+                </div>
+            </div>
+            <!-- create merchant Process -->
+            <div class="card mx-auto shadow-none" style="width: auto;margin-top: 20px;" *ngIf="isOwner && !userExist">
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6 col-sm-6 col-md-6 col-xl-6 col-xs-12">
+                                <div class="form-group">
+                                    <label>Type of Merchant</label>
+                                    <select rows="1" class="form-control" placeholder="" style="margin: 0px;"
+                                        (change)="checkExisting($event)" [(ngModel)]="selectedUser">
+                                        <option value="" disabled>Select Type of Merchant</option>
+                                        <option value="newUser">New Customer</option>
+                                        <option value="existingUser">Existing Customer</option>
+                                    </select>
+                                </div>
+                                <div class="form-group" *ngIf="selectedUser === 'existingUser'">
+                                    <label>Enter EmiratesId</label>
+                                    <input type="text" class="form-control" placeholder="emiratesId" [(ngModel)]=emId
+                                        value="emId" />
+                                </div>
+
+                                <div>
+                                    <button class="btn btn-default-fill" (click)="goUser(selectedUser,emId)"
+                                        style="float: right;">click</button>
+                                    <!-- <button class="btn btn-sm btn-success edit_btn" (click)="goUser(selectedUser,emId)"
+                                        style="float: left;">Click</button> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="addMerchant" *ngIf="isOwner && userExist">
+                <div class="section-header mb-4">
+                    <h4>Creat New MID</h4>
+                    <button class="btn btn-default-normal" (click)="owner()">Cancel <i
+                            class="fas fa-plus rotate-45"></i></button>
+                    <!-- <div class="col-md-2">
+                        <button class="btn btn-sm btn-success edit_btn" (click)="owner()"
+                            style="float: left;">Back</button>
+                    </div>
+                    <div class="col-md-10">
+                        <button class="btn btn-sm btn-success edit_btn" (click)="next()" style="float: right;"
+                            *ngIf="step<=9">Next</button>
+                        <button class="btn btn-sm btn-success edit_btn" (click)="createOwner()" style="float: right;"
+                            *ngIf="step==10">Submit</button>
+                        <button class="btn btn-sm btn-success edit_btn" (click)="previous()" style="float: right;"
+                            *ngIf="step>1">Previous</button>
+                    </div> -->
+                </div>
+                <div class="table-container border-0 p-0">
+                    <div class="tab-pane fade show active" id="pills-sowner" role="tabpanel"
+                        aria-labelledby="pills-sowner-tab">
+                        <section class=" header">
+                            <form [formGroup]="basicsForm" id="msform"
+                                class="d-flex align-item-center justify-content-between">
+                                <div class="stepper-card">
+                                    <div class="stepper-body">
+                                        <ul id="progressbar" class="progress-cust">
+                                            <li class="progress-item"
+                                                [ngClass]="step>=1 ? 'progress-item-active ' : 'progress-item-completed'">
+                                                <p>Basic</p>
+                                            </li>
+                                            <li class="progress-item"
+                                                [ngClass]="step>=2 ? 'progress-item-active ' : 'progress-item-completed'">
+                                                <p>Personal</p>
+                                            </li>
+                                            <li class="progress-item"
+                                                [ngClass]="step>=3 ? 'progress-item-active ' : 'progress-item-completed'">
+                                                <p>Settlement Account</p>
+                                            </li>
+                                            <li class="progress-item"
+                                                [ngClass]="step>=4 ? 'progress-item-active ' : 'progress-item-completed'">
+                                                <p>Store Address</p>
+                                            </li>
+                                            <li class="progress-item"
+                                                [ngClass]="step>=5 ? 'progress-item-active ' : 'progress-item-completed'">
+                                                <p>Licence</p>
+                                            </li>
+                                            <li class="progress-item"
+                                                [ngClass]="step>=6 ? 'progress-item-active ' : 'progress-item-completed'">
+                                                <p>Business</p>
+                                            </li>
+                                            <li class="progress-item"
+                                                [ngClass]="step>=7 ? 'progress-item-active ' : 'progress-item-completed'">
+                                                <p>Staff</p>
+                                            </li>
+                                            <li class="progress-item"
+                                                [ngClass]="step>=8 ? 'progress-item-active ' : 'progress-item-completed'">
+                                                <p>Business Type</p>
+                                            </li>
+                                            <li class="progress-item"
+                                                [ngClass]="step>=9 ? 'progress-item-active ' : 'progress-item-completed'">
+                                                <p>Terms & Conditions</p>
+                                            </li>
+                                            <li class="progress-item"
+                                                [ngClass]="step>=10 ? 'progress-item-active ' : 'progress-item-completed'">
+                                                <p>Select Bank</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- fieldsets -->
+                                <!-- <div class="d-flex "> -->
+                                <div class="" style="width: inherit;">
+                                    <div class="" *ngIf="step == 1">
+                                        <div class="col-12">
+                                            <h5 class="formheader">BASIC</h5>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-sm-12 col-md-12 col-xl-12 col-xs-12">
+                                                        <div class="form-group float-left">
+                                                            <div class="picture-container">
+                                                                <div class="picture" style="margin: 1rem auto 0">
+                                                                    <div class="picture2">
+                                                                        <img src="assets/images/profile1.jpeg"
+                                                                            class="picture-src"
+                                                                            id="wizardPicturePreview" title="">
+                                                                    </div>
+                                                                    <div class="upload-btn">
+                                                                        <div class="file-upload">
+                                                                            <input type="file" /><i
+                                                                                class="fa fa-arrow-up"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- <div class="col-lg-10 col-sm-10 col-md-10 col-xl-10 col-xs-12"> -->
+                                                <div class="row">
+                                                    <!-- <div class="form-group">
+                                                                <label>Type of Merchant</label>
+                                                                <select rows="1" class="form-control"
+                                                                    formControlName="merchantType" placeholder=""
+                                                                    style="margin: 0px;">
+                                                                    <option value="" disabled>Select Type of Merchant
+                                                                    </option>
+                                                                    <option>New Customer</option>
+                                                                    <option>Existing Customer</option>
+                                                                </select>
+                                                                <div *ngIf="basicsForm.controls['merchantType'].invalid && (basicsForm.controls['merchantType'].dirty || basicsForm.controls['merchantType'].touched)"
+                                                                    class="alert">
+                                                                    <div
+                                                                        *ngIf="basicsForm.controls['merchantType'].errors.required">
+                                                                        <p class="error-msg">
+                                                                            Please select Merchant Type
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div> -->
+                                                    <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+                                                        <div class="form-group">
+                                                            <!-- <label>Title</label><span style="color:red;">*</span> -->
+                                                            <select rows="1" class="form-control"
+                                                                formControlName="title" placeholder=""
+                                                                style="margin: 0px;">
+                                                                <option value="" disabled>Select Title*
+                                                                </option>
+                                                                <option value="Mr">Mr.</option>
+                                                                <option value="Mrs">Mrs.</option>
+                                                            </select>
+                                                            <div *ngIf="basicsForm.controls['title'].invalid && (basicsForm.controls['title'].dirty || basicsForm.controls['title'].touched)"
+                                                                class="alert">
+                                                                <div
+                                                                    *ngIf="basicsForm.controls['title'].errors.required">
+                                                                    <p class="error-msg">
+                                                                        Please select Title
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+                                                        <div class="form-group">
+                                                            <!-- <label>First Name</label><span style="color:red;">*</span> -->
+                                                            <input type="text" formControlName="firstName"
+                                                                class="form-control" placeholder="First Name"
+                                                                value="" />
+                                                            <div *ngIf="basicsForm.controls['firstName'].invalid && (basicsForm.controls['firstName'].dirty || basicsForm.controls['firstName'].touched)"
+                                                                class="alert">
+                                                                <div
+                                                                    *ngIf="basicsForm.controls['firstName'].errors.required">
+                                                                    <p class="error-msg">
+                                                                        Please Enter FirstName
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+                                                        <div class="form-group">
+                                                            <!-- <label>Last Name</label><span style="color:red;">*</span> -->
+                                                            <input type="text" formControlName="lastName" value=""
+                                                                class="form-control" placeholder="Last Name" />
+                                                            <div *ngIf="basicsForm.controls['lastName'].invalid && (basicsForm.controls['lastName'].dirty || basicsForm.controls['lastName'].touched)"
+                                                                class="alert">
+                                                                <div
+                                                                    *ngIf="basicsForm.controls['lastName'].errors.required">
+                                                                    <p class="error-msg">
+                                                                        Please Enter LastName
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+                                                        <div class="form-group">
+                                                            <!-- <label>Date Of Birth</label><span style="color:red;">*</span> -->
+                                                            <input type="date" formControlName="dateOfBirth" value=""
+                                                                class="form-control" placeholder="Date Of Birth" />
+                                                            <div *ngIf="basicsForm.controls['dateOfBirth'].invalid && (basicsForm.controls['dateOfBirth'].dirty || basicsForm.controls['dateOfBirth'].touched)"
+                                                                class="alert">
+                                                                <div
+                                                                    *ngIf="basicsForm.controls['dateOfBirth'].errors.required">
+                                                                    <p class="error-msg">
+                                                                        Please Enter DOB
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+                                                        <div class="form-group">
+                                                            <!-- <label>Gender</label><span style="color:red;">*</span> -->
+                                                            <select rows="1" class="form-control"
+                                                                formControlName="gender" placeholder=""
+                                                                style="margin: 0px;">
+                                                                <option value="" disabled>Select Gender
+                                                                </option>
+                                                                <option value="Male">Male</option>
+                                                                <option value="Female">Female</option>
+                                                            </select>
+                                                            <div *ngIf="basicsForm.controls['gender'].invalid && (basicsForm.controls['gender'].dirty || basicsForm.controls['gender'].touched)"
+                                                                class="alert">
+                                                                <div
+                                                                    *ngIf="basicsForm.controls['gender'].errors.required">
+                                                                    <p class="error-msg">
+                                                                        Please Select Gender
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+                                                        <div class="form-group">
+                                                            <!-- <label>Email</label><span style="color:red;">*</span> -->
+                                                            <input type="email" formControlName="emailId" value=""
+                                                                class="form-control" placeholder="Email" />
+                                                            <div *ngIf="basicsForm.controls['emailId'].invalid && (basicsForm.controls['emailId'].dirty || basicsForm.controls['emailId'].touched)"
+                                                                class="alert">
+                                                                <div
+                                                                    *ngIf="basicsForm.controls['emailId'].errors.required">
+                                                                    <p class="error-msg">Please Enter Email</p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="error-msg"
+                                                                        *ngIf="basicsForm.controls['emailId'].errors.maxlength">
+                                                                        Pin should be maximum of length 4</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+                                                        <div class="form-group">
+                                                            <!-- <label>Mobile Number</label><span style="color:red;">*</span> -->
+                                                            <input type="text" formControlName="mobileNumber" value="
+                                                                " class="form-control" placeholder="Mobile Number" />
+                                                            <div *ngIf="basicsForm.controls['mobileNumber'].invalid && (basicsForm.controls['mobileNumber'].dirty || basicsForm.controls['mobileNumber'].touched)"
+                                                                class="alert">
+                                                                <div
+                                                                    *ngIf="basicsForm.controls['mobileNumber'].errors.required">
+                                                                    <p class="error-msg">
+                                                                        Please Enter MobileNumber
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+                                                        <div class="form-group">
+                                                            <!-- <label>Sales PersonId</label><span style="color:red;">*</span> -->
+                                                            <input type="text" formControlName="mSalesPersonId"
+                                                                class="form-control"
+                                                                placeholder="Enter Sales Person id" />
+                                                            <div *ngIf="basicsForm.controls['mSalesPersonId'].invalid && (basicsForm.controls['mSalesPersonId'].dirty || basicsForm.controls['mSalesPersonId'].touched)"
+                                                                class="alert">
+                                                                <div
+                                                                    *ngIf="basicsForm.controls['mSalesPersonId'].errors.required">
+                                                                    <p class="error-msg">
+                                                                        Please Enter SalesPersonID
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+                                                        <div class="form-group">
+                                                            <!-- <label>Pin</label><span style="color:red;">*</span> -->
+                                                            <input type="password" formControlName="merchantPIN"
+                                                                maxlength="4" pattern="[0-9]*" class="form-control"
+                                                                placeholder="Enter Pin" />
+                                                            <div *ngIf="basicsForm.controls['merchantPIN'].invalid && (basicsForm.controls['merchantPIN'].dirty || basicsForm.controls['merchantPIN'].touched)"
+                                                                class="alert">
+                                                                <div
+                                                                    *ngIf="basicsForm.controls['merchantPIN'].errors.required">
+                                                                    <p class="error-msg">
+                                                                        Please Enter PIN-Number
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+                                                        <div class="form-group">
+                                                            <!-- <label>Confirm Pin</label><span style="color:red;">*</span> -->
+                                                            <input type="password" formControlName="confirmPIN"
+                                                                class="form-control" placeholder="Confirm Pin" />
+                                                            <div *ngIf="basicsForm.controls['confirmPIN'].invalid && (basicsForm.controls['confirmPIN'].dirty || basicsForm.controls['confirmPIN'].touched)"
+                                                                class="alert">
+                                                                <div
+                                                                    *ngIf="basicsForm.controls['confirmPIN'].errors.required">
+                                                                    <p class="error-msg">
+                                                                        Please Confirm PIN-Number
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <!-- <div class="pull-right d-flex gap-16x justify-content-end">
+                                                        <button class="btn btn-default-primary" (click)="previous()"> <i
+                                                                class="fas fa-long-arrow-alt-left"></i>
+                                                            Previous</button>
+                                                        <button class="btn btn-default-fill" (click)="next()">Next <i
+                                                                class="fas fa-long-arrow-alt-right"></i></button>
+                                                    </div> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="" [formGroup]="storeOwnerForm">
+                                        <div class="col-12" *ngIf="step == 2">
+                                            <h5 class="formheader">PERSONAL DETAILS</h5>
+                                            <app-personal [prsnlAD]="prsnlAD" formControlName="personalDetails">
+                                            </app-personal>
+                                        </div>
+
+                                        <div class="col-12" *ngIf="step == 3">
+                                            <h5 class="formheader">BANK DETAILS</h5>
+                                            <app-bank-form formControlName="bankDetails">
+                                            </app-bank-form>
+                                            <!-- <app-card-form formControlName="cardDetails" *ngIf="isPersonal"></app-card-form> -->
+                                        </div>
+                                        <div class="col-12" *ngIf="step == 4">
+                                            <!-- <div class="card-body"> -->
+                                            <h5 class="formheader">STORE DETAILS</h5>
+
+                                            <app-address-form formControlName="addressDetails"></app-address-form>
+                                            <div class="">
+                                                <button class="btn btn-default-primary float-right"
+                                                    (click)="addStore()">Save <i class="fas fa-download"></i></button>
+                                                <!-- <button class="btn btn-sm btn-success edit_btn"
+                                                    style="float:right;margin: 5px;" (click)="addStore()">Save</button> -->
+                                            </div>
+                                            <div class="row ml-3" style="width: inherit;">
+                                                <table class="table table_cust">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>STORE ID</th>
+                                                            <th>NAME</th>
+                                                            <th>CONTACT</th>
+                                                            <th>WEBSITE</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let store of storeList">
+                                                            <td>{{store.storeId}}</td>
+                                                            <td>{{store.brachAccountDetails.name}}</td>
+                                                            <td>{{store.mobileNumber}}</td>
+                                                            <td>{{store.website}}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <!-- </div> -->
+                                        </div>
+                                        <div class="col-12" *ngIf="step == 5">
+                                            <h5 class="formheader">LICENCE DETAILS</h5>
+                                            <app-licence-form formControlName="licenseDetails"></app-licence-form>
+                                        </div>
+
+                                        <div class="col-12" *ngIf="step == 6">
+                                            <h5 class="formheader">BUSINESS DETAILS</h5>
+                                            <app-business-form formControlName="businessDetails"></app-business-form>
+                                        </div>
+
+                                        <div class="col-12" *ngIf="step == 7">
+                                            <h5 class="formheader">STAFF DETAILS</h5>
+                                            <app-staff-form formControlName="staffDetails"></app-staff-form>
+                                            <div class="">
+                                                <button class="btn btn-default-primary float-right"
+                                                    (click)="addStaff()">Save <i class="fas fa-download"></i></button>
+                                            </div>
+                                            <div class="row ml-3" style="width: inherit;">
+                                                <table class="table table_cust">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>STAFF ID</th>
+                                                            <th>STAFF NAME</th>
+                                                            <th>ROLE</th>
+                                                            <th>CONTACT</th>
+                                                            <th>STATUS</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let staff of staffList">
+                                                            <td>{{staff.userId}}</td>
+                                                            <td>{{staff.firstName}}</td>
+                                                            <td>{{staff.staffRole}}</td>
+                                                            <td>{{staff.mobileNumber}}</td>
+                                                            <td>{{staff.staffStatus}}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="col-12" *ngIf="step == 8">
+                                            <h5 class="formheader">BUSINESS TYPE</h5>
+                                            <div class="row">
+                                                <div class="col-lg-4 col-sm-4 col-md-4 col-xl-4 col-xs-12">
+                                                    <div class="form-group">
+                                                        <div class="select">
+                                                            <!-- <label class="bankLabel">Select type of Service:</label> -->
+                                                            <select class="form-control" [(ngModel)]="selectedSer"
+                                                                (change)='onSelectCat($event)'
+                                                                [ngModelOptions]="{standalone: true}">
+                                                                <option disabled>Select Service</option>
+                                                                <option value="Enterprise">Enterprise</option>
+                                                                <option value="SMB">SMB</option>
+                                                                <option value="Govt">Government</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 col-sm-4 col-md-4 col-xl-4 col-xs-12"
+                                                    *ngIf="selectedSer ==='SMB'">
+                                                    <div class="select_drpDown">
+                                                        <ng-multiselect-dropdown [placeholder]="'select Items'"
+                                                            [data]="businesstypes" [(ngModel)]="selectCategory"
+                                                            [ngModelOptions]="{standalone: true}"
+                                                            [settings]="dropdownSettings"
+                                                            (onSelect)="onItemSelect($event)"
+                                                            (onSelectAll)="onSelectAll($event)"
+                                                            (onDeSelect)="onItemDeSelect($event)"
+                                                            [required]='requiredField'>
+                                                        </ng-multiselect-dropdown>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <section class="content mt-3"
+                                                *ngIf="selectedCatName !=='' || selectedSer ==='Enterprise' || selectedSer ==='Govt' ||  selectCategory.length > 0">
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="col-12 pl-0 pr-0">
+                                                            <div class="table-container">
+                                                                <div class="table_data">
+                                                                    <div class="table-responsive">
+                                                                        <table class="table table_cust"
+                                                                            id="total_items_table">
+                                                                            <thead
+                                                                                style="border-bottom: 1px solid #dee2e6;">
+                                                                                <tr>
+                                                                                    <th>SELECT</th>
+                                                                                    <th>SERVICE ID</th>
+                                                                                    <th>
+                                                                                        SERVICE NAME
+                                                                                    </th>
+                                                                                    <!-- <th>SERVICE ID</th> -->
+                                                                                    <th>DESCRIPTION</th>
+                                                                                    <!-- <th>SEQUENCE</th> -->
+                                                                                    <!-- <th>AVERAGE</th> -->
+                                                                                    <th>UNIT PRICE</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+
+                                                                                <tr
+                                                                                    *ngFor="let data of srvcData; let i=index">
+                                                                                    <td><input
+                                                                                            [(ngModel)]="data.Selected"
+                                                                                            type="checkbox"
+                                                                                            (click)="oncheckSrvc(data)"
+                                                                                            [ngModelOptions]="{standalone: true}">
+                                                                                    </td>
+                                                                                    <td>{{data.serviceId}}</td>
+                                                                                    <td *ngIf="selectedSer ==='SMB'">
+                                                                                        {{data.itemName}}</td>
+                                                                                    <td
+                                                                                        *ngIf="selectedSer ==='Enterprise' || selectedSer ==='Govt'">
+                                                                                        {{data.serviceName}}</td>
+                                                                                    <!-- <td *ngIf="selectedLanguage == 'Arabic'">{{data.itemName}}</td> -->
+                                                                                    <!-- <td *ngIf="selectedLanguage == 'Hindi'">{{data.itemName}}</td> -->
+                                                                                    <!-- <td>{{data.serviceId}}</td> -->
+                                                                                    <td data-tooltip="top"
+                                                                                        role="tooltip"
+                                                                                        attr.aria-label={{data.desc}}><i
+                                                                                            class="bi bi-info-circle-fill"></i>
+                                                                                    </td>
+                                                                                    <!-- <td>{{data.sequence}}</td> -->
+                                                                                    <!-- <td>{{data.avg}}</td> -->
+                                                                                    <td>{{data.unitPrice}}</td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </section>
+                                        </div>
+                                        <div class="col-12" *ngIf="step == 9">
+                                            <div class="card-body">
+                                                <div class="container">
+
+                                                    <div class="row">
+
+                                                        <div class="col-12 mt-3">
+                                                            <div class="tAndC">
+                                                                <p class="tAndCPara">Lorem Ipsum is simply dummy text of
+                                                                    the
+                                                                    printing and typesetting industry. Lorem Ipsum has
+                                                                    been
+                                                                    the
+                                                                    industry's standard dummy text ever since the 1500s,
+                                                                    when an
+                                                                    unknown printer took a galley of type and scrambled
+                                                                    it
+                                                                    to
+                                                                    make a type specimen book. It has survived not only
+                                                                    five
+                                                                    centuries, but also the leap into electronic
+                                                                    typesetting,
+                                                                    remaining essentially unchanged.</p>
+                                                            </div>
+                                                            <div style="float:left; width: 51%;">
+                                                                <span><input type="checkbox" id="TandC" name="tAndC"
+                                                                        value="tandc" style="display:inline; width:4%"
+                                                                        onchange="document.getElementById('submit').disabled = !this.checked;">
+                                                                    By signing up I agree to the terms and conditions &
+                                                                    Privacy
+                                                                    Policy</span>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <!-- <div class="row">
+                                                        <div class="col">
+                                                            <input (click)="next()" type="button" id="submit"
+                                                                class="submit action-button" value="Next" disabled />
+                                                            <input (click)="previous()" type="button" name="previous"
+                                                                class="previous action-button-previous" value="Previous" />
+                                                        </div>
+                                                    </div> -->
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12" *ngIf="step == 10">
+                                            <div class="row">
+                                                <div class="col-md-4 col-sm">
+                                                    <!-- <label class="">SELECT Form: </label> -->
+                                                    <select class="form-control" [(ngModel)]="selected"
+                                                        (change)='onSelectBank($event)'
+                                                        [ngModelOptions]="{standalone: true}">
+                                                        <option selected disabled>Select Bank</option>
+                                                        <option *ngFor="let bank of bankList" [value]="bank">{{bank}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-4 col-sm">
+
+                                                    <input type="file" placeholder="" class="form-control chooseBank">
+                                                </div>
+                                            </div>
+                                            <app-ni-form *ngIf="isNI" [captureData]="totalData"></app-ni-form>
+                                            <app-nbq-form *ngIf="isNbq" [captureData]="totalData"></app-nbq-form>
+
+                                            <app-mid-req-form *ngIf="isMashreq" [captureData]="totalData">
+                                            </app-mid-req-form>
+
+                                            <div *ngIf="isAbudhabi">
+                                                <p>You have selected ABU DHABI page</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="row">
+                                <div class="col-12 pull-right d-flex gap-16x justify-content-end" style="bottom: 50px;">
+                                    <button class="btn btn-default-primary" (click)="previous()"> <i
+                                            class="fas fa-long-arrow-alt-left"></i> Previous</button>
+                                    <button class="btn btn-default-fill" (click)="next()">Next <i
+                                            class="fas fa-long-arrow-alt-right"></i></button>
+                                </div>
+                            </div>
+
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <!-- </div> -->
+            <div *ngIf="isStaff">
+                <!-- Staff List -->
+                <div *ngIf="(isStaff && !isForm)">
+                    <div class="pull-right d-flex gap-16x">
+                        <button class="btn btn-default-fill" (click)="staff()"> Back</button>
+                        <!-- <button class="btn btn-sm btn-success edit_btn" (click)="staff()" style="float: right;">Back to
+                        MID</button> -->
+                    </div>
+                    <div class="table_data">
+                        <div class="table-responsive">
+                            <table class="table table_cust table_cust-with-buttons text-center">
+                                <thead>
+                                    <tr>
+                                        <th class="cur_Header">STAFF ID</th>
+                                        <th>NAME</th>
+                                        <th>CONTACT</th>
+                                        <th>STORE ID</th>
+                                        <th>ROLE</th>
+                                        <!-- <th class="cur_Header">STATUS</th> -->
+                                        <th class="cur_Header">ACTIVATION DATE</th>
+                                        <th>EDIT</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="align-baseline">
+                                    <tr *ngFor="let distributor of staffList">
+                                        <!-- <td>{{distributor.storeId}}</td> -->
+                                        <td>{{distributor.userId}}</td>
+                                        <td>{{distributor.firstName}}</td>
+                                        <td>{{distributor.mobileNumber}}</td>
+                                        <td>{{distributor.storeId}}</td>
+                                        <td>{{distributor.staffRole}}</td>
+                                        <!-- <td>{{distributor.contact}}</td> -->
+                                        <!-- <td>{{distributor.staffStatus}}</td> -->
+                                        <td>{{distributor.joiningDate | date}}</td>
+                                        <td><button class="btn btn-sm btn-sm-cust btn-outline-dark"
+                                                (click)="form()">Update</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- Updating Staff Details -->
+                <div class="row" *ngIf="(isStaff && isForm)">
+                    <div class="row">
+                        <button class="btn btn-sm btn-success edit_btn" (click)="form()"
+                            style="float: right;">Back</button>
+                    </div>
+                    <div class="table-container">
+                        <div class="container py-4">
+                            <div class="tab-content" id="v-pills-tabContent">
+                                <form [formGroup]="branchManagerForm" id="msform" (ngSubmit)="onManagerSubmit()">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-lg-6 col-sm-6 col-md-6 col-xl-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Sub Merchant</label>
+                                                        <select rows="1" class="form-control" placeholder=""
+                                                            formControlName="staffRole" style="margin: 0px;">
+                                                            <option value="" disabled>Select Sub Merchant Type</option>
+                                                            <option>Store Manager</option>
+                                                            <option>Delivery POS</option>
+                                                            <option>Staff POS</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-sm-6 col-md-6 col-xl-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Select Categories</label>
+                                                        <select rows="1" class="form-control">
+                                                            <option value="" class="">Choose Category</option>
+                                                            <optgroup label="Fruits & Vegetables">
+                                                                <option value="0">Mango</option>
+                                                                <option value="1">Apple</option>
+                                                            </optgroup>
+                                                            <optgroup label="Furniture">
+                                                                <option value="2">Chairs</option>
+                                                                <option value="3">Tables</option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-6 col-sm-6 col-md-6 col-xl-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Last Name</label>
+                                                        <input type="text" formControlName="lastName"
+                                                            class="form-control" placeholder="Last Name" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-sm-6 col-md-6 col-xl-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Mobile Number</label>
+                                                        <input type="text" formControlName="mobileNumber"
+                                                            class="form-control" placeholder="Mobile Number" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-6 col-sm-6 col-md-6 col-xl-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Store ID</label>
+                                                        <input type="text" formControlName="storeId"
+                                                            class="form-control" placeholder="Enter Store ID" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-sm-6 col-md-6 col-xl-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Gender</label>
+                                                        <select rows="1" class="form-control"
+                                                            placeholder="Select Gender" formControlName="gender"
+                                                            style="margin: 0px;">
+                                                            <option value="" disabled>Select Gender</option>
+                                                            <option>Male</option>
+                                                            <option>Female</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-6 col-sm-6 col-md-6 col-xl-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Title</label>
+                                                        <select rows="1" class="form-control" placeholder="Select title"
+                                                            formControlName="title" style="margin: 0px;">
+                                                            <option value="" disabled>Select Title</option>
+                                                            <option>Mr.</option>
+                                                            <option>Mrs.</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-sm-6 col-md-6 col-xl-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Reporting person ID</label>
+                                                        <input type="text" formControlName="ReportingUserId"
+                                                            class="form-control" placeholder="Reporting Person Id" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-6 col-sm-6 col-md-6 col-xl-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Email ID</label>
+                                                        <input type="text" formControlName="emailId"
+                                                            class="form-control" placeholder="Email ID" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-sm-6 col-md-6 col-xl-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Sales person ID</label>
+                                                        <input type="text" formControlName="salesPersonId"
+                                                            class="form-control" placeholder="Sale Person ID" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-6 col-sm-6 col-md-6 col-xl-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Emirates ID</label>
+                                                        <input type="text" formControlName="emiratesId"
+                                                            class="form-control" placeholder="Enter Emirates ID" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-sm-6 col-md-6 col-xl-6 col-xs-12">
+                                                    <div class="form-group" formGroupName="eIDoc">
+                                                        <label>Emirates ID expiry date</label>
+                                                        <input type="date" formControlName="documentExpiry"
+                                                            class="form-control" placeholder="Enter EI Expiry Date" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-6 col-sm-6 col-md-6 col-xl-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Attach Emirates ID file</label>
+                                                        <input type="file" formControlName="emiratesDocument"
+                                                            class="form-control" placeholder="Choose File"
+                                                            (change)="uploadEmiratesfile($event)" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-sm-6 col-md-6 col-xl-6 col-xs-12">
+                                                    <div class="form-group" formGroupName="passportDoc">
+                                                        <label>Passport Number</label>
+                                                        <input type="text" formControlName="documentNumber"
+                                                            class="form-control" placeholder="Passport No" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-6 col-sm-6 col-md-6 col-xl-6 col-xs-12">
+                                                    <div class="form-group" formGroupName="passportDoc">
+                                                        <label>Passport Expiry date</label>
+                                                        <input type="date" formControlName="documentExpiry"
+                                                            class="form-control"
+                                                            placeholder="Enter Passport expiry date" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-sm-6 col-md-6 col-xl-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Attach passport File</label>
+                                                        <input type="file" formControlName="passportDocument"
+                                                            class="form-control" placeholder="Passport File"
+                                                            (change)="uploadPassportfile($event)" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" formGroupName="visaDoc">
+                                                <div class="col-lg-6 col-sm-6 col-md-6 col-xl-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Visa Number</label>
+                                                        <input type="text" formControlName="documentNumber"
+                                                            class="form-control" placeholder="Enter Visa Number" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-sm-6 col-md-6 col-xl-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Visa Expiry date</label>
+                                                        <input type="date" formControlName="documentExpiry"
+                                                            class="form-control" placeholder="Enter Visa Ecpiry date" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-6 col-sm-6 col-md-6 col-xl-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Attach Visa File</label>
+                                                        <input type="file" formControlName="visaDocument"
+                                                            class="form-control" placeholder="Visa File"
+                                                            (change)="uploadVisafile($event)" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-sm-6 col-md-6 col-xl-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>PIN</label>
+                                                        <input type="password" formControlName="staffPIN"
+                                                            class="form-control" placeholder="Enter PIN" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-6 col-sm-6 col-md-6 col-xl-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Confirm PIN</label>
+                                                        <input type="password" formControlName="confirmPIN"
+                                                            class="form-control" placeholder="Confirm PIN" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+
+                                                <div class="col-12 mt-3">
+                                                    <div class="tAndC">
+                                                        <p class="tAndCPara">Lorem Ipsum
+                                                            is simply dummy text of the
+                                                            printing and typesetting
+                                                            industry. Lorem Ipsum has
+                                                            been the industry's standard
+                                                            dummy text ever since the
+                                                            1500s, when an unknown
+                                                            printer took a galley of
+                                                            type and scrambled it to
+                                                            make a type specimen book.
+                                                            It has survived not only
+                                                            five centuries, but also the
+                                                            leap into electronic
+                                                            typesetting, remaining
+                                                            essentially unchanged.</p>
+                                                    </div>
+                                                    <div style="float:left; width: 55%;">
+                                                        <span><input type="checkbox" id="TandC" name="tAndC"
+                                                                value="tandc" style="display:inline; width:4%"
+                                                                onchange="document.getElementById('ownerSubmit').disabled = !this.checked;">
+                                                            By signing up I agree to the
+                                                            terms and conditions &
+                                                            Privacy Policy</span>
+                                                    </div>
+                                                    <button (click)="addTID()" type="button" id="ownerSubmit"
+                                                        class="btn btn-sm btn-success edit_btn float-right"
+                                                        disabled>Submit</button>
+                                                </div>
+                                            </div>
+
+                                            <!-- </div> -->
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="isDevice" style="margin-top: 10px;">
+                <!-- Devices List -->
+                <div class="row" *ngIf="(isDevice && !isForm)">
+                    <div class="pull-right d-flex gap-16x">
+                        <button class="btn btn-default-fill" (click)="device()"> Back</button>
+                        <!-- <button class="btn btn-sm btn-success edit_btn" (click)="staff()" style="float: right;">Back to
+                        MID</button> -->
+                    </div>
+                    <!-- <div>
+                        <button class="btn btn-sm btn-success edit_btn" (click)="device()" style="float: right;">Back to
+                            MID</button>
+                        <button class="btn btn-sm btn-success edit_btn" *ngFor="let mid of merchantId"
+                            (click)="sendAuthentication(mid.mid)" style="float: right;">Request for
+                            TID</button>
+                    </div> -->
+                    <div class="table_data">
+                        <div class="table-responsive">
+                            <table class="table table_cust text-center table_cust-with-buttons">
+                                <thead>
+                                    <tr>
+                                        <th class="cur_Header">TID</th>
+                                        <!-- <th>ID</th> -->
+                                        <th>IMEI NUMBER</th>
+                                        <th>ADDRESS</th>
+                                        <th class="cur_Header">ACTIVATION DATE</th>
+                                        <th class="cur_Header">STATUS</th>
+                                        <th>EDIT</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="align-baseline">
+                                    <tr *ngFor="let tIDdata of staffListA">
+                                        <td>{{tIDdata.tidInfo.termainalId}}</td>
+                                        <!-- <td>{{tIDdata.tid}}</td> -->
+                                        <td>{{tIDdata.tidInfo.deviceIMEINumber}}</td>
+                                        <td class="remarks_one" data-tooltip="top" role="tooltip"
+                                            attr.aria-label="{{tIDdata.address}}"><i class="bi-card-list"></i></td>
+                                        <td>{{tIDdata.activationDate}}</td>
+                                        <td data-tooltip="top" role="tooltip"
+                                            attr.aria-label="{{tIDdata.emailId}},{{tIDdata.address}}">
+                                            {{tIDdata.tidInfo.status}}</td>
+                                        <td><button class="btn btn-sm btn-sm-cust btn-outline-dark"
+                                                (click)="sendAuthentication(tIDdata.mid)">Device Update</button>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" *ngIf="(isDevice && isForm)">
+                    <button class="btn btn-sm btn-success edit_btn" (click)="form()" style="float: right;">Back</button>
+                    <div class="card-body">
+                        <div
+                            class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
+                            <div class="step completed">
+                                <div class="step-icon-wrap">
+                                    <div class="step-icon"><i class="pe-7s-user stepIcn"></i></div>
+                                </div>
+                                <h4 class="step-title">Branch Manager request TID</h4>
+                            </div>
+                            <div class="step completed">
+                                <div class="step-icon-wrap">
+                                    <div class="step-icon"><i class="pe-7s-download stepIcn"></i></div>
+                                </div>
+                                <h4 class="step-title">Send Notification</h4>
+                            </div>
+
+                            <div class="step completed">
+                                <div class="step-icon-wrap">
+                                    <div class="step-icon"><i class="pe-7s-cloud-upload stepIcn"></i></div>
+                                </div>
+                                <h4 class="step-title">Document submitted</h4>
+                            </div>
+                            <div class="step completed">
+                                <div class="step-icon-wrap">
+                                    <div class="step-icon"><i class="pe-7s-copy-file stepIcn"></i></div>
+                                </div>
+                                <h4 class="step-title">Request for MID </h4>
+                            </div>
+                            <div class="step">
+                                <div class="step-icon-wrap">
+                                    <div class="step-icon"><i class="pe-7s-check stepIcn"></i></div>
+                                </div>
+                                <h4 class="step-title">MID Allocation</h4>
+                            </div>
+                            <div class="step">
+                                <div class="step-icon-wrap">
+                                    <div class="step-icon"><i class="pe-7s-play stepIcn"></i></div>
+                                </div>
+                                <h4 class="step-title">Awareness Video</h4>
+                            </div>
+                        </div>
+                        <div class="form-check" style="margin-top: 25px;">
+                            <div>
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                                <label class="form-check-label pendingStatus" for="flexCheckChecked">
+                                    Click here to Confirm MID
+                                </label>
+                                <input type="text" placeholder="Enter MID" [(ngModel)]="getID"
+                                    style="margin-left: 13px">
+                            </div>
+                            <div>
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                                <label class="form-check-label pendingStatus" for="flexCheckChecked">
+                                    Click here to send Awareness Video
+                                </label>
+                            </div>
+                            <button class="btn btn-sm back_btn float-right" (click)="AllocateMID()">Submit</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+</div>

@@ -1,0 +1,118 @@
+.container {
+  max-width: 560px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.step-wrapper {
+  margin: 30px;
+  margin-bottom: 110px;
+  position: relative;
+}
+
+.linestep {
+  text-align: center;
+  max-width: 250px;
+  position: absolute;
+  .num {
+    color: #fff;
+    border-radius: 100px;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-weight: bold;
+    background: #72ac47;
+  }
+  p {
+    width: 250px;
+    position: absolute;
+    margin-top: 7px;
+    font-weight: 500;
+    line-height: normal;
+    font-size: 18px;
+  }
+
+  p.top {
+    bottom: 50px;
+    left: -110px;
+  }
+  p.bottom {
+    // left: -110px;
+    left: -80px;
+  }
+  p.left {
+    width: 200px;
+    right: 34px;
+    top: -17px;
+  }
+  p.right {
+    width: 200px;
+    left: 34px;
+    top: -17px;
+  }
+}
+
+.linestep {
+  visibility: hidden;
+}
+.path {
+  visibility: hidden;
+}
+
+.move-line {
+  .path {
+    visibility: visible;
+    stroke-dasharray: 3700;
+    stroke-dashoffset: 3700;
+    animation: moveline 4s linear forwards;
+  }
+  .linestep {
+    animation-name: show-step-item;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+  }
+  .linestep1 {
+    animation-delay: 0.4s;
+  }
+  .linestep2 {
+    animation-delay: 0.8s;
+  }
+  .linestep3 {
+    animation-delay: 1.2s;
+  }
+  .linestep4 {
+    animation-delay: 1.6s;
+  }
+  .linestep5 {
+    animation-delay: 2s;
+  }
+  .linestep6 {
+    animation-delay: 2.4s;
+  }
+  .linestep7 {
+    animation-delay: 2.8s;
+  }
+  .linestep8 {
+    animation-delay: 3.2s;
+  }
+}
+
+@keyframes show-step-item {
+  from {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+  to {
+    visibility: visible;
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes moveline {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

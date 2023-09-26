@@ -1,0 +1,372 @@
+<div class="content-wrapper main-section-container">
+
+    <!-- <app-sc-menus></app-sc-menus> -->
+
+
+    <section class="content">
+        <div class="container-fluid p-0">
+            <div class="row" style="margin-top: -8px;">
+                <div class="col-12">
+                    <div class="section-title d-flex align-items-center justify-content-between">
+                        <div class="col-md-5 col-sm d-flex gap-16x">
+                            <div class="select">
+                                <label>Type of Catalogue: </label>
+                                <select rows="1" class="form-control" placeholder="" [(ngModel)]="selectedCatalogue"
+                                    (change)='selectCatalogue($event)'>
+                                    <option selected disabled>Select Catalogue</option>
+                                    <option>SMB Catalogue</option>
+                                    <option>Government Catalogue</option>
+                                    <option>Enterprise Catalogue</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-sm d-flex gap-16x" *ngIf="selectedCatalogue === 'SMB Catalogue'">
+                            <div class="select">
+                                <label>Select Category: </label>
+                                <select class="form-control" [(ngModel)]="selectedCategory"
+                                    (change)="setCategory($event)">
+                                    <option selected disabled>Select Category</option>
+                                    <option *ngFor="let data of categories" value="{{data._id}}">{{data.serviceName}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2" *ngIf="selectedCatalogue !==undefined || null">
+                            <button class="btn btn-default-primary download" (click)="downloadCSV()">Download <i
+                                    class="fas fa-download"></i></button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <section class="content" *ngIf="selectedCatalogue !== 'Select Catalogue'">
+                <div class="container-fluid">
+                    <div class="row">
+                        <!-- <div class="col-12 pl-0 pr-0"> -->
+                        <!-- <div class="table-container"> -->
+                        <div class="table-containerz">
+                            <hr>
+                            <div class="section-header">
+                                <div class="pull-right d-flex gap-16x">
+                                    <button class="btn btn-primary-lg"
+                                        *ngIf="selectedCatalogue === 'Enterprise Catalogue'"
+                                        data-toggle="modal" data-target="#createServiceModal">Add Service
+                                        <i class="fas fa-plus cta-plus-btn border-0"></i></button>
+                                    <button class="btn btn-primary-lg" *ngIf="selectedCatalogue === 'SMB Catalogue'"
+                                        data-toggle="modal" data-target="#addItem">Add Service
+                                        <i class="fas fa-plus cta-plus-btn border-0"></i></button>
+                                    <button class="btn btn-primary-lg" *ngIf="selectedCatalogue === 'SMB Catalogue'"
+                                        data-toggle="modal" data-target="#addCategory">Add Category
+                                        <i class="fas fa-plus cta-plus-btn border-0"></i></button>
+                                </div>
+                            </div>
+                            <!-- <hr> -->
+                            <div class="table_data">
+                                <div class="table-responsive">
+                                    <table class="table table_cust text-center" id="total_items_table">
+                                        <thead style="border-bottom: 1px solid #dee2e6;">
+                                            <tr>
+                                                <!-- <th *ngIf="selectedCatalogue !== 'SMB Catalogue'">MERCHANT ID
+                                                </th> -->
+                                                <th *ngIf="selectedCatalogue !== 'SMB Catalogue'">MERCHANT ID</th>
+                                                <th>SERVICE ID</th>
+                                                <th>
+                                                    SERVICE NAME
+                                                </th>
+                                                <th *ngIf="selectedCatalogue === 'SMB Catalogue'" >DESCRIPTION</th>
+                                                <!-- <th>AVERAGE</th> -->
+                                                <th>UNIT PRICE</th>
+                                                <!-- <th>UPDATE</th> -->
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let data of services">
+                                                <!-- <td *ngIf="selectedCatalogue !== 'SMB Catalogue'">
+                                                    {{data.mainMerchantId}}</td> -->
+                                                <td *ngIf="selectedCatalogue !== 'SMB Catalogue'">
+                                                    {{data.merchantId}}</td>
+                                                <td *ngIf="selectedCatalogue === 'SMB Catalogue'">
+                                                    {{data.serviceCode}}</td>
+                                                <td *ngIf="selectedCatalogue !== 'SMB Catalogue'">{{data.serviceId}}
+                                                </td>
+                                                <td *ngIf="selectedCatalogue === 'SMB Catalogue'">{{data.itemName}}
+                                                </td>
+                                                <td *ngIf="selectedCatalogue !== 'SMB Catalogue'">
+                                                    {{data.serviceName}}</td>
+                                                <!-- <td *ngIf="selectedLanguage == 'Hindi'">{{data.itemName}}</td> -->
+                                                <!-- <td *ngIf="selectedCatalogue !== 'SMB Catalogue'" data-tooltip="top"
+                                                    role="tooltip" attr.aria-label="{{data.englishDescription}}"><i
+                                                        class="bi bi-info-circle-fill"></i></td> -->
+                                                <td *ngIf="selectedCatalogue === 'SMB Catalogue'" data-tooltip="top"
+                                                    role="tooltip" attr.aria-label="{{data.itemDescription}}"><i
+                                                        class="bi bi-info-circle-fill"></i></td>
+                                                <!-- <td *ngIf="selectedCatalogue !== 'SMB Catalogue'">{{data.avg}}</td> -->
+                                                <td>{{data.unitPrice}}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- </div> -->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <!-- Create Service Modal -->
+    <div class="modal fade" id="createServiceModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createServiceModal">Create Service</h5>
+                </div>
+
+
+                <div class="modal-body">
+                    <form [formGroup]="serviceForm">
+                        <div class="row">
+                            <div class="col-md-6 col-sm">
+                                <div class="form-group">
+                                    <label for="distributorId">Distributor ID</label>
+                                    <input type="text" class="form-control" formControlName="distributorId"
+                                        id="distributorId">
+                                </div>
+                            </div>
+                            <!-- <div class="col-md-6 col-sm d-flex">
+                                <div class="select">
+                                    <label>Service Type </label>
+                                    <select rows="1" class="form-control" formControlName="serviceType" id="serviceType">
+                                        <option value="" disabled>Select Service Type</option>
+                                        <option>Enterprise Catalogue</option>
+                                        <option>Government Catalogue</option>
+                                    </select>
+                                </div>
+                            </div> -->
+                            <div class="col-md-6 col-sm">
+                                <div class="form-group">
+                                    <label for="serviceType">Service Type</label>
+                                    <select class="form-control" formControlName="serviceType" id="serviceType">
+                                        <option selected disabled>Select Service Type</option>
+                                        <option>Enterprise Catalogue</option>
+                                        <option>Government Catalogue</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm">
+                                <div class="form-group">
+                                    <label for="serviceId">Service ID</label>
+                                    <input type="text" class="form-control" formControlName="serviceId" id="serviceId">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm">
+                                <div class="form-group">
+                                    <label for="serviceName">Service Name</label>
+                                    <input type="text" class="form-control" formControlName="serviceName"
+                                        id="serviceName">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm">
+                                <div class="form-group">
+                                    <label for="serviceNameArabic">ServiceName Arabic</label>
+                                    <input type="text" class="form-control" formControlName="serviceNameArabic"
+                                        id="serviceNameArabic">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm">
+                                <div class="form-group">
+                                    <label for="unitPrice">Unit Price</label>
+                                    <input type="text" class="form-control" formControlName="unitPrice" id="unitPrice">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm">
+                                <div class="form-group">
+                                    <label for="englishDescription">English Description</label>
+                                    <input type="text" class="form-control" formControlName="englishDescription"
+                                        id="englishDescription">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm">
+                                <div class="form-group">
+                                    <label for="arabicDescription">Arabic Description</label>
+                                    <input type="text" class="form-control" formControlName="arabicDescription"
+                                        id="arabicDescription">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm">
+                                <div class="form-group">
+                                    <label for="currency">Currency</label>
+                                    <input type="text" class="form-control" formControlName="currency" id="currency">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm">
+                                <div class="form-group">
+                                    <label for="taxCode">taxCode</label>
+                                    <!-- <input type="text" class="form-control" formControlName="taxCode"
+                                        id="taxCode"> -->
+
+                                    <select class="form-control" formControlName="taxCode" id="taxCode"
+                                        (change)="taxCodes($event)">
+                                        <option selected disabled>Select TaxCode</option>
+                                        <option *ngFor="let tax of taxes" value="{{tax.taxCode}}">
+                                            {{tax.taxCode}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm">
+                                <div class="form-group">
+                                    <label for="department">Department</label>
+                                    <input type="text" class="form-control" formControlName="department"
+                                        id="department">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm">
+                                <div class="form-group">
+                                    <label for="bankServiceId">BankService Id</label>
+                                    <input type="text" class="form-control" formControlName="bankServiceId"
+                                        id="bankServiceId">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 col-sm">
+                                <div class="form-group">
+                                    <label for="priceType">Price Type</label>
+                                    <input type="text" class="form-control" formControlName="priceType" id="priceType">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm">
+                                <div class="form-group">
+                                    <label for="taxApplicable">Tax Applicable</label>
+                                    <select class="form-control" formControlName="taxApplicable" id="taxApplicable">
+                                        <!-- <option selected disabled>Select T</option> -->
+                                        <option selected value="true">True</option>
+                                        <option value="false">False</option>
+                                    </select>
+                                    <!-- <input type="text" class="form-control" formControlName="taxApplicable"
+                                        id="taxApplicable"> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- <div class="col-md-6 col-sm">
+                                <div class="form-group">
+                                    <label for="taxRate">Tax Rate</label>
+                                    <input type="text" class="form-control" value="{{rate}}" formControlName="taxRate"
+                                        id="taxRate">
+                                </div>
+                            </div> -->
+                            <div class="col-md-6 col-sm">
+                                <div class="form-group">
+                                    <label for="merchantId">Merchant ID</label>
+                                    <input type="text" class="form-control" formControlName="merchantId"
+                                        id="merchantId">
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer pull-right d-flex gap-16x">
+                    <!-- <div class="pull-right d-flex gap-16x"> -->
+                    <button class="btn btn-default-sm-primary" data-dismiss="modal">Cancel <i
+                            class="fas fa-minus"></i></button>
+                    <button class="btn btn-default-md-fill" (click)="onService()" data-dismiss="modal">Save</button>
+                    <!-- </div> -->
+                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success serv_btn" (click)="onService()"
+                        data-dismiss="modal">Save</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Add SMB Category -->
+    <div class="modal fade" id="addCategory" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content alert">
+                <div class="modal-body">
+                    <form [formGroup]="categoryForm">
+                        <div class="row">
+                            <!-- <div class="col-md-6 col-sm"> -->
+                            <div class="form-group">
+                                <label for="serviceId">Service Code</label>
+                                <input type="text" class="form-control" formControlName="serviceCode" id="serviceCode">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label for="serviceName">Category Name</label>
+                                <input type="text" class="form-control" formControlName="serviceName" id="serviceName">
+                            </div>
+                            <!-- </div> -->
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer pull-right d-flex gap-16x">
+                    <button class="btn btn-default-sm-primary" data-dismiss="modal">Cancel <i
+                            class="fas fa-minus"></i></button>
+                    <button class="btn btn-default-md-fill" (click)="addCategory()" data-dismiss="modal">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Add SMB Service -->
+
+    <div class="modal fade" id="addItem" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content alert">
+                <div class="modal-body">
+                    <form [formGroup]="itemForm">
+                        <div class="row">
+                            <div class="form-group">
+                                <label for="serviceCode">Select Category</label>
+                                <select class="form-control" formControlName="serviceCode" id="serviceCode"
+                                    (change)="category($event)">
+                                    <option selected disabled>Select Category</option>
+                                    <option *ngFor="let cat of categories" value="{{cat._id}}">
+                                        {{cat.serviceCode}}&nbsp; {{cat.serviceName}}</option>
+                                </select>
+                                <!-- <input type="text" class="form-control" formControlName="serviceCode" id="serviceCode"> -->
+                            </div>
+                            <!-- </div> -->
+                        </div>
+                        <div class="row" formGroupName="serviceItems">
+                            <!-- <div class="col-md-6 col-sm"> -->
+                            <div class="form-group">
+                                <label for="itemName">Item Name</label>
+                                <input type="text" class="form-control" formControlName="itemName" id="itemName">
+                            </div>
+                        </div>
+                        <div class="row" formGroupName="serviceItems">
+                            <div class="form-group">
+                                <label for="itemDescription">Item Description</label>
+                                <input type="text" class="form-control" formControlName="itemDescription"
+                                    id="itemDescription">
+                            </div>
+                            <!-- </div> -->
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer pull-right d-flex gap-16x">
+                    <button class="btn btn-default-sm-primary" data-dismiss="modal">Cancel <i
+                            class="fas fa-minus"></i></button>
+                    <button class="btn btn-default-md-fill" (click)="addItem()" data-dismiss="modal">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

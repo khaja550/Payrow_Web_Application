@@ -1,0 +1,160 @@
+/* watermark */
+
+.abtUs {
+    color: #71aa46;
+    margin-left: 40px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  
+  .abtusHr {
+    margin: 0;
+    width: 66px;
+    height: 2px;
+    color: #72ac47;
+    left: 110px;
+    bottom: 8px;
+    position: relative;
+  }
+
+  .mobile_product {
+    color: gray;
+    margin-left: 40px;
+    margin-bottom: 20px;
+    font-size: 35px;
+    font-weight: 700;
+  }
+
+  .button_col {
+    position: relative;
+    right: 55px;
+    margin: auto;
+    text-align: center;
+  }
+
+  .btn-success {
+    border-radius: 12px;
+    font-size: 13px;
+    background-color: #72ac47;
+    border-color: #72ac47;
+  }
+
+  .btn1 {
+    background-color: #5c5b59;
+    border-color: #5c5b59;
+  }
+  
+  .btn2 {
+    background-color: #5c5b59;
+    border-color: #5c5b59;
+  }
+  
+  .btn1:hover {
+    background-color: #81807d;
+    border-color: #81807d;
+  }
+  
+  .btn2:hover {
+    background-color: #81807d;
+    border-color: #81807d;
+  }
+  
+
+// main 1st page
+
+// $primaryColor: #EFC24B;
+// $secondaryColor: #F1DD72;
+
+
+main {
+    font-family: "Heebo", sans-serif;
+}
+
+.landing {
+    min-height: 100vh;
+    padding: 0rem 5rem;
+    background-size: cover;
+}
+
+.blog {
+    margin: 8px 0 0 12px;
+    color: white;
+    font-family: "Heebo", sans-serif;
+}
+
+.logo {
+    font-family: "Heebo", sans-serif;
+    font-weight: lighter;
+    margin-left: 3rem;
+    transform: translate(80%, -200%);
+}
+
+.logoImg {
+    height: 15vh;
+    margin: 0 1.5rem 0 2.5rem;
+}
+
+.tagLine {
+    font-family: "Heebo", sans-serif;
+    font-weight: lighter;
+    font-size: .8rem;
+    margin-top: -.2rem;
+    margin-left: 3rem;
+}
+
+.content {
+    color: gray;
+    padding: 80px 0 0 50px;
+    height: 600px;
+}
+
+.bigTitle {
+    padding: 50px 0 0 0;
+    font-size: 3rem;
+    width: 500px;
+    font-family: "Heebo", sans-serif;
+    line-height: 2.4;
+}
+
+.description {
+    width: 500px;
+    margin: 30px 0;
+    line-height: 2.4;
+}
+
+.phone {
+    transform: translate(300%, -80%);
+    height: 500px;
+    width: auto;
+    filter: drop-shadow(0px 5px 5px black);
+    animation: drop 1s ease;
+}
+
+.appleLink {
+    margin: 0;
+    padding: 0;
+    height: 125px;
+    width: auto;
+    transform: translate(40%, -400%);
+}
+
+.googleLink {
+    margin: 0;
+    padding: 0;
+    height: 125px;
+    width: auto;
+    transform: translate(50%, -400%);
+}
+
+@keyframes drop {
+    0% {
+        opacity: 0;
+        transform: translate(300%, -100%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(300%, -80%);
+    }
+}

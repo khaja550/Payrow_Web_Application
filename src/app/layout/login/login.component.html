@@ -1,0 +1,604 @@
+<app-app-menu></app-app-menu>
+
+<!-- <nav class="navbar navbar-expand-lg navbar-light navbar-white">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="assets/images/logo.png" alt="Logo" class="brand-image"
+                width="130px"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse ms-auto nav-mob" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto" style="position: relative; right: 17%;">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <button class="btn btn-tp btn_line" type="button" id="btn_about" style="width: 65px;">
+                            Home
+                            <span class="caret"></span>
+                        </button>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link">
+                        <button class="btn btn-tp btn_line" type="button" id="btn_vision" style="width: 90px;"
+                            (click)="aboutUs()">
+                            About Us
+                            <span class="caret"></span>
+                        </button>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <button class="btn btn-tp btn_line_board" type="button">
+                            PayRow Partners
+                            <span class="caret"></span>
+                        </button>
+                    </a>
+                </li>
+
+                <li class="nav-item ">
+                    <a class="nav-link" href="#">
+                        <button class="btn btn-tp btn_line_board" type="button" id="btn_about">
+                            Hardware Products
+                            <span class="caret"></span>
+                        </button>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <button class="btn btn-tp btn_line" type="button" style="width: 170px;">
+                            Software Products
+                            <span class="caret"></span>
+                        </button>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <button class="btn btn-tp btn_line" type="button" style="width: 105px;">
+                            Contact Us
+                            <span class="caret"></span>
+                        </button>
+                    </a>
+                </li>
+            </ul>
+
+            <div>
+                <button class="btn btn-success buttonReset">Location</button>
+            </div>
+        </div>
+    </div>
+</nav> -->
+
+
+<!-- <div class="container-fluid body-section">
+  
+  
+    <div class="row full-height">
+  
+      <div class="col-lg-6 col-md-12 col-sm-12  login-panel">
+  
+  
+        <div class="container">
+          <form class="form-horizontal text-left" name="loginForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()"
+            novalidate autocomplete="off">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" formControlName="email" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" formControlName="password" class="form-control mb-0" />
+            </div>
+            <div class="form-label">
+              <span class="psw"><a href="#">Forgot password?</a></span>
+            </div>
+            <div class="btn-area text-center">
+              <button class="btn btn-submit btn-gradient">SUBMIT</button>
+            </div>
+          </form>
+        </div>
+  
+        <div class="container" style="margin-left: -20px;">
+          <div class="row">
+            <div class="col-12">
+              <ngb-carousel [interval]="5000" [showNavigationArrows]="false" [pauseOnHover]="false">
+                <ng-template ngbSlide *ngFor="let data of textObject">
+                  <div class="menu-icon1">
+                    <span class="line"></span>
+                    <span class="line"></span>
+                    <span class="line"></span>
+                  </div>
+                  <div class="menu-icon-title">{{data.title}}</div>
+                  <div class="content">
+                    <p class="slide-content">{{data.content}}</p>
+                  </div>
+                </ng-template>
+              </ngb-carousel>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+  
+      <div class="col-lg-6 col-md-12 col-sm-12">
+  
+        <div>
+          <ngb-carousel [interval]="5000" [showNavigationIndicators]="false" [pauseOnHover]="false">
+            <ng-template ngbSlide *ngFor="let image of imageObject">
+              <div class="picsum-img-wrapper">
+                <img src="{{image.image}}">
+              </div>
+  
+            </ng-template>
+          </ngb-carousel>
+        </div>
+  
+        <div class="row ">
+          <div class="col-sm-12 col-md-12 d-block d-lg-none">
+  
+            <div class="container-fluid social-icons-area strataginpartner-mob">
+              <ul class="mar--10 mob-stratagic">
+                <li>
+                  <div class="btn-container">
+                    <div class="menu-icon">
+                      <span class="line"></span>
+                      <span class="line"></span>
+                      <span class="line"></span>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <button class="btn btn-sm btn-green"><span>Strategic Partner</span></button>
+                </li>
+                <li>
+                  <img src="assets/images/crif2.png">
+                </li>
+                <li>
+                  <img src="assets/images/ycd.png">
+                </li>
+                <li>
+                  <img src="assets/images/critical-river.png">
+                </li>
+                <li>
+                  <img src="assets/images/ducont1.png">
+                </li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="row mar-30 ">
+          <div class="col-sm-3">
+            <div class="card shadow-none bg-grey vouchers">
+              <div class="card-body card-text mx-auto">
+                <h4 class="digit-content"><b>{{prCountries}}</b></h4>
+  
+              </div>
+              <div class="digit-caption text-center"><b>Countries</b></div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="card shadow-none bg-grey vouchers">
+              <div class="card-body card-text mx-auto">
+                <h4 class="digit-content"><b>{{merchants_num}}K</b></h4>
+  
+              </div>
+              <div class="digit-caption text-center"><b>Merchants</b></div>
+            </div>
+  
+          </div>
+          <div class="col-sm-3">
+            <div class="card shadow-none bg-grey vouchers">
+              <div class="card-body card-text mx-auto">
+                <h4 class="digit-content"><b>{{trans_num}}M</b></h4>
+  
+              </div>
+              <div class="digit-caption text-center"><b>Transactions</b></div>
+            </div>
+  
+          </div>
+          <div class="col-sm-3">
+            <div class="card shadow-none bg-grey vouchers">
+              <div class="card-body card-text mx-auto">
+                <h4 class="digit-content"><b>{{num_hrs}}K</b></h4>
+  
+              </div>
+              <div class="digit-caption text-center"><b>OTP</b></div>
+            </div>
+          </div>
+        </div>
+  
+  
+  
+  
+  
+  
+      </div>
+  
+    </div>
+  
+  
+    <div class="bottom-row">
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-6 p-0">
+  
+          <div class="container-fluid px-0 pt-3">
+            <div class="row">
+  
+              <div class="col-sm-6 social-icons-global-schema px-0">
+                <ul>
+                  <li>
+                    <button class="btn btn-sm outline"><b>Global Schema - </b></button>
+                  </li>
+                  <li>
+                    <img src="assets/images/cc-visacard.png">
+                  </li>
+                  <li>
+                    <img src="assets/images/cc-mastercard.png">
+                  </li>
+                  <li>
+                    <img src="assets/images/cc-amr-express.png">
+                  </li>
+                  <li>
+                    <img src="assets/images/icons8-jcb-40.png">
+                  </li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                </ul>
+              </div>
+              <div class="col-sm-6 social-icons-area px-0">
+                <ul class="btn-social-icons">
+                  <li>
+                    <button class="btn btn-sm outline"><b>Social Media - </b></button>
+                  </li>
+                  <li>
+                    <a href="#"><i class="fab fa-facebook-f fa-1x"></i></a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="fab fa-instagram fa-1x"></i></a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="fab fa-linkedin fa-1x"></i></a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="fab fa-twitter fa-1x"></i></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+  
+        <div class="col-sm-12 col-md-12 col-lg-6 d-none d-lg-block">
+  
+          <div class="container-fluid social-icons-area strataginpartner">
+            <ul>
+              <li>
+                <div class="btn-container">
+                  <div class="menu-icon">
+                    <span class="line"></span>
+                    <span class="line"></span>
+                    <span class="line"></span>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <button class="btn btn-sm btn-green"><span>Strategic Partner</span></button>
+              </li>
+              <li>
+                <img src="assets/images/crif2.png">
+              </li>
+              <li>
+                <img src="assets/images/ycd.png">
+              </li>
+              <li>
+                <img src="assets/images/critical-river.png">
+              </li>
+              <li>
+                <img src="assets/images/ducont1.png">
+              </li>
+              <li></li>
+              <li></li>
+            </ul>
+  
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+
+<section class="login-main">
+  <div class="row">
+    <div class="col-md-4">
+
+
+
+      <!-- <div class="card" id="login" style="position: relative; left: 9%; width: 80%;">
+        <div class="container">
+          <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-column" class="" style="    padding: 15px;">
+              <div id="login-box" class="col-md-12">
+                <form id="login-form" class="form" action="" method="post">
+                  <h3 class="text-center">Login</h3>
+                  <div class="form-group">
+                    <label for="username" class="loginLabel">Username</label><br>
+                    <input type="text" name="username" id="username" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="password" class="loginLabel">Password</label><br>
+                    <input type="text" name="password" id="password" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="remember-me" class="loginLabel"><span>Remember
+                        me</span><span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
+                    <input type="submit" name="submit" class="btn btn-success buttonLogin" value="submit">
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+      <div>
+        <div class="contact-form-wrapper justify-content-center">
+          <form action="#" class="contact-form">
+            <h5 class="title">Login</h5>
+            <div>
+              <input type="email" class="form-control rounded border-white mb-3 form-input" placeholder="Email"
+                required>
+            </div>
+            <div>
+              <input type="password" class="form-control rounded border-white mb-3 form-input" id="password"
+                placeholder="Password" required>
+            </div>
+            <div class="display-space-between">
+              <div>
+                <input type="checkbox" checked style="margin: 2px;">
+                <label for="password" class="chekbox-label">Remember Me</label>
+              </div>
+              <div>
+                <p style="margin-bottom: 10px;"><a href="#" style="font-size: 15px;">Forget password</a></p>
+              </div>
+            </div>
+            <div class="submit-button-wrapper">
+              <button type="submit" class="btn-hover color-5">Login</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- Carrousel -->
+    <div class="col-md-8">
+
+      <!-- <div class="container-fluid">
+        <div class="row align-items-center">
+          <div class="col-auto">
+            <a class="h1 prevBtn" href="#carouselExampleControls" role="button" data-slide="prev">
+              <span>&lt;</span>
+            </a>
+          </div>
+          <div class="col">
+            <div class="customerJourney">
+              <h6 class="title1" style="margin-left: 0; margin-bottom: 11px;">PayRow Products
+              </h6>
+            </div>
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div class="row align-items-center">
+                    <div class="col-md-4 contentText">
+                      <img class="d-block img-fluid quatationmark" src="assets/images/landingpage/mark.svg" alt="mark">
+                      <h5 class="titleCarosal">About Us</h5>
+                      <p>PayRow is a B2B Fintech player addressing retail and microfinance
+                        industry using the business
+                        model of platform-as-a-service. The company has been established in the
+                        year 2020 In payment
+                        industry veterans PayRow having an inspiring experience to extent in
+                        market.</p>
+                    </div>
+                    <div class="col-md-8 py-2">
+                      <img class="d-block img-fluid" src="assets/images/landingpage/slideimg.jpg" alt="First slide">
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="row align-items-center">
+                    <div class="col-md-4 contentText">
+                      <h5>About Us</h5>
+                      <p>PayRow is a B2B Fintech player addressing retail and microfinance
+                        industry using the business
+                        model of platform-as-a-service. The company has been established in the
+                        year 2020 In payment
+                        industry veterans PayRow having an inspiring experience to extent in
+                        market.</p>
+                    </div>
+                    <div class="col-md-8">
+                      <img class="d-block img-fluid" src="assets/images/landingpage/slideimg.jpg" alt="2nd slide">
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="row align-items-center">
+                    <div class="col-md-4 contentText">
+                      <h5>About Us</h5>
+                      <p>PayRow is a B2B Fintech player addressing retail and microfinance
+                        industry using the business
+                        model of platform-as-a-service. The company has been established in the
+                        year 2020 In payment
+                        industry veterans PayRow having an inspiring experience to extent in
+                        market.</p>
+                    </div>
+                    <div class="col-md-8">
+                      <img class="d-block img-fluid" src="assets/images/landingpage/slideimg.jpg" alt="3rd slide">
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-auto">
+            <a class="h1 nextBtn" href="#carouselExampleControls" role="button" data-slide="next">
+              <span>&gt;</span>
+            </a>
+          </div>
+        </div>
+      </div> -->
+
+      <div class="row">
+        <div class="col-md-4" style="padding: 0;">
+          <div class="card product_card">
+            <div>
+              <div class="contentText">
+                <img class="d-block img-fluid quatationmark" src="assets/images/landingpage/mark.svg" alt="mark">
+                <span id="title" class="title_class"></span>
+                <br />
+                <span id="role" class="role_class"></span>
+              </div>
+            </div>
+            <!-- <div id="text_slider">
+              <div class="text_slides">
+                <div class="contentText">
+                  <img class="d-block img-fluid quatationmark" src="assets/images/landingpage/mark.svg" alt="mark">
+                  <h5 class="titleCarosal">About Us</h5>
+                  <p>PayRow is a B2B Fintech player addressing retail and microfinance
+                    industry using the business
+                    model of platform-as-a-service. The company has been established in the
+                    year 2020 In payment
+                    industry veterans PayRow having an inspiring experience to extent in
+                    market.</p>
+                </div>
+              </div>
+
+              <div class="text_slides">
+                <div class="contentText">
+                  <h5 class="titleCarosal">CR Machine</h5>
+                  <p>PayRow is a B2B Fintech player addressing retail and microfinance
+                    industry using the business
+                    model of platform-as-a-service. The company has been established in the
+                    year 2020 In payment
+                    industry veterans PayRow having an inspiring experience to extent in
+                    market.</p>
+                </div>
+              </div>
+
+              <div class="text_slides">
+                <div class="contentText">
+                  <h5 class="titleCarosal">POS Machine</h5>
+                  <p>PayRow is a B2B Fintech player addressing retail and microfinance
+                    industry using the business
+                    model of platform-as-a-service. The company has been established in the
+                    year 2020 In payment
+                    industry veterans PayRow having an inspiring experience to extent in
+                    market.</p>
+                </div>
+              </div>
+
+              <div class="text_slides">
+                <div class="contentText">
+                  <h5 class="titleCarosal">Printer</h5>
+                  <p>PayRow is a B2B Fintech player addressing retail and microfinance
+                    industry using the business
+                    model of platform-as-a-service. The company has been established in the
+                    year 2020 In payment
+                    industry veterans PayRow having an inspiring experience to extent in
+                    market.</p>
+                </div>
+              </div>
+
+              <div class="text_slides">
+                <div class="contentText">
+                  <h5 class="titleCarosal">Retail Machine</h5>
+                  <p>PayRow is a B2B Fintech player addressing retail and microfinance
+                    industry using the business
+                    model of platform-as-a-service. The company has been established in the
+                    year 2020 In payment
+                    industry veterans PayRow having an inspiring experience to extent in
+                    market.</p>
+                </div>
+              </div>
+
+              <div id="text_dotted"><span class="text_dot"></span><span class="text_dot"></span><span
+                  class="text_dot"></span><span class="text_dot"></span><span class="text_dot"></span></div>
+            </div> -->
+          </div>
+        </div>
+        <div class="col-md-8" style="padding: 0;">
+          <!-- <div id="slider"> -->
+          <!-- <div class="slides">
+              <img src="assets/images/landingpage/slideimg.jpg" width="100%" />
+            </div>
+
+            <div class="slides">
+              <img src="assets/images/landingpage/pos_machine.png" width="100%" />
+            </div>
+
+            <div class="slides">
+              <img src="assets/images/landingpage/slideimg.jpg" width="100%" />
+            </div>
+
+            <div class="slides">
+              <img src="assets/images/landingpage/slideimg.jpg" width="100%" />
+            </div>
+
+            <div class="slides">
+              <img src="assets/images/landingpage/slideimg.jpg" width="100%" />
+            </div> -->
+
+          <!-- <div id="dot"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span
+                class="dot"></span><span class="dot"></span></div> -->
+          <!-- </div> -->
+
+
+          <div class="page-wrapper" style="margin-left: 12px;">
+            <div class="bg-container">
+              <div class="bg-block active">
+                <img src="assets/images/landingpage/slideimg.jpg" style="border-radius: 12px;">
+              </div>
+              <div class="bg-block">
+                <img src="assets/images/landingpage/pos_device.jpg" style="border-radius: 12px;">
+              </div>
+              <div class="bg-block">
+                <img src="assets/images/landingpage/cashier.jpg" style="border-radius: 12px;">
+              </div>
+            </div>
+            <!-- Dots -->
+            <!-- <ul class="select-block" style="margin-bottom: 0;">
+              <li class="select-item"></li>
+              <li class="select-item"></li>
+              <li class="select-item"></li>
+            </ul> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding: 0; padding-bottom: 0;">
+  <div class="row bottomClass">
+    <div class="col-md-7">
+      <!-- Customer Journey -->
+      <!-- <app-customer-journey></app-customer-journey> -->
+      <app-cus-journey></app-cus-journey>
+    </div>
+    <div class="col-md-5">
+      <app-counter></app-counter>
+    </div>
+  </div>
+</section>

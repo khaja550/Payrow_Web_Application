@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payrow-web
+  labels:
+    app: payrow-web
+    visualize: "true"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payrow-web
+      serving: "true"
+  template:
+    metadata:
+      labels:
+        app: payrow-web
+        version: "latest"
+        serving: "true"
+        visualize: "true"
+    spec:
+      containers:
+      - name: payrow-web
+        image: payrow.azurecr.io/payrow-web:latest
+        imagePullPolicy: Always
+        env:
+         - name: baseApi
+           value: https://payrow.ae
+
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+        ports:
+        - name: http
+          containerPort: 80

@@ -1,0 +1,31 @@
+// @import url("https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css");
+
+.multiselect-dropdown .dropdown-btn .selected-item-container .selected-item {
+    border: 1px solid lightgray !important;
+    margin-right: 4px !important;
+    background: lightgray !important;
+    padding: 0 5px !important;
+    color: #fff !important;
+    border-radius: 2px !important;
+    float: left !important;
+    //max-width: 80% !important;
+    width: 177px !important;
+    height: 22px !important;
+    font-size: 13px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+
+}
+.formheader{
+    color: #72AC47;
+     font-family: Roboto;
+     margin: 12px 12px 24px;
+}
+.stepper-card{
+    position: relative; 
+    width: 212px;
+}
+.form-control{
+    -webkit-appearance: menulist
+  }
+

@@ -1,0 +1,140 @@
+.title1 {
+  color: #71aa46;
+  margin-left: 25px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.title2 {
+  margin-left: 25px;
+  font-size: 14px;
+  position: relative;
+  bottom: 10px;
+  font-weight: 700;
+}
+
+.customer {
+  margin-left: 20px;
+}
+
+.cusText {
+  margin-left: 20px;
+}
+
+.journeyTitle {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.common_journey {
+  width: 150px;
+}
+.common_journey1 {
+  width: 175px;
+}
+.common_journey2 {
+  width: 150px;
+}
+.common_journey3 {
+  width: 145px;
+}
+.common_journey4 {
+  width: 160px;
+}
+
+// Media queries
+
+// Screen size media queries
+
+@media screen and (min-width: 1821px) {
+  .contact-form {
+    margin-right: 100px;
+    height: 355px;
+    padding-top: 33px;
+  }
+  .btn-hover {
+    margin-top: 25px;
+  }
+  .align-items-center {
+    width: 1507px;
+  }
+  .titleCarosal {
+    left: 13%;
+  }
+  .col-auto {
+    display: none;
+  }
+  .common_journey1 {
+    width: 205px;
+  }
+  .common_journey1 {
+    width: 180px;
+  }
+  .common_journey2 {
+    width: 180px;
+  }
+  .common_journey3 {
+    width: 180px;
+  }
+  .common_journey4 {
+    width: 180px;
+  }
+}
+
+@media screen and (min-width: 1707px) {
+  .contact-form {
+    margin-right: 100px;
+    height: 355px;
+    padding-top: 33px;
+  }
+  .btn-hover {
+    margin-top: 25px;
+  }
+  .align-items-center {
+    width: 1507px;
+  }
+  .titleCarosal {
+    left: 13%;
+  }
+  .col-auto {
+    display: none;
+  }
+  .common_journey1 {
+    width: 205px;
+  }
+  .common_journey1 {
+    width: 180px;
+  }
+  .common_journey2 {
+    width: 180px;
+  }
+  .common_journey3 {
+    width: 180px;
+  }
+  .common_journey4 {
+    width: 180px;
+  }
+  .title1 {
+    font-size: 17px !important;
+  }
+  .title2 {
+    font-size: 17px !important;
+  }
+  .journeyTitle {
+    font-size: 17px !important;
+  }
+}
+
+@media screen and (min-width: 1517px) {
+  .contact-form {
+    height: 320px;
+    padding-top: 33px;
+    max-width: 410px;
+  }
+  .btn-hover {
+    margin-top: 2px;
+  }
+}
+

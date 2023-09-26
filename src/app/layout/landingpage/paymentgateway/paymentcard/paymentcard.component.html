@@ -1,0 +1,127 @@
+<div class="Checkout">
+    <div class="Card">
+        <div class="front">
+            <div class="card-chip"></div>
+            <div class="card-logo">
+                PayRow<br />BANK
+            </div>
+            <div class="card-number">
+                <label>Card Number</label>
+                <div class="mono" maxlength="10">
+                    XXXX XXXX XXXX XXXX
+                </div>
+            </div>
+            <div class="card-holder">
+                <label>Card Holder</label>
+                <div class="mono">
+                    Card Holder Name
+                </div>
+            </div>
+            <div class="card-date">
+                <label>Expires</label>
+                <div class="mono">
+                    1/2020
+                </div>
+            </div>
+        </div>
+        <div class="back">
+            <div class="card-strip"></div>
+            <div class="card-logo-back">
+                PayRow<br>Bank
+            </div>
+            <div class="card-code">
+                <label>CCV</label>
+                <div class="mono">
+                    XXX
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="Form">
+        <form onsubmit="return false">
+            <div class="Input">
+                <label>Card Number</label><input id="number" type="number" maxlength="10"/>
+            </div>
+            <div class="Input">
+                <label>Card Holder</label><input id="holder" type="text" />
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="Input">
+                        <label>Month</label><select id="month">
+                            <option value="01">
+                                01
+                            </option>
+                            <option value="02">
+                                02
+                            </option>
+                            <option value="03">
+                                03
+                            </option>
+                            <option value="04">
+                                04
+                            </option>
+                            <option value="05">
+                                05
+                            </option>
+                            <option value="06">
+                                06
+                            </option>
+                            <option value="07">
+                                07
+                            </option>
+                            <option value="08">
+                                08
+                            </option>
+                            <option value="09">
+                                09
+                            </option>
+                            <option value="10">
+                                10
+                            </option>
+                            <option value="11">
+                                11
+                            </option>
+                            <option value="12">
+                                12
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="Input">
+                        <label>Year</label><select id="year">
+                            <option value="2019">
+                                2019
+                            </option>
+                            <option value="2020">
+                                2020
+                            </option>
+                            <option value="2021">
+                                2021
+                            </option>
+                            <option value="2022">
+                                2022
+                            </option>
+                            <option value="2023">
+                                2023
+                            </option>
+                            <option value="2024">
+                                2024
+                            </option>
+                            <option value="2025">
+                                2025
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="Input">
+                        <label>CCV</label><input id="ccv" type="number" />
+                    </div>
+                </div>
+            </div>
+            <button>Checkout</button>
+        </form>
+    </div>
+</div>

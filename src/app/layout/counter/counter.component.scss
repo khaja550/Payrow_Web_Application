@@ -1,0 +1,120 @@
+//   Counter
+
+.coloumnPerf {
+  position: relative;
+  right: 25px;
+  // bottom: 60px;
+}
+
+.title1 {
+  color: #71aa46;
+  margin-left: 40px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.title2 {
+  margin-left: 40px;
+  font-size: 14px;
+  position: relative;
+  bottom: 10px;
+  font-weight: 700;
+}
+
+.titleHr {
+  margin: 0px;
+  height: 2px;
+  width: 65px;
+  position: absolute;
+  // left: 127px;
+  // bottom: -129px;
+  color: #71aa46;
+  font-weight: bold;
+  bottom: 202px;
+  left: 80px;
+}
+
+.performanceCard {
+  padding: 10px;
+  width: 122px;
+  text-align: center;
+  font-size: 13px;
+  // border-radius: 0px 25px 0px 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 19%), 0 3px 6px rgb(0 0 0 / 8%);
+  border: none;
+  background-color: #d3d3d31f;
+  margin-bottom: 25px;
+}
+
+.performanceImg {
+  width: 40px;
+  margin: auto;
+}
+
+.subTitle1 {
+  margin-top: 5px;
+  margin-bottom: 0px;
+  color: #66b2dd;
+}
+
+.subTitle2 {
+  margin-top: 5px;
+  margin-bottom: 0px;
+  color: #969dcb;
+}
+
+.subTitle3 {
+  margin-top: 5px;
+  margin-bottom: 0px;
+  color: #aacd91;
+}
+
+.subTitle4 {
+  margin-top: 5px;
+  margin-bottom: 0px;
+  color: #9d9d9b;
+}
+
+.count1 {
+  font-weight: 600;
+  color: #66b2dd;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 24px;
+}
+
+.count2 {
+  font-weight: 600;
+  color: #969dcb;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 24px;
+}
+
+.count3 {
+  font-weight: 600;
+  color: #aacd91;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 24px;
+}
+
+.count4 {
+  font-weight: 600;
+  color: #9d9d9b;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 24px;
+}
+
+
+
+@media screen and (min-width: 1707px) {
+  .title1{
+    font-size: 17px;
+  }
+  .titleHr{
+    left: 100px;
+  }
+  .title2{
+    font-size: 16px;
+  }
+}

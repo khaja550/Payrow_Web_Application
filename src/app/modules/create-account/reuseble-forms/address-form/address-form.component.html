@@ -1,0 +1,150 @@
+<div class="container" [formGroup]="addressForm">
+    <!-- <h5 style="color: #72AC47; font-family: Roboto;">STORE DETAILS</h5> -->
+    <div class="row">
+        <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+            <div class="form-group" formGroupName="storeAddress">
+                <!-- <label>Store Name</label> -->
+                <input type="text" formControlName="addressTitle" class="form-control" placeholder="Store Name" />
+                <div *ngIf="!addressForm?.get('storeAddress.addressTitle').valid && (addressForm?.get('storeAddress.addressTitle').dirty || addressForm?.get('storeAddress.addressTitle').touched)"
+                    class="alert">
+                    <div *ngIf="addressForm?.get('storeAddress.addressTitle').errors.required">
+                        <p class="error-msg">
+                            Please Enter Store Name
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+            <div class="form-group">
+                <!-- <label>Mobile Number</label> -->
+                <input type="text" formControlName="mobileNumber" class="form-control" placeholder="Mobile Number" />
+                <div *ngIf="addressForm.controls['mobileNumber'].invalid && (addressForm.controls['mobileNumber'].dirty || addressForm.controls['mobileNumber'].touched)"
+                    class="alert">
+                    <div *ngIf="addressForm.controls['mobileNumber'].errors.required">
+                        <p class="error-msg">
+                            Please Enter your Mobile Number
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xl-6 col-xs-12">
+            <div class="form-group" formGroupName="storeAddress">
+                <!-- <label>Address</label> -->
+                <input type="text" formControlName="completeAddress" class="form-control" placeholder="Address" />
+                <div *ngIf="!addressForm?.get('storeAddress.completeAddress').valid && (addressForm?.get('storeAddress.completeAddress').dirty || addressForm?.get('storeAddress.completeAddress').touched)"
+                    class="alert">
+                    <div *ngIf="addressForm?.get('storeAddress.completeAddress').errors.required">
+                        <p class="error-msg">
+                            Please Enter Complete address
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+            <div class="form-group">
+                <!-- <label>Website</label> -->
+                <input type="text" formControlName="website" class="form-control" placeholder="Website" />
+                <div *ngIf="addressForm.controls['website'].invalid && (addressForm.controls['website'].dirty || addressForm.controls['website'].touched)"
+                    class="alert">
+                    <div *ngIf="addressForm.controls['website'].errors.required">
+                        <p class="error-msg">
+                            Please Enter Store Website
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+            <div class="form-group">
+                <!-- <label>Fax Number</label> -->
+                <input type="text" formControlName="faxNumber" class="form-control" placeholder="Fax Number" />
+                <div *ngIf="addressForm.controls['faxNumber'].invalid && (addressForm.controls['faxNumber'].dirty || addressForm.controls['faxNumber'].touched)"
+                    class="alert">
+                    <div *ngIf="addressForm.controls['faxNumber'].errors.required">
+                        <p class="error-msg">
+                            Please Enter Store Fax Number
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xl-6 col-xs-12">
+            <div class="form-group" formGroupName="storeAddress">
+                <!-- <label>Location</label> -->
+                <input type="text" formControlName="latitude" class="form-control" placeholder="Location" />
+                <div *ngIf="!addressForm?.get('storeAddress.latitude').valid && (addressForm?.get('storeAddress.latitude').dirty || addressForm?.get('storeAddress.latitude').touched)"
+                    class="alert">
+                    <div *ngIf="addressForm?.get('storeAddress.latitude').errors.required">
+                        <p class="error-msg">
+                            Please Enter Location
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row" formGroupName="brachAccountDetails">
+        <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+            <div class="form-group">
+                <!-- <label>Name</label> -->
+                <input type="text" formControlName="name" class="form-control" placeholder="Name" />
+                <div *ngIf="!addressForm?.get('brachAccountDetails.name').valid && (addressForm?.get('brachAccountDetails.name').dirty || addressForm?.get('brachAccountDetails.name').touched)"
+                    class="alert">
+                    <div *ngIf="addressForm?.get('brachAccountDetails.name').errors.required">
+                        <p class="error-msg">
+                            Please Enter Name
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+            <div class="form-group">
+                <!-- <label>Bank Name</label> -->
+                <input type="text" formControlName="bankName" class="form-control" placeholder="Bank Name" />
+                <div *ngIf="!addressForm?.get('brachAccountDetails.bankName').valid && (addressForm?.get('brachAccountDetails.bankName').dirty || addressForm?.get('brachAccountDetails.bankName').touched)"
+                    class="alert">
+                    <div *ngIf="addressForm?.get('brachAccountDetails.bankName').errors.required">
+                        <p class="error-msg">
+                            Please Enter Bank Name
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+            <div class="form-group">
+                <!-- <label>Account Number</label> -->
+                <input type="text" formControlName="accNumber" class="form-control" placeholder="Account Number" />
+                <div *ngIf="!addressForm?.get('brachAccountDetails.accNumber').valid && (addressForm?.get('brachAccountDetails.accNumber').dirty || addressForm?.get('brachAccountDetails.accNumber').touched)"
+                    class="alert">
+                    <div *ngIf="addressForm?.get('brachAccountDetails.accNumber').errors.required">
+                        <p class="error-msg">
+                            Please Enter Account Number
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+            <div class="form-group">
+                <!-- <label>IBAN Number</label> -->
+                <input type="text" formControlName="ibanNumber" class="form-control" placeholder="IBAN Number" />
+                <div *ngIf="!addressForm?.get('brachAccountDetails.ibanNumber').valid && (addressForm?.get('brachAccountDetails.ibanNumber').dirty || addressForm?.get('brachAccountDetails.ibanNumber').touched)"
+                    class="alert">
+                    <div *ngIf="addressForm?.get('brachAccountDetails.ibanNumber').errors.required">
+                        <p class="error-msg">
+                            Please Enter IBAN Number
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

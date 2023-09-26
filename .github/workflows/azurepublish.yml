@@ -1,0 +1,35 @@
+name: Deploy payrow web
+##on:
+  ##push:
+    ##paths:
+      ##- 'backend/**'
+on:
+  release:
+    types: [published]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      # Authenticate a Service Principal to deploy to your Web App
+      - name: Azure Service Principal Authentication
+        uses: azure/login@v1
+        with:
+            creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      # Use docker login to log into ACR 
+      - name: Docker login to ACR
+        uses: azure/docker-login@v1
+        with:
+         # comment out the login-server parameter if using docker hub
+          login-server: ${{ secrets.REGISTRY }}
+          username: ${{ secrets.SERVICE_PRINCIPAL }}
+          password: ${{ secrets.SERVICE_PRINCIPAL_PASSWORD }}
+
+      # Build and push your image to Azure Container Registry 
+      - name: Build and Push container to ACR
+        run: |
+          docker build --file=Dockerfile -t ${{ secrets.REGISTRY }}/${{ secrets.IMAGE_NAME }}:latest .
+          docker push ${{ secrets.REGISTRY }}/${{ secrets.IMAGE_NAME }}:latest
+        working-directory: .

@@ -1,0 +1,271 @@
+
+.stepper-card{
+    position: relative; 
+    width: 212px;
+}
+.multiselect-dropdown .dropdown-btn .selected-item-container .selected-item {
+    border: 1px solid lightgray !important;
+    margin-right: 4px !important;
+    background: lightgray !important;
+    padding: 0 5px !important;
+    color: #fff !important;
+    border-radius: 2px !important;
+    float: left !important;
+    //max-width: 80% !important;
+    width: 177px !important;
+    height: 22px !important;
+    font-size: 13px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+
+}
+.formheader{
+    color: #72AC47;
+     font-family: Roboto;
+     margin: 12px 12px 24px;
+}
+.alert{
+    padding: 2rem;
+}
+.bi{
+    font-size: 20px;
+    color: #504f4f;
+}
+.icn_btn{
+    border: none;
+    background:none;
+}
+// /*form styles*/
+// #msform {
+//     text-align: center;
+//     position: relative;
+//     // margin-top: 10px !important;
+// }
+
+// #msform fieldset {
+//     background: white;
+//     border: 0 none;
+//     border-radius: 0px;
+//     box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+//     padding: 20px 30px;
+//     box-sizing: border-box;
+//     width: 80%;
+//     margin: 0 10%;
+
+//     /*stacking fieldsets above each other*/
+//     position: relative;
+// }
+
+// /*Hide all except first fieldset*/
+// #msform fieldset:not(:first-of-type) {
+//     display: none;
+// }
+
+// /*inputs*/
+// #msform input,
+// #msform textarea {
+//     padding: 8px;
+//     border: 1px solid #ccc;
+//     border-radius: 5px;
+//     margin-bottom: 10px;
+//     width: 100%;
+//     box-sizing: border-box;
+//     font-family: montserrat;
+//     color: #2c3e50;
+//     font-size: 13px;
+// }
+
+// #msform input:focus,
+// #msform textarea:focus {
+//     -moz-box-shadow: none !important;
+//     -webkit-box-shadow: none !important;
+//     box-shadow: none !important;
+//     border: 1px solid #72ac47;
+//     outline-width: 0;
+//     transition: All 0.5s ease-in;
+//     -webkit-transition: All 0.5s ease-in;
+//     -moz-transition: All 0.5s ease-in;
+//     -o-transition: All 0.5s ease-in;
+// }
+
+// #msform select {
+//     -webkit-appearance: menulist;
+//     //padding: 15px;
+//     border: 1px solid #ccc;
+//     border-radius: 5px;
+//     // margin-bottom: 10px;
+//     width: 100%;
+//     box-sizing: border-box;
+//     font-family: montserrat;
+//     color: #2c3e50;
+//     font-size: 13px;
+//     // margin-left: 9px;
+// }
+// #msform select:focus,
+// #msform textarea:focus {
+//     -moz-box-shadow: none !important;
+//     -webkit-box-shadow: none !important;
+//     box-shadow: none !important;
+//     border: 1px solid #72ac47;
+//     outline-width: 0;
+//     transition: All 0.5s ease-in;
+//     -webkit-transition: All 0.5s ease-in;
+//     -moz-transition: All 0.5s ease-in;
+//     -o-transition: All 0.5s ease-in;
+// }
+
+// /*buttons*/
+// #msform .action-button {
+//     width: 59px;
+//     background: #72ac47;
+//     font-weight: bold;
+//     color: white;
+//     /* border: 0 none; */
+//     border-radius: 2px;
+//     cursor: pointer;
+//     padding: 3px 0px;
+//     margin: 10px 5px;
+//     float: right;
+// }
+
+// // #msform .action-button:hover, #msform .action-button:focus {
+// //     box-shadow: 0 0 0 2px white, 0 0 0 3px #ee0979;
+// // }
+
+// #msform .action-button-previous {
+//     width: 59px;
+//     background: #72ac47;
+//     font-weight: bold;
+//     color: white;
+//     /* border: 0 none; */
+//     border-radius: 2px;
+//     cursor: pointer;
+//     padding: 3px 0px;
+//     margin: 10px 5px;
+//     float: right;
+// }
+// .addMerchant{
+//     margin-top: 10px;
+// }
+// /*progressbar*/
+// #progressbar {
+//     margin-bottom: 30px;
+//     overflow: hidden;
+//     padding-left: 6px;
+//     /*CSS counters to number the steps*/
+//     counter-reset: step;
+// }
+
+// #progressbar li {
+//     list-style-type: none;
+//     //color: white;
+//     text-transform: uppercase;
+//     font-size: 9px;
+//     width: 13.09%;
+//     float: left;
+//     position: relative;
+//     letter-spacing: 1px;
+//     margin-left: 8px;
+// }
+
+
+// #progressbar li:before {
+//     content: counter(step);
+//     counter-increment: step;
+//     width: 24px;
+//     height: 24px;
+//     line-height: 26px;
+//     display: block;
+//     font-size: 12px;
+//     color: #333;
+//     background: white;
+//     border-radius: 25px;
+//     margin: 0 auto 10px auto;
+// }
+
+// /*progressbar connectors*/
+// #progressbar li:after {
+//     content: '';
+//     width: 100%;
+//     height: 2px;
+//     background: white;
+//     position: absolute;
+//     left: -50%;
+//     top: 9px;
+//     z-index: -1; /*put it behind the numbers*/
+// }
+
+// #progressbar li:first-child:after {
+//     /*connector not needed before the first step*/
+//     content: none;
+// }
+
+// /*marking active/completed steps green*/
+// /*The number of the step and the connector before it = green*/
+// #progressbar li.active:before, #progressbar li.active:after {
+//     background: #72AC47;
+//     color: white;
+// }
+
+
+
+// #progressbar li.inactive:before{
+//     //background: burlywood;
+//     color: #000;
+//     border:1px solid rgb(148, 144, 144);
+//     padding: 0px;
+
+// };
+// .line{
+//     margin-top: -22px;
+//     margin-left: 58%;
+//     width: 95%;
+//     color: #72AC47;
+// }
+
+// .thead,
+// tbody,
+// tfoot,
+// tr,
+// td,
+// th {
+//     font-size: 12px !important;
+// }
+// .edit_btn {
+//     width: 110px;
+//     background: #72ac47;
+//     border: none;
+//     padding: 6px;
+//     // float: left;
+//     // margin-bottom: 10px;
+//     margin-left: 10px !important;
+// }
+// .table_data {
+//     margin-top: 10px;
+// }
+// .table-container{
+//     margin-top: 10px;
+// }
+// .error-msg {
+//     margin-top: -20px;
+//     margin-bottom: -21px;
+//     float: left;
+//     color: red;
+// }
+// .tAndC {
+//     width: auto;
+//     padding: 1%;
+//     background: rgb(255, 255, 255);
+// }
+// .tAndCPara {
+//     text-align: left;
+// }
+// .form-control {
+//     font-size: 14px;
+// }
+
+// label {
+//     font-weight: 400 !important;
+//     font-size: 15px;
+//     float: left;
+// }

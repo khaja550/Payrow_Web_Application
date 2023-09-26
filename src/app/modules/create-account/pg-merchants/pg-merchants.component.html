@@ -1,0 +1,726 @@
+<div class="content-wrapper main-section-container">
+    <app-create-ac-menus></app-create-ac-menus>
+    <section class="content">
+        <div class="container-fluid">
+
+            <div class="row" *ngIf="(!isUser && !mainMer && !subMer)">
+                <div class="table-containerz">
+                    <div class="section-header">
+                        <h4>Creat New MID</h4>
+                        <div class="pull-right d-flex gap-16x">
+                            <button class="btn btn-primary-lg" (click)="addUser()">Create New MID <i
+                                    class="fas fa-plus cta-plus-btn border-0"></i></button>
+                        </div>
+                    </div>
+                    <div class="table_data">
+                        <div class="table-responsive">
+                            <table class="table table_cust table_cust-with-buttons text-center">
+                                <thead>
+                                    <tr>
+                                        <th class="cur_Header">MERCHANT ID</th>
+                                        <th>NAME</th>
+                                        <!-- <th>EMAIL</th> -->
+                                        <th>ADDRESS</th>
+                                        <!-- <th>CONTACT</th> -->
+                                        <!-- <th>RISK STATUS</th> -->
+                                        <th class="cur_Header">PayrowID</th>
+                                        <!-- <th class="cur_Header">MID</th> -->
+                                        <th class="cur_Header">ACTIVATION DATE</th>
+                                        <th>CREDENTIALS</th>
+                                        <th>SUB MERCHANTS</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="align-baseline">
+                                    <tr *ngFor="let merchant of merchantList">
+                                        <td>{{merchant.merchantId}}</td>
+                                        <td>{{merchant.merchantName}}</td>
+                                        <td class="remarks_one" data-tooltip="top" role="tooltip"
+                                            attr.aria-label="{{merchant.merchantCountry}},{{merchant.marchantAddress}}">
+                                            <i class="bi-card-list"></i>
+                                        </td>
+                                        <!-- <td>{{merchant.merchantContactNumber}}</td> -->
+                                        <!-- <td>5</td> -->
+                                        <td>{{merchant.payRowId}}</td>
+                                        <!-- <td>{{merchant.bankMID}}</td> -->
+                                        <td>{{merchant.updatedAt | date}}</td>
+                                        <td><button class="btn btn-sm btn-sm-cust btn-outline-dark"
+                                                (click)="merMastersList(merchant.merchantId)">Details</button></td>
+                                        <td><button class="btn btn-sm btn-sm-cust btn-outline-dark user-list-ibtn"
+                                                (click)="subMerchant(merchant.merchantId)"><span><img
+                                                        src="../../../../assets/images/user_list-icon.svg" alt=""><img
+                                                        src="../../../../assets/images/user_list-icon-hover.svg"
+                                                        alt=""></span></button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="addMerchant" *ngIf="isUser">
+                <div class="section-header mb-4">
+                    <h4>Creat New MID</h4>
+                    <button class="btn btn-default-normal" (click)="addUser()">Cancel <i
+                            class="fas fa-plus rotate-45"></i></button>
+                </div>
+                <!-- new code -->
+                <section class=" header">
+                    <form [formGroup]="basicForm" id="msform" class="d-flex align-item-center justify-content-between">
+                        <div class="stepper-card">
+                            <div class="stepper-body">
+                                <ul id="progressbar" class="progress-cust">
+                                    <li class="progress-item"
+                                        [ngClass]="step>=1 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Basic</p>
+                                    </li>
+                                    <li class="progress-item"
+                                        [ngClass]="step>=2 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Personal</p>
+                                    </li>
+                                    <li class="progress-item"
+                                        [ngClass]="step>=3 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Settlement Account</p>
+                                    </li>
+                                    <li class="progress-item"
+                                        [ngClass]="step>=4 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Licence</p>
+                                    </li>
+                                    <li class="progress-item"
+                                        [ngClass]="step>=5 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Business</p>
+                                    </li>
+                                    <li class="progress-item"
+                                        [ngClass]="step>=6 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Business Type</p>
+                                    </li>
+                                    <li class="progress-item"
+                                        [ngClass]="step>=7 ? 'progress-item-active ' : 'progress-item-completed'">
+                                        <p>Terms & Conditions</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="" style="width: inherit;">
+                            <div class="" *ngIf="step == 1">
+                                <div class="col-12">
+                                    <h5 class="formheader">BASIC</h5>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-sm-12 col-md-12 col-xl-12 col-xs-12">
+                                                <div class="form-group float-left">
+                                                    <div class="picture-container">
+                                                        <div class="picture" style="margin: 1rem auto 0">
+                                                            <div class="picture2">
+                                                                <img src="assets/images/profile1.jpeg"
+                                                                    class="picture-src" id="wizardPicturePreview"
+                                                                    title="">
+                                                            </div>
+                                                            <div class="upload-btn">
+                                                                <div class="file-upload">
+                                                                    <input type="file" /><i class="fa fa-arrow-up"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+                                                <div class="form-group">
+                                                    <!-- <label>First Name</label> -->
+                                                    <input type="text" formControlName="merchantId" class="form-control"
+                                                        placeholder="Merchant ID" />
+                                                    <div *ngIf="basicForm.controls['merchantId'].invalid && (basicForm.controls['merchantId'].dirty || basicForm.controls['merchantId'].touched)"
+                                                        class="alert">
+                                                        <div *ngIf="basicForm.controls['merchantId'].errors.required">
+                                                            <p class="error-msg">
+                                                                Please Enter Merchant ID
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+                                                <div class="form-group">
+                                                    <!-- <label>First Name</label> -->
+                                                    <input type="text" formControlName="merchantName"
+                                                        class="form-control" placeholder="Merchant Name" />
+                                                    <div *ngIf="basicForm.controls['merchantName'].invalid && (basicForm.controls['merchantName'].dirty || basicForm.controls['merchantName'].touched)"
+                                                        class="alert">
+                                                        <div *ngIf="basicForm.controls['merchantName'].errors.required">
+                                                            <p class="error-msg">
+                                                                Please Enter Merchant Name
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+                                                <div class="form-group">
+                                                    <!-- <label>Last Name</label> -->
+                                                    <input type="text" formControlName="merchantNameArabic"
+                                                        class="form-control" placeholder="Merchnat Name in Arabic" />
+                                                    <div *ngIf="basicForm.controls['merchantNameArabic'].invalid && (basicForm.controls['merchantNameArabic'].dirty || basicForm.controls['merchantNameArabic'].touched)"
+                                                        class="alert">
+                                                        <div
+                                                            *ngIf="basicForm.controls['merchantNameArabic'].errors.required">
+                                                            <p class="error-msg">
+                                                                Please Enter Merchant Name in Arabic
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+                                                <div class="form-group">
+                                                    <!-- <label>Mobile Number</label> -->
+                                                    <input type="text" formControlName="merchantCountry"
+                                                        class="form-control" placeholder="Country" />
+                                                    <div *ngIf="basicForm.controls['merchantCountry'].invalid && (basicForm.controls['merchantCountry'].dirty || basicForm.controls['merchantCountry'].touched)"
+                                                        class="alert">
+                                                        <div
+                                                            *ngIf="basicForm.controls['merchantCountry'].errors.required">
+                                                            <p class="error-msg">
+                                                                Please Enter Country
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+
+                                            <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+                                                <div class="form-group">
+                                                    <!-- <label>Email</label> -->
+                                                    <input type="email" formControlName="merchantEmail"
+                                                        class="form-control" placeholder="Email" />
+                                                    <div *ngIf="basicForm.controls['merchantEmail'].invalid && (basicForm.controls['merchantEmail'].dirty || basicForm.controls['merchantEmail'].touched)"
+                                                        class="alert">
+                                                        <div
+                                                            *ngIf="basicForm.controls['merchantEmail'].errors.required">
+                                                            <p class="error-msg">Please Enter Email ID</p>
+                                                        </div>
+                                                        <div>
+                                                            <p class="error-msg"
+                                                                *ngIf="basicForm.controls['merchantEmail'].errors.maxlength">
+                                                                Pin should be maximum of length 4</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+                                                <div class="form-group">
+                                                    <!-- <label>Mobile Number</label> -->
+                                                    <input type="text" formControlName="merchantContactNumber"
+                                                        class="form-control" placeholder="Mobile Number" />
+                                                    <div *ngIf="basicForm.controls['merchantContactNumber'].invalid && (basicForm.controls['merchantContactNumber'].dirty || basicForm.controls['merchantContactNumber'].touched)"
+                                                        class="alert">
+                                                        <div
+                                                            *ngIf="basicForm.controls['merchantContactNumber'].errors.required">
+                                                            <p class="error-msg">
+                                                                Please Enter Mobile Number
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-sm-6 col-md-6 col-xl-6 col-xs-12">
+                                                <div class="form-group">
+                                                    <!-- <label>Date Of Birth</label> -->
+                                                    <input type="text" formControlName="marchantAddress"
+                                                        class="form-control" placeholder="Address" />
+                                                    <div *ngIf="basicForm.controls['marchantAddress'].invalid && (basicForm.controls['marchantAddress'].dirty || basicForm.controls['marchantAddress'].touched)"
+                                                        class="alert">
+                                                        <div
+                                                            *ngIf="basicForm.controls['marchantAddress'].errors.required">
+                                                            <p class="error-msg">
+                                                                Please Enter Address
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+                                                <div class="form-group">
+                                                    <!-- <label>Payrow Fees</label> -->
+                                                    <input type="text" formControlName="payrowFees" class="form-control"
+                                                        placeholder="Enter Payrow fees" />
+                                                    <div *ngIf="basicForm.controls['payrowFees'].invalid && (basicForm.controls['payrowFees'].dirty || basicForm.controls['payrowFees'].touched)"
+                                                        class="alert">
+                                                        <div *ngIf="basicForm.controls['payrowFees'].errors.required">
+                                                            <p class="error-msg">
+                                                                Please Enter Payrow Fees
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+                                                <div class="form-group">
+                                                    <!-- <label>Bank Fees</label> -->
+                                                    <input type="text" formControlName="bankFees" class="form-control"
+                                                        placeholder="Enter Bank Fees" />
+                                                    <div *ngIf="basicForm.controls['bankFees'].invalid && (basicForm.controls['bankFees'].dirty || basicForm.controls['bankFees'].touched)"
+                                                        class="alert">
+                                                        <div *ngIf="basicForm.controls['bankFees'].errors.required">
+                                                            <p class="error-msg">
+                                                                Please Enter Bank Fees
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+                                                <div class="form-group">
+                                                    <!-- <label>Merchant PostBack Url</label> -->
+                                                    <input type="text" formControlName="merchantPostBackUrl"
+                                                        class="form-control"
+                                                        placeholder="Enter Merchant PostBack Url" />
+                                                    <div *ngIf="basicForm.controls['merchantPostBackUrl'].invalid && (basicForm.controls['merchantPostBackUrl'].dirty || basicForm.controls['merchantPostBackUrl'].touched)"
+                                                        class="alert">
+                                                        <div
+                                                            *ngIf="basicForm.controls['merchantPostBackUrl'].errors.required">
+                                                            <p class="error-msg">
+                                                                Please Enter Merchant PostBack Url
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-sm-3 col-md-3 col-xl-3 col-xs-12">
+                                                <div class="form-group">
+                                                    <!-- <label>Group ID</label> -->
+                                                    <input type="text" formControlName="groupId" class="form-control"
+                                                        placeholder="Enter Group Id" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="" [formGroup]="pgMerchantsForm">
+                                <div class="col-12" *ngIf="step == 2">
+                                    <h5 class="formheader">PERSONAL DETAILS</h5>
+                                    <app-personal formControlName="personalDetails">
+                                    </app-personal>
+                                </div>
+
+                                <div class="col-12" *ngIf="step == 3">
+                                    <h5 class="formheader">BANK DETAILS</h5>
+                                    <app-bank-form formControlName="bankDetails">
+                                    </app-bank-form>
+                                    <!-- <app-card-form formControlName="cardDetails" *ngIf="isPersonal"></app-card-form> -->
+                                </div>
+                                <div class="col-12" *ngIf="step == 4">
+                                    <h5 class="formheader">LICENCE DETAILS</h5>
+                                    <app-licence-form formControlName="licenseDetails"></app-licence-form>
+                                </div>
+
+                                <div class="col-12" *ngIf="step == 5">
+                                    <h5 class="formheader">BUSINESS DETAILS</h5>
+                                    <app-business-form formControlName="businessDetails"></app-business-form>
+                                </div>
+
+                                <div class="col-12" *ngIf="step == 6">
+                                    <h5 class="formheader">BUSINESS TYPE</h5>
+                                    <!-- <div class="form-group ">
+                                        <label>Type of Merchant</label><span style="color:red;">*</span>
+                                        <div class="select">
+                                            <select rows="1" class="form-control" placeholder=""
+                                                (change)="checkExisting($event)" [(ngModel)]="selectedUser">
+                                                <option value="" selected>Select Type of Merchant</option>
+                                                <option value="newUser">New Customer</option>
+                                                <option value="existingUser">Existing Customer</option>
+                                            </select>
+                                        </div>
+                                    </div> -->
+                                    <div class="row">
+                                        <div class="col-lg-4 col-sm-4 col-md-4 col-xl-4 col-xs-12">
+                                            <div class="form-group">
+                                                <div class="select">
+                                                    <!-- <label class="bankLabel">Select type of Service:</label> -->
+                                                    <select class="form-control" [(ngModel)]="selectedSer"
+                                                        (change)='onSelectCat($event)'
+                                                        [ngModelOptions]="{standalone: true}">
+                                                        <option disabled>Select Service</option>
+                                                        <!-- <option value="Enterprise">Enterprise</option> -->
+                                                        <option value="SMB">SMB</option>
+                                                        <option value="Govt">Government</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-4 col-md-4 col-xl-4 col-xs-12"
+                                            *ngIf="selectedSer ==='SMB'">
+                                            <!-- <div class="select_drpDown">
+                                                <ng-multiselect-dropdown [placeholder]="'select Items'" [data]="multiSelectorData"
+                                                    [(ngModel)]="selectedItems" [settings]="dropdownSettings"
+                                                    (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)"
+                                                    (onDeSelect)="onItemDeSelect($event)" [required]='requiredField'>
+                                                </ng-multiselect-dropdown>
+                                            </div> -->
+                                            <div class="select_drpDown">
+                                                <ng-multiselect-dropdown [placeholder]="'select Items'"
+                                                    [data]="businesstypes" [(ngModel)]="selectCategory"
+                                                    [ngModelOptions]="{standalone: true}" [settings]="dropdownSettings"
+                                                    (onSelect)="onItemSelect($event)"
+                                                    (onSelectAll)="onSelectAll($event)"
+                                                    (onDeSelect)="onItemDeSelect($event)" [required]='requiredField'>
+                                                </ng-multiselect-dropdown>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <section class="content mt-3"
+                                        *ngIf="selectedCatName !=='' || selectedSer ==='Govt' ||  selectCategory.length > 0">
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <div class="col-12 pl-0 pr-0">
+                                                    <div class="table-container">
+                                                        <div class="table_data">
+                                                            <div class="table-responsive">
+                                                                <table class="table table_cust" id="total_items_table">
+                                                                    <thead style="border-bottom: 1px solid #dee2e6;">
+                                                                        <tr>
+                                                                            <th *ngIf="selectedSer ==='Govt'">
+                                                                                SELECT</th>
+                                                                            <th>SERVICE ID</th>
+                                                                            <th>
+                                                                                SERVICE NAME
+                                                                            </th>
+                                                                            <!-- <th>SERVICE ID</th> -->
+                                                                            <th>DESCRIPTION</th>
+                                                                            <!-- <th>SEQUENCE</th> -->
+                                                                            <!-- <th>AVERAGE</th> -->
+                                                                            <th>UNIT PRICE</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+
+                                                                        <tr *ngFor="let data of srvcData; let i=index">
+                                                                            <td *ngIf="selectedSer ==='Govt'">
+                                                                                <input [(ngModel)]="data.Selected"
+                                                                                    type="checkbox"
+                                                                                    (click)="oncheckSrvc(data)"
+                                                                                    [ngModelOptions]="{standalone: true}">
+                                                                            </td>
+                                                                            <td>{{data.serviceId}}</td>
+                                                                            <td *ngIf="selectedSer ==='SMB'">
+                                                                                {{data.itemName}}</td>
+                                                                            <td *ngIf="selectedSer ==='Govt'">
+                                                                                {{data.serviceName}}</td>
+                                                                            <!-- <td *ngIf="selectedLanguage == 'Arabic'">{{data.itemName}}</td> -->
+                                                                            <!-- <td *ngIf="selectedLanguage == 'Hindi'">{{data.itemName}}</td> -->
+                                                                            <!-- <td>{{data.serviceId}}</td> -->
+                                                                            <td data-tooltip="top" role="tooltip"
+                                                                                attr.aria-label={{data.desc}}><i
+                                                                                    class="bi bi-info-circle-fill"></i>
+                                                                            </td>
+                                                                            <!-- <td>{{data.sequence}}</td> -->
+                                                                            <!-- <td>{{data.avg}}</td> -->
+                                                                            <td>{{data.unitPrice}}</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                                <div class="col-12" *ngIf="step == 7">
+                                    <div class="container">
+
+                                        <div class="row">
+
+                                            <div class="col-12 mt-3">
+                                                <div class="tAndC">
+                                                    <p class="tAndCPara">Lorem Ipsum is simply dummy text of
+                                                        the
+                                                        printing and typesetting industry. Lorem Ipsum has
+                                                        been
+                                                        the
+                                                        industry's standard dummy text ever since the 1500s,
+                                                        when an
+                                                        unknown printer took a galley of type and scrambled
+                                                        it
+                                                        to
+                                                        make a type specimen book. It has survived not only
+                                                        five
+                                                        centuries, but also the leap into electronic
+                                                        typesetting,
+                                                        remaining essentially unchanged.</p>
+                                                </div>
+                                                <div style="float:left; width: 51%;">
+                                                    <span><input type="checkbox" id="TandC" name="tAndC" value="tandc"
+                                                            style="display:inline; width:4%"
+                                                            onchange="document.getElementById('submit').disabled = !this.checked;">
+                                                        By signing up I agree to the terms and conditions &
+                                                        Privacy
+                                                        Policy</span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+                                        <!-- <div class="row">
+                                                <div class="col">
+                                                    <input (click)="next()" type="button" id="submit"
+                                                        class="submit action-button" value="Next" disabled />
+                                                    <input (click)="previous()" type="button" name="previous"
+                                                        class="previous action-button-previous" value="Previous" />
+                                                </div>
+                                            </div> -->
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="row">
+                        <div class="col-12 pull-right d-flex gap-16x justify-content-end">
+                            <button class="btn btn-default-primary" (click)="previous()"> <i
+                                    class="fas fa-long-arrow-alt-left"></i> Previous</button>
+                            <button class="btn btn-default-fill" (click)="next()">Next <i
+                                    class="fas fa-long-arrow-alt-right"></i></button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="row" *ngIf="mainMer">
+                <div class="table-containerz">
+                    <div class="section-header">
+                        <h4></h4>
+                        <div class="pull-right d-flex gap-16x">
+                            <button class="btn btn-default-primary" (click)="back()">Back</button>
+                            <button class="btn btn-primary-lg" data-toggle="modal" data-target="#addGatewayUser"
+                                (click)="resetForm()">
+                                Add Gateway User <i class="fas fa-plus cta-plus-btn border-0"></i></button>
+                        </div>
+                    </div>
+                    <div class="table_data">
+                        <div class="table-responsive">
+                            <table class="table table_cust table_cust-with-buttons text-center">
+                                <thead>
+                                    <tr>
+                                        <th>MAIN MERCHANT ID</th>
+                                        <th>USERNAME</th>
+                                        <th>EDIT</th>
+                                        <th>DELETE</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="align-baseline">
+                                    <tr *ngFor="let users of gatewayuserData">
+                                        <td>{{users.username}}</td>
+                                        <td>{{users.gatewayMerchantId}}</td>
+                                        <td><button class="icn_btn" (click)="getPGUserByID(users.username)">
+                                                <i class="bi bi-pencil-square" data-toggle="modal"
+                                                    data-target="#addGatewayUser"></i></button></td>
+                                        <td><button class="icn_btn" (click)="getPGUserByID(users.username)" data-toggle="modal" data-target="#delUser"><i
+                                                    class="bi bi-trash-fill"></i></button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="subMer">
+                <div class="table-containerz">
+                    <div class="section-header">
+                        <h4>Creat Sub Merchant ID</h4>
+                        <div class="pull-right d-flex gap-16x">
+                            <button class="btn btn-default-primary" (click)="back()"> Back</button>
+                            <button class="btn btn-primary-lg" data-toggle="modal" data-target="#addSubMerchant"
+                                (click)="resetForm()">
+                                Add Sub Merchant <i class="fas fa-plus cta-plus-btn border-0"></i></button>
+                        </div>
+                    </div>
+                    <div class="table_data">
+                        <div class="table-responsive">
+                            <table class="table table_cust table_cust-with-buttons text-center">
+                                <thead>
+                                    <tr>
+                                        <th>MERCHANT ID</th>
+                                        <th>MERCHANT NAME</th>
+                                        <th>CONTACT</th>
+                                        <th>EMAIL</th>
+                                        <th>ADDRESS</th>
+                                        <th>EDIT</th>
+                                        <th>DELETE</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="align-baseline">
+                                    <tr *ngFor="let users of subMerData">
+                                        <td>{{users.merchantId}}</td>
+                                        <td>{{users.merchantName}}</td>
+                                        <td>{{users.merchantContactNumber}}</td>
+                                        <td data-tooltip="top" role="tooltip" attr.aria-label="{{users.merchantEmail}}">
+                                            <i class="bi-envelope-open"></i>
+                                        </td>
+                                        <td><span data-tooltip="top" role="tooltip"
+                                                attr.aria-label="{{users.marchantAddress}}">
+                                                <i class="bi-card-list"></i></span></td>
+                                        <td><button class="icn_btn" (click)="getSubMerchantsByID(users.merchantId)"> <i
+                                                    class="bi bi-pencil-square" data-toggle="modal"
+                                                    data-target="#addSubMerchant"></i></button></td>
+                                        <td><button class="icn_btn" data-toggle="modal" data-target="#delUser"><i
+                                            (click)="getSubMerchantsByID(users.merchantId)" class="bi bi-trash-fill"></i></button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="addGatewayUser" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content alert">
+                    <div class="modal-body">
+                        <form [formGroup]="gatewayUserForm">
+                            <div class="row">
+                                <!-- <div class="col-md-6 col-sm"> -->
+                                <div class="form-group">
+                                    <label for="username">User Name</label>
+                                    <input type="text" class="form-control" formControlName="username" id="username">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="PasswordHash">Password</label>
+                                    <input type="password" class="form-control" formControlName="PasswordHash"
+                                        id="PasswordHash">
+                                </div>
+                                <!-- </div> -->
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="gatewayMerchantId">Gateway Merchant ID</label>
+                                    <input type="text" class="form-control" value="{{mainMerchantId}}"
+                                        formControlName="gatewayMerchantId" id="gatewayMerchantId">
+                                </div>
+                                <!-- </div> -->
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer pull-right d-flex gap-16x">
+                        <button class="btn btn-default-sm-primary" data-dismiss="modal">Cancel <i
+                                class="fas fa-minus"></i></button>
+                        <button class="btn btn-default-md-fill" (click)="createGatewayMer()"
+                        *ngIf="isCreate && !isEdit" data-dismiss="modal">Save</button>
+                            <button class="btn btn-default-md-fill" (click)="updateUser()" data-dismiss="modal"
+                            *ngIf="!isCreate && isEdit">Update</button>
+                        <button class="btn btn-default-md-fill" (click)="edit()" data-dismiss="modal"
+                            *ngIf="!isCreate && !isEdit">Edit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="addSubMerchant" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content alert">
+                    <div class="modal-body">
+                        <form [formGroup]="subMerchantForm">
+                            <div class="row">
+                                <!-- <div class="col-md-6 col-sm"> -->
+                                <div class="form-group">
+                                    <!-- <label for="merchantId">Merchant ID</label> -->
+                                    <input type="text" class="form-control" placeholder="Enter Merchant ID"
+                                        formControlName="merchantId" id="merchantId">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" value="{{mainMerchantId}}"
+                                        placeholder="Enter Main Merchant ID" formControlName="mainMerchantId"
+                                        id="mainMerchantId">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <!-- <label for="merchantName">Merchant Name</label> -->
+                                    <input type="text" class="form-control" placeholder="Enter Merchant Name"
+                                        formControlName="merchantName" id="merchantName">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <!-- <label for="merchantNameArabic">Merchant name Arabic</label> -->
+                                    <input type="text" class="form-control" placeholder="Enter Merchant Name in Arabic"
+                                        formControlName="merchantNameArabic" id="merchantNameArabic">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <!-- <label for="marchantAddress">Merchant Address</label> -->
+                                    <input type="text" class="form-control" placeholder="Enter Merchant Address"
+                                        formControlName="marchantAddress" id="marchantAddress">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <!-- <label for="merchantCountry">Merchant Country</label> -->
+                                    <input type="text" class="form-control" placeholder="Enter Merchant Country"
+                                        formControlName="merchantCountry" id="merchantCountry">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <!-- <label for="merchantEmail">Merchant Email</label> -->
+                                    <input type="text" class="form-control" placeholder="Enter Merchant Email ID"
+                                        formControlName="merchantEmail" id="merchantEmail">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <!-- <label for="merchantContactNumber">Merchant Contact</label> -->
+                                    <input type="text" class="form-control" placeholder="Enter Merchant Contact"
+                                        formControlName="merchantContactNumber" id="merchantContactNumber">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer pull-right d-flex gap-16x">
+                        <button class="btn btn-default-sm-primary" data-dismiss="modal">Cancel <i
+                                class="fas fa-minus"></i></button>
+                        <button class="btn btn-default-md-fill" (click)="createsubMerchant()" data-dismiss="modal"
+                            *ngIf="isCreate && !isEdit">Save</button>
+                        <button class="btn btn-default-md-fill" (click)="updateUser()" data-dismiss="modal"
+                            *ngIf="!isCreate && isEdit">Update</button>
+                        <button class="btn btn-default-md-fill" (click)="edit()" data-dismiss="modal"
+                            *ngIf="!isCreate && !isEdit">Edit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="delUser" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content alert">
+                    <div class="modal-body">
+                        <h6>Are you sure you want to delete?</h6>
+                    </div>
+                    <div class="modal-footer pull-right d-flex gap-16x">
+                        <button class="btn btn-default-md-fill" data-dismiss="modal">No</button>
+                        <button class="btn btn-default-md-fill" style="background-color:#e90707;"
+                            data-dismiss="modal" (click)="delUser()">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</div>

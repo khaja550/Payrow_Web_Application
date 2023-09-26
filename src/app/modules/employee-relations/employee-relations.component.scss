@@ -1,0 +1,397 @@
+.btn-success {
+  background-color: #71aa46;
+  border-color: #71aa46;
+  margin-right: 0px;
+  width: 90px;
+}
+.btn-submit {
+  font-size: 14px;
+}
+.cancel{
+  margin-left: 77%;
+  height: 25px;
+  font-size: 18px;
+  background: none;
+  border: none;
+  color: #80807f;
+}
+.default-accordion .content .title {
+  font-size: 10pt;
+  color: #5b5a5a;
+}
+.default-accordion .avatar-container img {
+  width: 99%;
+  height: 99%;
+  border: 1px solid #72ac47;
+  border-radius: 50%;
+  padding: 0px;
+  margin-top: 1px;
+  margin-left: 1px;
+  margin-bottom: 1px;
+}
+
+.default-accordion .top-section.collapsed .avatar-container img {
+  width: 97%;
+  width: 97%;
+  border: 1px solid #72ac47;
+  border-radius: 50%;
+  padding: 0px;
+  margin-top: 1px;
+  margin-left: 1px;
+  margin-bottom: 1px;
+}
+
+.default-accordion .top-section.collapsed .avatar-container {
+  width: 50px;
+  height: 50px;
+  // position: relative;
+  border-radius: 50%;
+  padding: 1px;
+  background-color: transparent;
+  border: 2px solid #80807f;
+  color: #ffffff;
+  margin: 0px auto;
+  overflow: hidden;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+}
+
+.default-accordion .top-section .avatar-container {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  transition: ease 0.5s;
+  border: 2px solid #80807f;
+  border-radius: 50%;
+  padding: 1px;
+}
+
+.card {
+  box-shadow: 0 0 0px rgb(0 0 0 / 13%), 0 0px 0px rgb(0 0 0 / 20%);
+}
+
+#msform {
+  text-align: center;
+  position: relative;
+  margin-top: 30px;
+}
+
+#msform fieldset {
+  background: white;
+  border: 0 none;
+  border-radius: 0px;
+  box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+  padding: 20px 30px;
+  box-sizing: border-box;
+  width: 80%;
+  margin: 0 10%;
+
+  /*stacking fieldsets above each other*/
+  position: relative;
+}
+
+/*Hide all except first fieldset*/
+#msform fieldset:not(:first-of-type) {
+  display: none;
+}
+
+/*inputs*/
+#msform input,
+#msform textarea {
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  width: 100% !important;
+  box-sizing: border-box;
+  color: #2c3e50;
+  font-size: 13px;
+}
+
+#msform input:focus,
+#msform textarea:focus {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border: 1px solid #72ac47;
+  outline-width: 0;
+  transition: All 0.5s ease-in;
+  -webkit-transition: All 0.5s ease-in;
+  -moz-transition: All 0.5s ease-in;
+  -o-transition: All 0.5s ease-in;
+}
+
+#msform select {
+  //padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  width: 95%;
+  box-sizing: border-box;
+  color: #2c3e50;
+  font-size: 13px;
+  margin-left: 9px;
+}
+#msform select:focus,
+#msform textarea:focus {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border: 1px solid #72ac47;
+  outline-width: 0;
+  transition: All 0.5s ease-in;
+  -webkit-transition: All 0.5s ease-in;
+  -moz-transition: All 0.5s ease-in;
+  -o-transition: All 0.5s ease-in;
+}
+
+/*buttons*/
+#msform .action-button {
+  width: 59px;
+  background: #72ac47;
+  font-weight: bold;
+  color: white;
+  /* border: 0 none; */
+  border-radius: 2px;
+  cursor: pointer;
+  padding: 3px 0px;
+  margin: 10px 5px;
+  float: right;
+}
+#searchtext input {
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 60% !important;
+  float: right;
+  box-sizing: border-box;
+  color: #373836;
+  font-size: 13px;
+  position: absolute;
+  bottom: -4px;
+  right: 2px;
+}
+
+#searchtext input:focus {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border: 1px solid #72ac47;
+  outline-width: 0;
+  transition: All 0.5s ease-in;
+  -webkit-transition: All 0.5s ease-in;
+  -moz-transition: All 0.5s ease-in;
+  -o-transition: All 0.5s ease-in;
+}
+
+.current-status-dropdown {
+  color: #72ac47;
+  border: none;
+  width: auto;
+  background-color: transparent;
+}
+.current-status-dropdown:focus {
+  -webkit-box-shadow: none;
+}
+
+.current-status-dropdown option {
+  color: #7e7f80;
+}
+.current-status-dropdown option:checked {
+  color: #ffffff;
+  background-color: #72ac47;
+}
+
+.error-msg {
+  margin-bottom: 0px;
+  float: left;
+  color: red;
+  margin-top: 0px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  width: auto;
+}
+.alert {
+  padding: 0 16px 16px 0;
+}
+
+// SATHYA CSS
+
+.Empcard {
+  font-size: 14px;
+  color: gray;
+  line-height: 2;
+}
+
+// .test:after {
+//     content: '\2807';
+//     font-size: 100px;
+//     color: gray;
+//     }
+
+.editProf {
+  margin-left: -25px;
+  padding: 1px 5px 0px 5px;
+  float: right;
+  border-radius: 4px;
+  background-color: #d3d3d357;
+  position: relative;
+  cursor: pointer;
+}
+
+.dividerHr {
+  position: relative;
+  // right: 8px;
+}
+
+.wpsBtn {
+  background-color: #fff;
+  border: none;
+  border: 1px solid #6c757d;
+  width: 75px;
+  margin-right: 10px;
+  color: gray;
+}
+
+.wpsBtn,
+.leaveBtn {
+  font-size: 11px;
+  padding: 5px 10px;
+}
+
+.leaveBtn {
+  border: 1px solid #6c757d;
+  background-color: #fff;
+  color: grey;
+}
+
+.leaveBtn:focus {
+  color: #fff;
+  background-color: #0d6efd;
+}
+
+//modal
+
+.modal-dialog,
+.modal.right .modal-dialog {
+  position: fixed;
+  margin: auto;
+  // width: 320px;
+  width: 500px;
+  height: 100%;
+  -webkit-transform: translate3d(0%, 0, 0);
+  -ms-transform: translate3d(0%, 0, 0);
+  -o-transform: translate3d(0%, 0, 0);
+  transform: translate3d(0%, 0, 0);
+}
+
+.modal-content,
+.modal.right .modal-content {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.modal-body,
+.modal.right .modal-body {
+  padding: 15px;
+}
+
+/*Right*/
+.modal.right.fade .modal-dialog {
+  // right: -320px;
+  right: 0px;
+  -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+  -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+  -o-transition: opacity 0.3s linear, right 0.3s ease-out;
+  transition: opacity 0.3s linear, right 0.3s ease-out;
+}
+
+.modal.right.fade.in .modal-dialog {
+  right: 0;
+}
+
+/* ----- MODAL STYLE ----- */
+.modal-content {
+  border-radius: 0;
+  border: none;
+}
+
+.modal-header {
+  border-bottom-color: #eeeeee;
+  background-color: #fafafa;
+}
+
+.form-group {
+  font-size: 13px;
+  font-weight: 200 !important;
+  margin-bottom: 0px;
+}
+
+label:not(.form-check-label):not(.custom-file-label) {
+  font-weight: 400;
+  color: grey;
+}
+
+.form-control {
+  font-size: 14px;
+  color: grey;
+}
+
+.addItem {
+  display: inline;
+  background-color: #72ac47;
+  color: white;
+  width: 120px;
+  margin-top: -8px;
+  position: relative;
+  right: 15px;
+}
+
+.addmoreEmp {
+  background: #fff;
+  padding-bottom: 3px;
+}
+
+.con-tabs {
+  padding: 10px;
+  border: none;
+  box-shadow: 0px 1px 7px -5px grey;
+}
+
+.employeeCard:hover {
+  box-shadow: 0px 1px 7px -5px grey;
+  // border: none;
+  transition: 0.3s;
+}
+
+.applyModal {
+  position: unset !important;
+  height: 45% !important;
+}
+
+.btn-update {
+  float: right;
+  position: relative;
+  top: 31px;
+  height: 36px;
+  width: 100px;
+  background-color: #6E759F;
+    border-color: #6E759F;
+}
+
+.employee-edit-form-modal .container{
+    line-height: 3;
+    padding: 24px;
+    overflow-y: hidden;
+}
+
+.buttonsAdd{
+  float: right;
+}
+
+.form-control{margin-bottom: 10px;
+label{margin: 0;}
+.form-control,
+select.form-control:not([size]):not([multiple]){max-height: 44px;}
+}

@@ -1,0 +1,263 @@
+<div class="content-wrapper main-section-container">
+
+    <app-complaints-menu></app-complaints-menu>
+
+<!-- Complaints contents -->
+
+    <!-- <section class="content" style="display:none;">
+        <div class="container-fluid p-0">
+            <div class="row">
+                <div class="col-12 pl-0 pr-0">
+                    <div class="table-container">
+                        <div class="pull-left d-flex gap-16x"> 
+                            <div class="search-holder"> 
+                                <form action="">
+                                    <div class="input-group">
+                                        <input type="search" autocomplete="off" [(ngModel)]="searchText" placeholder="search" aria-describedby="button-addon5" class="form-control">
+                                        <div class="input-group-append">
+                                            <button id="button-addon5" type="submit" class="btn"><i class="fa fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>  
+                        <div class="table_data">
+                            <div class="hr-tag">
+                                <hr />
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table_cust">
+                                    <thead>
+                                        <tr>
+                                            <th class="cur_Header">
+                                                <a [href]="" (click)="sortOrders('userId')">
+                                                    USER ID
+                                                    <span *ngIf="sortType == 'userId' && !sortReverse"
+                                                        class="fa fa-caret-down"></span>
+                                                    <span *ngIf="sortType == 'userId' && sortReverse"
+                                                        class="fa fa-caret-up"></span>
+                                                </a>
+                                            </th>
+                                            <th class="cur_Header">
+                                                <a [href]="" (click)="sortOrders('cust_name')">
+                                                    CUSTOMER NAME
+                                                    <span *ngIf="sortType == 'cust_name' && !sortReverse"
+                                                        class="fa fa-caret-down"></span>
+                                                    <span *ngIf="sortType == 'cust_name' && sortReverse"
+                                                        class="fa fa-caret-up"></span>
+                                                </a>
+                                            </th>
+                                            <th>CONTACT</th>
+                                            <th>EMAIL</th>
+                                            <th>REMARKS</th>
+                                            <th class="cur_Header">
+                                                <a [href]="" (click)="sortOrders('date')">
+                                                    DATE
+                                                    <span *ngIf="sortType == 'date' && !sortReverse"
+                                                        class="fa fa-caret-down"></span>
+                                                    <span *ngIf="sortType == 'date' && sortReverse"
+                                                        class="fa fa-caret-up"></span>
+                                                </a>
+                                            </th>
+                                            <th>COMPLAINT NUMBER</th>
+                                            <th>DELAY</th>
+                                            <th class="cur_Header">
+                                                <a [href]="" (click)="sortOrders('status')">
+                                                    STATUS
+                                                    <span *ngIf="sortType == 'status' && !sortReverse"
+                                                        class="fa fa-caret-down"></span>
+                                                    <span *ngIf="sortType == 'status' && sortReverse"
+                                                        class="fa fa-caret-up"></span>
+                                                </a>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="align-baseline">
+                                        <tr *ngFor="let complaint of complaintsData | filter:searchText">
+                                            <td>{{complaint.userId}}</td>
+                                            <td>{{complaint.cust_name}}</td>
+                                            <td>{{complaint.contact}}</td>
+                                            <td data-tooltip="top" role="tooltip" attr.aria-label="{{complaint.email}}"><i
+                                                    class="bi-envelope-open"></i></td>
+                                            <td class="remarks_one"><i class="bi-card-list"
+                                                    data-toggle="modal" data-target="#myModal"
+                                                    (click)="edit(complaint)"></i></td>
+                                            <td>{{complaint.date | date: 'dd/MM/yyyy'}}</td>
+                                            <td>{{complaint.complaint_Num}}</td>
+                                            <td>{{complaint.delay}} </td>
+                                            <td class="status status-green">
+                                                <span [ngStyle]="{'color':complaint.color}"><i
+                                                        class="fas fa-bars icon-select"></i>
+                                                </span>
+                                                <select class="status-option status_complaint"
+                                                    (change)="changeStatus($event.target.value)">
+                                                    
+                                                    <option *ngFor="let i of status" [value]="complaint.status">
+                                                        {{i.key}}
+                                                    </option>
+                                                </select> 
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+
+    <!-- NEW CODE FOR TABLE -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row"> 
+                <div class="col-12 mb-4">
+                    <div class="section-title d-flex align-items-center justify-content-between">
+                        <h1></h1>
+                        <div class="pull-left d-flex gap-16x"> 
+                            <div class="search-holder"> 
+                                <form action="">
+                                    <div class="input-group">
+                                        <!-- <input type="search" autocomplete="off" [(ngModel)]="searchText" placeholder="search" aria-describedby="button-addon5" class="form-control"> -->
+										
+										<input class="form-control" type="text" name="search"
+										autocomplete="off" [(ngModel)]="searchText" placeholder="search" aria-describedby="button-addon5">
+                                        <div class="input-group-append">
+                                            <button id="button-addon5" type="submit" class="btn"><i class="fa fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="table-resposive">
+                        <table class="table table_cust table_cust-with-buttons text-center">
+                            <thead> 
+                                <tr>
+                                    <th class="cur_Header">
+                                        <a [href]="" (click)="sortOrders('userId')">USER ID
+                                            <span *ngIf="sortType == 'userId' && !sortReverse" class="fa fa-caret-down"></span>
+                                            <span *ngIf="sortType == 'userId' && sortReverse" class="fa fa-caret-up"></span>
+                                        </a>
+                                    </th>
+                                    <th class="cur_Header">
+                                        <a [href]="" (click)="sortOrders('cust_name')">CUSTOMER NAME
+                                            <span *ngIf="sortType == 'cust_name' && !sortReverse" class="fa fa-caret-down"></span>
+                                            <span *ngIf="sortType == 'cust_name' && sortReverse" class="fa fa-caret-up"></span>
+                                        </a>
+                                    </th>
+                                    <th>Contact</th>
+                                    <th class="center-align">Email</th> 
+                                    <th>REMARKS</th>
+                                    <th class="cur_Header">
+                                        <a [href]="" (click)="sortOrders('date')">DATE
+                                            <span *ngIf="sortType == 'date' && !sortReverse" class="fa fa-caret-down"></span>
+                                            <span *ngIf="sortType == 'date' && sortReverse" class="fa fa-caret-up"></span>
+                                        </a>
+                                    </th> 
+                                    <th>Complaint Number</th>
+                                    <th>DELAY</th>
+                                    <th class="cur_Header">
+                                        <a [href]="" (click)="sortOrders('status')">STATUS
+                                            <span *ngIf="sortType == 'status' && !sortReverse" class="fa fa-caret-down"></span>
+                                            <span *ngIf="sortType == 'status' && sortReverse" class="fa fa-caret-up"></span>
+                                        </a>
+                                    </th> 
+                                </tr>
+                            </thead> 
+                            <tbody>                                
+                                <tr *ngFor="let complaint of complaintsData | filter:searchText">
+                                    <td>{{complaint.userId}}</td>
+                                    <td>{{complaint.customerName}}</td>
+                                    <td>{{complaint.contact}}</td>
+									<td data-tooltip="top" role="tooltip" attr.aria-label="{{complaint.email}}"><i
+										class="bi-envelope-open"></i></td>
+								<td class="remarks_one"><i class="bi-card-list"
+										data-toggle="modal" data-target="#myModal"
+										(click)="edit(complaint)"></i></td>
+                                    <td>{{complaint.complaintDate | date: 'dd/MM/yyyy'}}</td>
+                                    <td>{{complaint.complaintNum}}</td>
+                                    <td>{{complaint.delay}} </td>
+									<td>
+                                        <div class="status status-green form-control"> 
+										<span [ngStyle]="{'color':complaint.color}"><i
+												class="fas fa-bars icon-select"></i>
+										</span>
+										<select class="status-option status_complaint"
+										(change)="onChangeStatus($event,complaint)">
+										<!-- <option selected>{{auditor.status}}</option> -->
+										<option value="Open" *ngIf="complaint.status==='Open'" selected>Open</option>
+										<option value="Close"*ngIf="complaint.status==='Open'">Close</option>
+										<option value="Dispute"*ngIf="complaint.status==='Open'">Dispute</option>
+										<option value="Open"*ngIf="complaint.status==='Close'" >Open</option>
+										<option value="Close"*ngIf="complaint.status==='Close'" selected>Close</option>
+										<option value="Dispute"*ngIf="complaint.status==='Close'">Dispute</option>
+										<option value="Open"*ngIf="complaint.status==='Dispute'" >Open</option>
+										<option value="Close"*ngIf="complaint.status==='Dispute'">Close</option>
+										<option value="Dispute"*ngIf="complaint.status==='Dispute'" selected>Dispute</option>
+									</select>
+										<!-- {{complaint.status}} -->
+                                        </div>
+									</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</div>
+
+<!-- Remarks Model -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 130%;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <p class="small text-center" *ngFor="let remarks of remarksData">{{remarks.date}}</p>
+            <div class="modal-body" style="margin-top: -34px;">
+                <!-- Mobile remarks -->
+                <div class="row mobileRemark" *ngFor="let remarks of remarksData">
+                    <div class="col-1"><i class='fas fa-user-alt bg-light remarkPerson'></i></div>
+                    
+                    <div class=" col-11 bg-light rounded">
+                        <p>{{remarks.name}}</p>
+                        <p class="text-small text-muted">{{remarks.data}}</p>
+                    </div>
+                </div>
+                <!-- Web Remarks -->
+                <div *ngFor="let d of remarksDataOut;let i=index;">
+                    
+                    <div *ngIf="d.outData !== undefined">
+                        <p class="small text-center">{{d.outDate}}</p>
+                        <div class="row webRemark" >
+                            
+                            <div class=" col-11 bg-light rounded1">
+                                <p class="webRemark">{{d.outName}}</p>
+                                <p class="text-small text-muted webRemark">{{d.outData}}</p>
+                                
+                            </div>
+                            <div class="col-1"><i class='fas fa-user-alt bg-light remarkPerson'></i></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer footer">
+                <div class="col-md-12 remarkBox">
+                    <textarea id="remarks"
+                    placeholder="Enter Remarks here.." [(ngModel)]="remarksMsg"></textarea>
+                </div>
+                <button class="update" (click)="updateRemarks(remarksMsg)">Update</button>
+            </div>
+        </div>
+    </div>
+</div>

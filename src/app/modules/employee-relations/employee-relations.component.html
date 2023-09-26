@@ -1,0 +1,538 @@
+<div class="content-wrapper main-section-container">
+    <section class="content">
+        <div class="container-fluid p-0 mb-4">
+            <div class="row">
+                <!-- Merchant List -->
+                <div class="section-header" *ngIf="!isShow">
+                    <!-- <h4>Create</h4> -->
+                    <div class="pull-left d-flex gap-16x">
+                        <div class="search-holder">
+                            <form action="">
+                                <div class="input-group">
+                                    <input type="text" autocomplete="off" name="search" [(ngModel)]="searchText"
+                                        placeholder="What're you searching for?" aria-describedby="button-addon5"
+                                        class="form-control">
+                                    <div class="input-group-append">
+                                        <button id="button-addon5" type="submit" class="btn"><i
+                                                class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="pull-right d-flex gap-16x">
+                        <button class="btn btn-primary-lg" (click)="addItem()" style="margin-top: -12px;">
+                            Add Employee<i class="fas fa-plus cta-plus-btn border-0"></i></button>
+                        <!-- <button class="btn btn-default-normal">Cancel <i class="fas fa-plus rotate-45"></i></button> -->
+                        <!-- <button class="btn btn-default-primary" *ngIf="isShow" id="submit" (click)="submit()" [disabled]="!empForm.valid">Save <i class="fas fa-download"></i></button>  -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW CODE EMPLOYEE CARDS -->
+        <div *ngIf="isShow">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 mb-4" style="margin: -20px 0px 20px;">
+                        <div class="section-header mr-4 ml-4">
+                            <h4>Add Employee</h4>
+                            <div class="pull-right d-flex gap-16x">
+                                <button class="btn btn-default-sm-primary" (click)="addItem()">Cancel <i
+                                        class="fas fa-minus"></i></button>
+                                <!-- <button class="btn btn-default-md-fill" (click)="submit()"
+                                [disabled]="!empForm.valid">Save</button> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form action="" [formGroup]="empForm" id="msform" (ngSubmit)="submit()">
+                                <div class="row">
+
+                                    <div class="col-3">
+                                        <div class="form-group">
+                                            <div class="picture-container">
+                                                <div class="picture">
+                                                    <div class="picture2">
+                                                        <img src="assets/images/profile1.jpeg" class="picture-src"
+                                                            id="wizardPicturePreview" title="">
+                                                    </div>
+                                                    <div class="upload-btn">
+                                                        <div class="file-upload">
+                                                            <input type="file" (change)="onFileSelected($event)" /><i class="fa fa-arrow-up"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-9">
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <div class="form-group">
+                                                    <label for="inputEmployeeName" class="float-left">Employee
+                                                        Name</label>
+                                                    <input type="text" formControlName="empName" id="inputEmployeeName"
+                                                        name="employee_name" class="form-control" autocomplete="off">
+                                                    <div *ngIf="empForm.controls['empName'].invalid && (empForm.controls['empName'].dirty || empForm.controls['empName'].touched)"
+                                                        class="alert">
+                                                        <div *ngIf="empForm.controls['empName'].errors.required">
+                                                            <p class="error-msg">
+                                                                Name is required
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="form-group">
+                                                    <label for="inputJobTitle" class="float-left">Job Title</label>
+                                                    <input type="text" formControlName="jobTitle" id="inputJobTitle"
+                                                        name="job_title" class="form-control" autocomplete="off">
+                                                    <div *ngIf="empForm.controls['jobTitle'].invalid && (empForm.controls['jobTitle'].dirty || empForm.controls['jobTitle'].touched)"
+                                                        class="alert">
+                                                        <div *ngIf="empForm.controls['jobTitle'].errors.required">
+                                                            <p class="error-msg">
+                                                                Job Title is required
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="form-group">
+                                                    <label for="inputSalary" class="float-left">Salary</label>
+                                                    <input type="text" formControlName="salary" id="inputSalary"
+                                                        name="salary" class="form-control" autocomplete="off">
+                                                    <div *ngIf="empForm.controls['salary'].invalid && (empForm.controls['salary'].dirty || empForm.controls['salary'].touched)"
+                                                        class="alert">
+                                                        <div *ngIf="empForm.controls['salary'].errors.required">
+                                                            <p class="error-msg">
+                                                                Salary is required
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="form-group">
+                                                    <label for="inputJobTitle" class="float-left">Employee Grade</label>
+                                                    <input type="text" formControlName="empGrade" id="inputJobTitle"
+                                                        name="job_title" class="form-control" autocomplete="off">
+                                                    <div *ngIf="empForm.controls['empGrade'].invalid && (empForm.controls['empGrade'].dirty || empForm.controls['empGrade'].touched)"
+                                                        class="alert">
+                                                        <div *ngIf="empForm.controls['empGrade'].errors.required">
+                                                            <p class="error-msg">
+                                                                Employee Grade is required
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <div class="form-group">
+                                                    <label for="inputSalary" class="float-left">Applicable
+                                                        Leaves</label>
+                                                    <input type="text" formControlName="leaveBalance" id="inputSalary"
+                                                        name="salary" class="form-control" autocomplete="off">
+                                                    <div *ngIf="empForm.controls['leaveBalance'].invalid && (empForm.controls['leaveBalance'].dirty || empForm.controls['leaveBalance'].touched)"
+                                                        class="alert">
+                                                        <div *ngIf="empForm.controls['leaveBalance'].errors.required">
+                                                            <p class="error-msg">
+                                                                Applicable leaves is required
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="form-group">
+                                                    <label for="inputEmployeeName" class="float-left">Job
+                                                        Description</label>
+                                                    <input type="text" formControlName="jobDesc" id="inputEmployeeName"
+                                                        name="employee_name" class="form-control" autocomplete="off">
+                                                    <div *ngIf="empForm.controls['jobDesc'].invalid && (empForm.controls['jobDesc'].dirty || empForm.controls['jobDesc'].touched)"
+                                                        class="alert">
+                                                        <div *ngIf="empForm.controls['jobDesc'].errors.required">
+                                                            <p class="error-msg">
+                                                                Job Description is required
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-3">
+                                                <div class="form-group">
+                                                    <label for="inputJobTitle" class="float-left">Qualification</label>
+                                                    <select rows="1" class="form-control" formControlName="personalInfo"
+                                                        placeholder="" style="margin: 0px;">
+                                                        <option value="" selected>Select Qualification</option>
+                                                        <option>SSC</option>
+                                                        <option>Intermediate</option>
+                                                        <option>Graduation</option>
+                                                        <option>Post Graduation</option>
+                                                    </select>
+                                                    <!-- <input type="text" id="inputJobTitle" formControlName="personalInfo"
+                                                    name="job_title" class="form-control" autocomplete="off"> -->
+                                                    <div *ngIf="empForm.controls['personalInfo'].invalid && (empForm.controls['personalInfo'].dirty || empForm.controls['personalInfo'].touched)"
+                                                        class="alert">
+                                                        <div *ngIf="empForm.controls['personalInfo'].errors.required">
+                                                            <p class="error-msg">
+                                                                Qualification is required
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="form-group">
+                                                    <label for="inputSalary" class="float-left">Date of Joining</label>
+                                                    <input type="date" id="inputSalary" formControlName="endService"
+                                                        name="salary" class="form-control" autocomplete="off">
+                                                    <div *ngIf="empForm.controls['endService'].invalid && (empForm.controls['endService'].dirty || empForm.controls['endService'].touched)"
+                                                        class="alert">
+                                                        <div *ngIf="empForm.controls['endService'].errors.required">
+                                                            <p class="error-msg">
+                                                                Date of joining is required
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <!-- <button class="btn btn-sm btn-success edit_btn">save</button> -->
+                                    </div>
+                                </div>
+                                <div class="d-flex gap-16x justify-content-end" *ngIf="isShow">
+                                    <button class="btn btn-default-md-fill" (click)="submit()"
+                                        [disabled]="!empForm.valid">Save<i class="fas fa-download"></i></button>
+                                </div>
+                            </form>
+                            <hr />
+                            <!-- <button class="btn btn-default-md-fill">Save <i class="fas fa-download"></i></button> -->
+
+                        </div>
+                    </div>
+                    <!-- <div class="row">
+                <div class="pull-right d-flex gap-16x">
+                </div>
+                </div> -->
+                </div>
+            </div>
+        </div>
+
+
+        <!-- NEW CODE EMPLOYEE CARDS -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row cust-emp-card">
+                            <div class="col-3" *ngFor="let emp of employeeDetails | filter:searchText">
+                                <div class="card card-employee">
+                                    <div class="card-body p-0">
+                                        <!-- <div class="avatar-container"> -->
+                                        <!-- </div> -->
+                                        <div class="editProf" data-toggle="modal" data-target="#myModal2"
+                                            (click)="getDetails(emp)">
+                                            <i class="bi bi-three-dots" style="position:relative; top: 1px;"></i>
+                                        </div>
+                                        <div class="card-icon">
+                                            <img src="{{emp.path}}" alt="Profile">
+                                        </div>
+                                        <div
+                                            class="contact-container d-flex align-items-center justify-content-center flex-column text-center">
+                                            <div class="contact-details">
+                                                <div class="label-name">Name</div>
+                                                <div class="person-name">{{emp.empName}}</div>
+                                            </div>
+                                            <div class="contact-details">
+                                                <div class="label-name">Employee ID</div>
+                                                <div class="person-name">{{emp.empId}}</div>
+                                            </div>
+                                            <div class="contact-details">
+                                                <div class="label-name">Job Title</div>
+                                                <div class="person-name">{{emp.jobTitle}}</div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer d-flex align-items-center justify-content-between">
+                                            <button type="button" class="btn btn-wps" data-toggle="modal"
+                                                data-target="#salary" (click)="getDetails(emp)">Wps</button>
+                                            <button type="button" class="btn btn-apply" data-toggle="modal"
+                                                data-target="#applyleave" (click)="getDetails(emp)">Apply Leave</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- SATHYA UPDATE DESIGN -->
+    <!-- ADD EMP & SAVE -->
+    <!-- ALL EMPLOYEES CARD -->
+
+    <!-- MODAL POPUP -->
+
+    <!-- Employee details Modal -->
+    <div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel2">Employee Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="close()"><span
+                            aria-hidden="true">&times;</span></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="container">
+
+                        <form id="edit_employee_form" [formGroup]="empForm">
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <div class="picture-container">
+                                            <div class="picture">
+                                                <div class="picture2">
+                                                    <img src="{{oneEmpDetails.path}}" class="picture-src"
+                                                        id="editPicturePreview" title="">
+                                                    <input type="file" id="edit-profile-picture" class=""
+                                                        (change)="onFileSelected($event)">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="picture-label text-center">
+                                            <label for="edit-profile-picture">Upload Profile Picture</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ROW 1 -->
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="inputEmployeeName">Employee Name</label>
+                                        <input type="text" id="inputEmployeeName" name="employee_name"
+                                            formControlName="empName" class="form-control"
+                                            [(ngModel)]="oneEmpDetails.empName" value='{{oneEmpDetails.empName}}'>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="inputJobTitle">Job Title</label>
+                                        <input type="text" id="inputJobTitle" name="job_title" class="form-control"
+                                            formControlName="jobTitle" [(ngModel)]="oneEmpDetails.jobTitle"
+                                            value="{{oneEmpDetails.jobTitle}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ROW 2 -->
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="inputSalary">Salary</label>
+                                        <input type="text" id="inputSalary" name="salary" class="form-control"
+                                            formControlName="salary" [(ngModel)]="oneEmpDetails.salary"
+                                            value="{{oneEmpDetails.salary}}">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="inputEmployeeName">Employee ID</label>
+                                        <input type="text" id="inputEmployeeName" name="employee_name"
+                                            formControlName="empId" class="form-control" disabled
+                                            [(ngModel)]="oneEmpDetails.empId" value="{{oneEmpDetails.empId}}" readonly>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ROW 3 -->
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="inputJobTitle">Employee Grad</label>
+                                        <input type="text" id="inputJobTitle" name="job_title" class="form-control"
+                                            formControlName="empGrade" [(ngModel)]="oneEmpDetails.empGrade"
+                                            value="{{oneEmpDetails.empGrade}}">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="inputSalary">Applicable Leaves</label>
+                                        <input type="text" id="inputSalary" name="salary" class="form-control"
+                                            formControlName="leaveBalance" [(ngModel)]="oneEmpDetails.leaveBalance"
+                                            value="{{oneEmpDetails.leaveBalance}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ROW - 4 -->
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="inputJobDesc">Job Description</label>
+                                        <input type="text" id="inputJobDesc" name="jobDesc" formControlName="jobDesc"
+                                            class="form-control" [(ngModel)]="oneEmpDetails.jobDesc"
+                                            value="{{oneEmpDetails.jobDesc}}">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="inputJobTitle">Qualification</label>
+                                        <input type="text" id="inputJobTitle" name="job_title" class="form-control"
+                                            formControlName="personalInfo" autocomplete="off"
+                                            value="{{oneEmpDetails.personalInfo}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="inputSalary">Date of Joining</label>
+                                        <input type="text" id="inputSalary" name="salary" class="form-control"
+                                            formControlName="endService" [(ngModel)]="oneEmpDetails.endService"
+                                            autocomplete="off" value="{{oneEmpDetails.endService}}">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-center" style="margin: 74px 0px 0px 123px;">
+                                        <button class="btn btn-default-fill"
+                                            (click)="updateOne(oneEmpDetails)">UPDATE</button>
+
+                                        <!-- <button type="button" class="btn btn-submit btn-secondary btn-update"
+                                            id="btn_submit" (click)="updateOne(oneEmpDetails)">Update</button> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Apply Leave Modal -->
+    <div class="container">
+        <div class="modal right fade" id="applyleave" role="dialog">
+            <div class="modal-dialog">
+                <form [formGroup]="leaveForm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Apply Leave</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-sm-6 form-group">
+                                    <label for="from_date">From date</label>
+                                    <input type="date" id="from_date" formControlName="fromDate" class="form-control"
+                                        placeholder="Select date">
+                                </div>
+                                <div class="col-sm-6 form-group">
+                                    <label for="to_date">To date</label>
+                                    <input type="date" id="to_date" formControlName="toDate" class="form-control"
+                                        placeholder="Select date">
+                                </div>
+
+                                <div class="col-sm-12 form-group">
+                                    <label for="leave">Select Leave Type</label>
+                                    <select class="form-control" id="leave" formControlName="typeOfLeave"
+                                        style="color:#999">
+                                        <option>Select Leave Type</option>
+                                        <option>Sick Leave</option>
+                                        <option>Casual Leave</option>
+                                        <option>Emergency Leave</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-12 form-group">
+                                    <label for="remarks">Remarks</label>
+                                    <textarea class="form-control" formControlName="remarks" rows="5" id="remarks"
+                                        placeholder="Remarks"></textarea>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary close-btn"
+                                data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-success" (click)="applyLeaves(oneEmpDetails)"
+                                [disabled]="!leaveForm.valid">Apply</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+    <!-- Salary (WPS) Details Modal -->
+    <div class="container">
+        <div class="modal right fade" id="salary" role="dialog">
+            <div class="modal-dialog">
+                <form [formGroup]="wpsDetails">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">WPS Details</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-sm-6 form-group">
+                                    <label for="basic_salary">Basic Salary</label>
+                                    <input type="text" id="basic_salary" class="form-control"
+                                        [(ngModel)]="wpsData.basic" formControlName="basic" placeholder="Basic Salary">
+                                </div>
+                                <div class="col-sm-6 form-group">
+                                    <label for="house_allownce">Hosue Allowance</label>
+                                    <input type="text" id="house_allownce" class="form-control" formControlName="hra"
+                                        [(ngModel)]="wpsData.hra" placeholder="Hosue Allowance">
+                                </div>
+                                <div class="col-sm-6 form-group">
+                                    <label for="transport">Transport</label>
+                                    <input type="text" id="transport" class="form-control" placeholder="transport"
+                                        [(ngModel)]="wpsData.transport" formControlName="transport">
+                                </div>
+                                <div class="col-sm-6 form-group">
+                                    <label for="join_date">Joining date</label>
+                                    <input type="date" id="join_date" class="form-control" placeholder="Joining date"
+                                        [(ngModel)]="wpsData.dateOfJoining" formControlName="dateOfJoining">
+                                </div>
+                                <div class="col-sm-6 form-group">
+                                    <label for="bonus">Bonus</label>
+                                    <input type="text" id="bonus" class="form-control" placeholder="Bonus"
+                                        [(ngModel)]="wpsData.bonus" formControlName="bonus">
+                                </div>
+                                <div class="col-sm-6 form-group">
+                                    <label for="acNum">Account Number</label>
+                                    <input type="text" id="acNum" class="form-control" [(ngModel)]="wpsData.acNum"
+                                        placeholder="Enter Account Number" formControlName="acNum">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary close-btn"
+                                data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-success" (click)="wps(oneEmpDetails)"
+                                [disabled]="!wpsDetails.value">Submit</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,110 @@
+@media (min-width: 768px) {
+  .navbar-brand.abs {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+  }
+}
+
+.buttonReset {
+  border-radius: 35px;
+  font-size: 15px;
+  // background-color: #71aa46;
+  // border-color: #71aa46;
+  background-image: linear-gradient(to right, #9ae164, #208f39);
+  border: none;
+  margin-right: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: #444 !important;
+}
+
+.myNav {
+  position: relative;
+  right: -35px;
+  width: 365% !important;
+}
+
+.navLink_home {
+  width: 100px;
+  text-align: right;
+}
+
+.navLink_about {
+  width: 100px;
+  text-align: right;
+}
+
+.navLink_partner {
+  width: 150px;
+  text-align: right;
+}
+
+.navLink_hardware {
+  width: 170px;
+  text-align: right;
+}
+
+.navLink_software {
+  width: 170px;
+  text-align: right;
+}
+
+.navLink_contact {
+  width: 120px;
+  text-align: right;
+}
+
+.navLink_blog {
+  width: 105px;
+  text-align: right;
+}
+
+.navLink_login {
+  width: 90px;
+  text-align: right;
+}
+
+
+@media screen and (min-width: 1707px) {
+  .myNav {
+    right: -35px;
+    font-size: 20px;
+  }
+  .nav_class{
+    position: relative;
+    right: 75px;
+    width: 365% !important;
+    font-size: 15px;
+  }
+}
+
+@media screen and (min-width: 1517px) {
+  .myNav {
+    right: -35px;
+    font-size: 18px;
+  }
+  .navLink_about {
+    width: 125px;
+  }
+  .navLink_partner {
+    width: 175px;
+  }
+  .navLink_hardware {
+    width: 190px;
+  }
+  .navLink_software {
+    width: 190px;
+  }
+  .navLink_contact {
+    width: 140px;
+  }
+  .navLink_blog {
+    width: 125px;
+  }
+
+}
+

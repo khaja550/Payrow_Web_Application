@@ -1,0 +1,271 @@
+// FIRST 
+
+// .newSection {
+//   min-height: 70vh;
+//   margin: 0 30px;
+// }
+
+// .new {
+//   padding-left: 25px;
+//   padding-right: 25px;
+//   align-items: center;
+//   justify-content: center;
+//   height: 40vh;
+// }
+
+// .cardNew {
+//   background-color: #FFF;
+//   padding: 2rem 2.5rem;
+//   border-radius: 15px;
+//   display: flex;
+//   flex-wrap: wrap;
+//   position: relative;
+//   max-width: 500px;
+// }
+// .card::before {
+//   content: '';
+//   position: absolute;
+//   top: 0px;
+//   left: 10px;
+//   width: 101%;
+//   height: 110%;
+//   background-image: linear-gradient(to right bottom, #71aa46, #bbdfa0);
+//   z-index: -1;
+//   border-radius: 15px;
+//   transform: rotate(-5deg);
+//   box-shadow: 0 0 45px 5px rgba(0, 0, 0, .2);
+// }
+// .card li {
+//   width: 50%;
+//   margin: 15px 0;
+// }
+
+// .card li p {
+//   display: flex;
+// }
+
+// .card li h3 {
+//   display: inline-block;
+//   font-size: 2rem;
+//   color: #333;
+//   vertical-align: top;
+//   margin-right: 5px;
+//   line-height: 1.2;
+// }
+// .card li .fa {
+//   font-size: .75rem;
+// }
+// .card li span {
+//   color: #9ea6a8;
+//   font-weight: bold;
+//   font-size: .95rem;
+// }
+
+
+// .clr-up {
+//   color: green;
+// }
+
+// .clr-down {
+//   color: red;
+// }
+
+// @media screen and (max-width: 500px) {
+//   .card::before {
+//     top: -10px;
+//     left: -2px;
+//   }
+//   .card li {
+//     width: 100%;
+//   }
+//   .card li:not(:first-of-type) {
+//     margin-top: 15px;
+//   }
+// }
+
+
+
+
+// SECOND
+
+
+// :root {
+//   --background-color: #3a3e4f;
+//   --card-color: #282a36;
+//   white: #f8f8f2;
+//   --clr-green: #a0faa6;
+//   --clr-blue: #8bfbf5;
+//   --clr-pink: #ff79c6;
+//   --clr-purple: #9b70c6;
+//   --clr-yellow: #f1fa94;
+//   --gradient: linear-gradient(
+//     244deg,
+//     #9b70c6 2%,
+//     #8bfbf5 49%,
+//     #a0faa6 71%,
+//     #f1fa94 100%
+//   );
+// }
+
+h5 {
+    align-self: center;
+    margin: auto;
+    color: #fff;
+  }
+  .card {
+    display: flex;
+    width: 18rem;
+    height: 15rem;
+    position: relative;
+    background-color: #71aa46;
+    box-shadow: 5px 8px 15px rgba(0, 0, 0, 25%);
+    border-radius: 10px;
+    align-self: center;
+    overflow: hidden;
+    margin: auto;
+    border: none;
+    margin-bottom: 60px;
+  }
+  
+  .card1::after {
+    padding: 35px;
+    content: "Support corporate clients and financial investors with their growth strategy and international development";
+    font-size: 15px;
+    writing-mode: horizontal-rl;
+    text-align: center;
+    color: white;
+    width: 100%;
+    height: 100%;
+    transform: translateX(90%);
+    transition: ease 0.7s;
+    position: absolute;
+    border-radius: 0px 0px 10px;
+    background-color: #5b5a5a;
+  }
+  .card1:hover::after {
+    transform: translateX(0%);
+    border-radius: 10px;
+  }
+  
+  .card2::after {
+    padding: 35px;
+    content: "ConsultUs’ core expertise lies in the ability to support our clients in understanding, analysing and executing commercial and investment strategies in specific markets.";
+    font-size: 15px;
+    writing-mode: horizontal-rl;
+    text-align: center;
+    color: white;
+    width: 100%;
+    height: 100%;
+    transform: translateX(90%);
+    transition: ease 0.7s;
+    position: absolute;
+    border-radius: 0px 0px 10px;
+    background-color: #5b5a5a;
+  }
+  .card2:hover::after {
+    transform: translateX(0%);
+    border-radius: 10px;
+  }
+  
+  .card3::after {
+    padding: 35px;
+    content: "Experience in working with and assisting a wide range of clients from international corporations to small/medium-sized businesses, from large corporate debt providers to mid-market private equity investors.";
+    font-size: 15px;
+    writing-mode: horizontal-rl;
+    text-align: center;
+    color: white;
+    width: 100%;
+    height: 100%;
+    transform: translateX(90%);
+    transition: ease 0.7s;
+    position: absolute;
+    border-radius: 0px 0px 10px;
+    background-color: #5b5a5a;
+  }
+  .card3:hover::after {
+    transform: translateX(0%);
+    border-radius: 10px;
+  }
+  
+  .arowMark{
+    font-size: 50px;
+    color: #fff;
+    align-self: center;
+    margin: auto;
+    margin-top: 0px;
+    position: relative;
+    bottom: 10px;
+  }
+
+  .rightArrow{
+    font-size: 25px;
+    color: #fff;
+    align-self: center;
+    margin: auto;
+    margin-top: 0px;
+    position: relative;
+    bottom: 5px;
+    border: 1px solid #fff;
+    border-radius: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+  }
+  
+  
+  
+  // THIRD
+  
+  // @import url('https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap');
+  
+  
+  
+  // body{
+  //   background: #dfe6e9;
+  //   height: 100vh;
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   font-family: 'Nunito Sans', sans-serif;
+  // }
+  
+  // .container{
+  //   background: white;
+  //   cursor: pointer;
+  //   border-radius: 15px;
+  //   position: relative;
+  //   padding: 25px 30px;
+  //   color: #5b5a5a;
+  //   border: 1px solid #5b5a5a;
+  // }
+  
+  // .container::after{
+  //   content: '';
+  //   background: #5b5a5a;
+  //   border-radius: 15px;
+  //   height: 100%;
+  //   width: 100%;
+  //   position: absolute;
+  //   left: 0;
+  //   top: 0;
+  //   z-index: 0;
+  //   clip-path: circle(10% at 0% 0%);           transition: all .3s ease-in;
+  // }
+  
+  // .content{
+  //   position: relative;
+  //   z-index: 1;
+  //   transition: all .3s ease-in;
+  // }
+  
+  // .container:hover::after{
+  //   clip-path: circle(100%);
+  // }
+  
+  // .container:hover .content{
+  //   color:white;
+  // }
+  
+  // p{
+  //   font-size: 13px;
+  // }

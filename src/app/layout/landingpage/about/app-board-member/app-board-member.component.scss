@@ -1,0 +1,179 @@
+// Code by Sathya
+
+.section-padding {
+  padding: 80px 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-borders span {
+  height: 5px;
+  background: #6aaf08;
+  width: 40px;
+  display: inline-block;
+  border-radius: 2px;
+}
+
+.section-borders span.black-border {
+  background: #333;
+  width: 30px;
+  margin: 0 6px;
+}
+
+.client-testimonial-carousel .owl-dots button {
+  height: 5px;
+  background: #6aaf08 !important;
+  width: 20px;
+  display: inline-block;
+  margin: 5px;
+  transition: 0.2s;
+  border-radius: 2px;
+}
+
+.client-testimonial-carousel button.owl-dot.active {
+  background: #000 !important;
+  width: 30px;
+}
+
+.client-testimonial-carousel .owl-dots {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.single-testimonial-item {
+  position: relative;
+  box-shadow: 0 0 2px #dadfd3;
+  margin: 2px;
+  padding: 20px;
+  font-style: italic;
+  padding-left: 85px;
+}
+
+.single-testimonial-item:before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f10e";
+  font-weight: 900;
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  font-size: 20px;
+  color: #6aaf08;
+  line-height: 30px;
+  margin-top: -15px;
+}
+
+.single-testimonial-item:after {
+  background: #ddd;
+  content: "";
+  height: 70%;
+  left: 60px;
+  position: absolute;
+  top: 10%;
+  width: 1px;
+}
+
+.single-testimonial-item h3 {
+  font-size: 20px;
+  font-style: normal;
+  margin-bottom: 0;
+}
+
+.single-testimonial-item h3 span {
+  display: block;
+  font-size: 12px;
+  font-weight: normal;
+  margin-top: 5px;
+}
+
+@media (min-width: 768px) {
+  .col-md-3 {
+    flex: 0 0 auto;
+    width: 23%;
+  }
+}
+
+.product_headings {
+  margin-top: 20px;
+}
+
+.active img {
+  width: 180px;
+  margin-top: 4px;
+  margin-right: 13px;
+  // margin-left: -26px;
+  transition: 0.3s;
+  text-decoration: none !important;
+}
+
+.commonImgStyle {
+  width: 145px;
+  margin-top: 38px;
+}
+
+.hardwareHead {
+  margin-left: 145px;
+}
+
+// Screen size media query
+
+@media (min-width: 1707px) {
+  .hardwareHead {
+    margin-left: 222px;
+  }
+}
+
+.active {
+  color: #71aa46;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-decoration: none !important;
+}
+
+.active h6 {
+  color: #71aa46;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-decoration: none !important;
+}
+
+a h6 {
+  font-size: 13px;
+  color: #5c5b59;
+  text-decoration: none !important;
+}
+
+a h6:hover {
+  color: #71aa46;
+  font-size: 15px;
+  font-weight: 800;
+  text-decoration: none !important;
+}
+
+.commonImgStyle {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 38px;
+}
+
+.product_headings {
+  text-align: center;
+}
+
+.commonContent {
+  margin-left: 40px;
+  margin-top: 25px;
+  color: gray;
+}
+
+.contentPara {
+  letter-spacing: normal;
+  font-weight: 400;
+  line-height: 2;
+  max-width: 1200px;
+}

@@ -1,0 +1,40 @@
+<!-- example 3 - Navbar with brand left, links on center and right that collapse inot the vertical mobile menu -->
+
+<nav class="navbar navbar-expand-md bg-faded justify-content-center">
+    <a href="/" class="navbar-brand d-flex w-50 mr-auto"><img src="assets/images/logo.png" alt="Logo"
+            class="brand-image" width="130px"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar3">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
+        <ul class="navbar-nav w-100 justify-content-center nav_class">
+            <li class="nav-item active">
+                <a class="nav-link" href="#" style="width: 100px;text-align: right;">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link navLink_about" style="" routerLink="/aboutus">About Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link navLink_partner" style="" routerLink="/globalpartners">PayRow Partners</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link navLink_hardware" style="" routerLink="/mobiles">Hardware Products</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link navLink_software" style="" routerLink="/kyc">Software Products</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link navLink_blog" style="" routerLink="/blog">Our Blog</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link navLink_login" style="" routerLink="/blog">Video</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link navLink_contact" style="" routerLink="/contactus">Contact Us</a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+            <button class="btn btn-success buttonReset">Location</button>
+        </ul>
+    </div>
+</nav>

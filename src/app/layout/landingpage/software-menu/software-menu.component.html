@@ -1,0 +1,77 @@
+<app-app-header></app-app-header>
+
+<!-- Watermark and title (About us) -->
+<section style="padding-bottom: 0px; padding-top: 30px;">
+    <div class="row">
+        <div class="col-md-1">
+            <img src="assets/images/landingpage/watermark.png" alt="watermark" style="width: 70px;" />
+        </div>
+        <div class="col-md-11" style="position: relative; right: 55px;">
+            <div class="payrowaboutUs">
+                <h6 class="abtUs">Software Products
+                    <hr class="abtusHr" style="left: 136px;" />
+                </h6>
+                <!-- <h5 class="title2">Who we are</h5> -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<div class="section-padding">
+    <div class="container">
+        <div class="row owl-carousel client-testimonial-carousel" style="text-align: center;">
+
+            <div class="col-md-2">
+                <a routerLink="/softpos" [routerLinkActive]="['active']">
+                    <img src="assets/images/landingpage/ppl5.png" alt="mobile" class="commonImgStyle"
+                        [routerLinkActive]="['active']" />
+                    <h6 class="product_headings" [routerLinkActive]="['active']">SOFTPOS</h6>
+                </a>
+            </div>
+
+            <div class="col-md-2">
+                <a routerLink="/paymentgateway" [routerLinkActive]="['active']">
+                    <img src="assets/images/landingpage/ppl3.png" alt="mobile" class="commonImgStyle"
+                        [routerLinkActive]="['active']" />
+                    <h6 class="product_headings" [routerLinkActive]="['active']">PAYMENT GATEWAY</h6>
+                </a>
+            </div>
+
+            <div class="col-md-2">
+                <a routerLink="/wps" [routerLinkActive]="['active']">
+                    <img src="assets/images/landingpage/ppl5.png" alt="mobile" class="commonImgStyle"
+                        [routerLinkActive]="['active']" />
+                    <h6 class="product_headings" [routerLinkActive]="['active']">WPS</h6>
+                </a>
+            </div>
+
+            <div class="col-md-2">
+                <a routerLink="/vat" [routerLinkActive]="['active']">
+                    <img src="assets/images/landingpage/ppl4.png" alt="mobile" class="commonImgStyle"
+                        [routerLinkActive]="['active']" />
+                    <h6 class="product_headings" [routerLinkActive]="['active']">VAT</h6>
+                </a>
+            </div>
+
+            <div class="col-md-2">
+                <a routerLink="/kyc" [routerLinkActive]="['active']">
+                    <img src="assets/images/landingpage/ppl2.png" alt="mobile" class="commonImgStyle"
+                        [routerLinkActive]="['active']" />
+                    <h6 class="product_headings" [routerLinkActive]="['active']">E-KYC</h6>
+                </a>
+            </div>
+
+            <div class="col-md-2">
+                <a routerLink="/bnpl" [routerLinkActive]="['active']">
+                    <img src="assets/images/landingpage/ppl1.png" alt="mobile" class="commonImgStyle"
+                        [routerLinkActive]="['active']" />
+                    <h6 class="product_headings" [routerLinkActive]="['active']">BNPL</h6>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<!-- END OF TESTIMONIALS -->
